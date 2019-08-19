@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.CollateralReceivablesMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.CollateralReceivables" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="UnderlyingTransactionContractName" property="underlyingTransactionContractName" jdbcType="NVARCHAR" />
+    <result column="UnderlyingTransactionContractNo" property="underlyingTransactionContractNo" jdbcType="NVARCHAR" />
+    <result column="CollertalModel" property="collertalModel" jdbcType="NVARCHAR" />
+    <result column="CollertalModelText" property="collertalModelText" jdbcType="NVARCHAR" />
+    <result column="UnderlyingTransactionContractDebtor" property="underlyingTransactionContractDebtor" jdbcType="NVARCHAR" />
+    <result column="UnderlyingTransactionContractCreditor" property="underlyingTransactionContractCreditor" jdbcType="NVARCHAR" />
+    <result column="InvoiceNo" property="invoiceNo" jdbcType="NVARCHAR" />
+    <result column="InvoiceAmount" property="invoiceAmount" jdbcType="NVARCHAR" />
+    <result column="ReceivablesAmount" property="receivablesAmount" jdbcType="DECIMAL" />
+    <result column="ReceivablesDueDate" property="receivablesDueDate" jdbcType="DATE" />
+    <result column="ShadowRating" property="shadowRating" jdbcType="NVARCHAR" />
+    <result column="ShadowRatingText" property="shadowRatingText" jdbcType="NVARCHAR" />
+    <result column="InterestStartDate" property="interestStartDate" jdbcType="DATE" />
+    <result column="InterestEndDate" property="interestEndDate" jdbcType="DATE" />
+    <result column="PrimaryRate" property="primaryRate" jdbcType="DECIMAL" />
+    <result column="PaymentType" property="paymentType" jdbcType="NVARCHAR" />
+    <result column="PaymentTypeText" property="paymentTypeText" jdbcType="NVARCHAR" />
+    <result column="Remark" property="remark" jdbcType="NVARCHAR" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="CreationTime" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="ModifyTime" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="ReceivablesTerm" property="receivablesTerm" jdbcType="INTEGER" />
+    <result column="ExpectIncomeAmount" property="expectIncomeAmount" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, LoanNo, ProjectNo, UnderlyingTransactionContractName, UnderlyingTransactionContractNo, 
+    CollertalModel, CollertalModelText, UnderlyingTransactionContractDebtor, UnderlyingTransactionContractCreditor, 
+    InvoiceNo, InvoiceAmount, ReceivablesAmount, ReceivablesDueDate, ShadowRating, ShadowRatingText, 
+    InterestStartDate, InterestEndDate, PrimaryRate, PaymentType, PaymentTypeText, Remark, 
+    CreatedUser, CreationTime, ModifyTime, ReceivablesTerm, ExpectIncomeAmount
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from CollateralReceivables
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CollateralReceivables
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CollateralReceivables
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.CollateralReceivables" >
+    insert into CollateralReceivables (Id, LoanNo, ProjectNo, 
+      UnderlyingTransactionContractName, UnderlyingTransactionContractNo, 
+      CollertalModel, CollertalModelText, UnderlyingTransactionContractDebtor, 
+      UnderlyingTransactionContractCreditor, InvoiceNo, 
+      InvoiceAmount, ReceivablesAmount, ReceivablesDueDate, 
+      ShadowRating, ShadowRatingText, InterestStartDate, 
+      InterestEndDate, PrimaryRate, PaymentType, 
+      PaymentTypeText, Remark, CreatedUser, 
+      CreationTime, ModifyTime, ReceivablesTerm, 
+      ExpectIncomeAmount)
+    values (#{id,jdbcType=CHAR}, #{loanNo,jdbcType=NVARCHAR}, #{projectNo,jdbcType=NVARCHAR}, 
+      #{underlyingTransactionContractName,jdbcType=NVARCHAR}, #{underlyingTransactionContractNo,jdbcType=NVARCHAR}, 
+      #{collertalModel,jdbcType=NVARCHAR}, #{collertalModelText,jdbcType=NVARCHAR}, #{underlyingTransactionContractDebtor,jdbcType=NVARCHAR}, 
+      #{underlyingTransactionContractCreditor,jdbcType=NVARCHAR}, #{invoiceNo,jdbcType=NVARCHAR}, 
+      #{invoiceAmount,jdbcType=NVARCHAR}, #{receivablesAmount,jdbcType=DECIMAL}, #{receivablesDueDate,jdbcType=DATE}, 
+      #{shadowRating,jdbcType=NVARCHAR}, #{shadowRatingText,jdbcType=NVARCHAR}, #{interestStartDate,jdbcType=DATE}, 
+      #{interestEndDate,jdbcType=DATE}, #{primaryRate,jdbcType=DECIMAL}, #{paymentType,jdbcType=NVARCHAR}, 
+      #{paymentTypeText,jdbcType=NVARCHAR}, #{remark,jdbcType=NVARCHAR}, #{createdUser,jdbcType=NVARCHAR}, 
+      #{creationTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{receivablesTerm,jdbcType=INTEGER}, 
+      #{expectIncomeAmount,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.CollateralReceivables" >
+    insert into CollateralReceivables
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="underlyingTransactionContractName != null" >
+        UnderlyingTransactionContractName,
+      </if>
+      <if test="underlyingTransactionContractNo != null" >
+        UnderlyingTransactionContractNo,
+      </if>
+      <if test="collertalModel != null" >
+        CollertalModel,
+      </if>
+      <if test="collertalModelText != null" >
+        CollertalModelText,
+      </if>
+      <if test="underlyingTransactionContractDebtor != null" >
+        UnderlyingTransactionContractDebtor,
+      </if>
+      <if test="underlyingTransactionContractCreditor != null" >
+        UnderlyingTransactionContractCreditor,
+      </if>
+      <if test="invoiceNo != null" >
+        InvoiceNo,
+      </if>
+      <if test="invoiceAmount != null" >
+        InvoiceAmount,
+      </if>
+      <if test="receivablesAmount != null" >
+        ReceivablesAmount,
+      </if>
+      <if test="receivablesDueDate != null" >
+        ReceivablesDueDate,
+      </if>
+      <if test="shadowRating != null" >
+        ShadowRating,
+      </if>
+      <if test="shadowRatingText != null" >
+        ShadowRatingText,
+      </if>
+      <if test="interestStartDate != null" >
+        InterestStartDate,
+      </if>
+      <if test="interestEndDate != null" >
+        InterestEndDate,
+      </if>
+      <if test="primaryRate != null" >
+        PrimaryRate,
+      </if>
+      <if test="paymentType != null" >
+        PaymentType,
+      </if>
+      <if test="paymentTypeText != null" >
+        PaymentTypeText,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="creationTime != null" >
+        CreationTime,
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime,
+      </if>
+      <if test="receivablesTerm != null" >
+        ReceivablesTerm,
+      </if>
+      <if test="expectIncomeAmount != null" >
+        ExpectIncomeAmount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractName != null" >
+        #{underlyingTransactionContractName,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractNo != null" >
+        #{underlyingTransactionContractNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModel != null" >
+        #{collertalModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModelText != null" >
+        #{collertalModelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractDebtor != null" >
+        #{underlyingTransactionContractDebtor,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractCreditor != null" >
+        #{underlyingTransactionContractCreditor,jdbcType=NVARCHAR},
+      </if>
+      <if test="invoiceNo != null" >
+        #{invoiceNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="invoiceAmount != null" >
+        #{invoiceAmount,jdbcType=NVARCHAR},
+      </if>
+      <if test="receivablesAmount != null" >
+        #{receivablesAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="receivablesDueDate != null" >
+        #{receivablesDueDate,jdbcType=DATE},
+      </if>
+      <if test="shadowRating != null" >
+        #{shadowRating,jdbcType=NVARCHAR},
+      </if>
+      <if test="shadowRatingText != null" >
+        #{shadowRatingText,jdbcType=NVARCHAR},
+      </if>
+      <if test="interestStartDate != null" >
+        #{interestStartDate,jdbcType=DATE},
+      </if>
+      <if test="interestEndDate != null" >
+        #{interestEndDate,jdbcType=DATE},
+      </if>
+      <if test="primaryRate != null" >
+        #{primaryRate,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null" >
+        #{paymentType,jdbcType=NVARCHAR},
+      </if>
+      <if test="paymentTypeText != null" >
+        #{paymentTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receivablesTerm != null" >
+        #{receivablesTerm,jdbcType=INTEGER},
+      </if>
+      <if test="expectIncomeAmount != null" >
+        #{expectIncomeAmount,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.CollateralReceivables" >
+    update CollateralReceivables
+    <set >
+      <if test="loanNo != null" >
+        LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractName != null" >
+        UnderlyingTransactionContractName = #{underlyingTransactionContractName,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractNo != null" >
+        UnderlyingTransactionContractNo = #{underlyingTransactionContractNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModel != null" >
+        CollertalModel = #{collertalModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModelText != null" >
+        CollertalModelText = #{collertalModelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractDebtor != null" >
+        UnderlyingTransactionContractDebtor = #{underlyingTransactionContractDebtor,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractCreditor != null" >
+        UnderlyingTransactionContractCreditor = #{underlyingTransactionContractCreditor,jdbcType=NVARCHAR},
+      </if>
+      <if test="invoiceNo != null" >
+        InvoiceNo = #{invoiceNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="invoiceAmount != null" >
+        InvoiceAmount = #{invoiceAmount,jdbcType=NVARCHAR},
+      </if>
+      <if test="receivablesAmount != null" >
+        ReceivablesAmount = #{receivablesAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="receivablesDueDate != null" >
+        ReceivablesDueDate = #{receivablesDueDate,jdbcType=DATE},
+      </if>
+      <if test="shadowRating != null" >
+        ShadowRating = #{shadowRating,jdbcType=NVARCHAR},
+      </if>
+      <if test="shadowRatingText != null" >
+        ShadowRatingText = #{shadowRatingText,jdbcType=NVARCHAR},
+      </if>
+      <if test="interestStartDate != null" >
+        InterestStartDate = #{interestStartDate,jdbcType=DATE},
+      </if>
+      <if test="interestEndDate != null" >
+        InterestEndDate = #{interestEndDate,jdbcType=DATE},
+      </if>
+      <if test="primaryRate != null" >
+        PrimaryRate = #{primaryRate,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null" >
+        PaymentType = #{paymentType,jdbcType=NVARCHAR},
+      </if>
+      <if test="paymentTypeText != null" >
+        PaymentTypeText = #{paymentTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receivablesTerm != null" >
+        ReceivablesTerm = #{receivablesTerm,jdbcType=INTEGER},
+      </if>
+      <if test="expectIncomeAmount != null" >
+        ExpectIncomeAmount = #{expectIncomeAmount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.CollateralReceivables" >
+    update CollateralReceivables
+    set LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      UnderlyingTransactionContractName = #{underlyingTransactionContractName,jdbcType=NVARCHAR},
+      UnderlyingTransactionContractNo = #{underlyingTransactionContractNo,jdbcType=NVARCHAR},
+      CollertalModel = #{collertalModel,jdbcType=NVARCHAR},
+      CollertalModelText = #{collertalModelText,jdbcType=NVARCHAR},
+      UnderlyingTransactionContractDebtor = #{underlyingTransactionContractDebtor,jdbcType=NVARCHAR},
+      UnderlyingTransactionContractCreditor = #{underlyingTransactionContractCreditor,jdbcType=NVARCHAR},
+      InvoiceNo = #{invoiceNo,jdbcType=NVARCHAR},
+      InvoiceAmount = #{invoiceAmount,jdbcType=NVARCHAR},
+      ReceivablesAmount = #{receivablesAmount,jdbcType=DECIMAL},
+      ReceivablesDueDate = #{receivablesDueDate,jdbcType=DATE},
+      ShadowRating = #{shadowRating,jdbcType=NVARCHAR},
+      ShadowRatingText = #{shadowRatingText,jdbcType=NVARCHAR},
+      InterestStartDate = #{interestStartDate,jdbcType=DATE},
+      InterestEndDate = #{interestEndDate,jdbcType=DATE},
+      PrimaryRate = #{primaryRate,jdbcType=DECIMAL},
+      PaymentType = #{paymentType,jdbcType=NVARCHAR},
+      PaymentTypeText = #{paymentTypeText,jdbcType=NVARCHAR},
+      Remark = #{remark,jdbcType=NVARCHAR},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      ReceivablesTerm = #{receivablesTerm,jdbcType=INTEGER},
+      ExpectIncomeAmount = #{expectIncomeAmount,jdbcType=DECIMAL}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

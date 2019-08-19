@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.ProjectCreditPersonMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.ProjectCreditPerson" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="ProjectId" property="projectId" jdbcType="INTEGER" />
+    <result column="GuarantorName" property="guarantorName" jdbcType="NVARCHAR" />
+    <result column="GuarantorIDCardNo" property="guarantorIDCardNo" jdbcType="NVARCHAR" />
+    <result column="GuarantorMaritalStatus" property="guarantorMaritalStatus" jdbcType="BIT" />
+    <result column="GuarantorMaritalStatusText" property="guarantorMaritalStatusText" jdbcType="NVARCHAR" />
+    <result column="GuarantorCompany" property="guarantorCompany" jdbcType="NVARCHAR" />
+    <result column="GuarantorPhone" property="guarantorPhone" jdbcType="NVARCHAR" />
+    <result column="GuarantorAddress" property="guarantorAddress" jdbcType="NVARCHAR" />
+    <result column="GuarantorBasicInformation" property="guarantorBasicInformation" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, ProjectId, GuarantorName, GuarantorIDCardNo, GuarantorMaritalStatus, GuarantorMaritalStatusText, 
+    GuarantorCompany, GuarantorPhone, GuarantorAddress, GuarantorBasicInformation
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ProjectCreditPerson
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ProjectCreditPerson
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ProjectCreditPerson
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.ProjectCreditPerson" >
+    insert into ProjectCreditPerson (Id, ProjectId, GuarantorName, 
+      GuarantorIDCardNo, GuarantorMaritalStatus, 
+      GuarantorMaritalStatusText, GuarantorCompany, 
+      GuarantorPhone, GuarantorAddress, GuarantorBasicInformation
+      )
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{guarantorName,jdbcType=NVARCHAR}, 
+      #{guarantorIDCardNo,jdbcType=NVARCHAR}, #{guarantorMaritalStatus,jdbcType=BIT}, 
+      #{guarantorMaritalStatusText,jdbcType=NVARCHAR}, #{guarantorCompany,jdbcType=NVARCHAR}, 
+      #{guarantorPhone,jdbcType=NVARCHAR}, #{guarantorAddress,jdbcType=NVARCHAR}, #{guarantorBasicInformation,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.ProjectCreditPerson" >
+    insert into ProjectCreditPerson
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="projectId != null" >
+        ProjectId,
+      </if>
+      <if test="guarantorName != null" >
+        GuarantorName,
+      </if>
+      <if test="guarantorIDCardNo != null" >
+        GuarantorIDCardNo,
+      </if>
+      <if test="guarantorMaritalStatus != null" >
+        GuarantorMaritalStatus,
+      </if>
+      <if test="guarantorMaritalStatusText != null" >
+        GuarantorMaritalStatusText,
+      </if>
+      <if test="guarantorCompany != null" >
+        GuarantorCompany,
+      </if>
+      <if test="guarantorPhone != null" >
+        GuarantorPhone,
+      </if>
+      <if test="guarantorAddress != null" >
+        GuarantorAddress,
+      </if>
+      <if test="guarantorBasicInformation != null" >
+        GuarantorBasicInformation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="guarantorName != null" >
+        #{guarantorName,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorIDCardNo != null" >
+        #{guarantorIDCardNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorMaritalStatus != null" >
+        #{guarantorMaritalStatus,jdbcType=BIT},
+      </if>
+      <if test="guarantorMaritalStatusText != null" >
+        #{guarantorMaritalStatusText,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorCompany != null" >
+        #{guarantorCompany,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorPhone != null" >
+        #{guarantorPhone,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorAddress != null" >
+        #{guarantorAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorBasicInformation != null" >
+        #{guarantorBasicInformation,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.ProjectCreditPerson" >
+    update ProjectCreditPerson
+    <set >
+      <if test="projectId != null" >
+        ProjectId = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="guarantorName != null" >
+        GuarantorName = #{guarantorName,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorIDCardNo != null" >
+        GuarantorIDCardNo = #{guarantorIDCardNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorMaritalStatus != null" >
+        GuarantorMaritalStatus = #{guarantorMaritalStatus,jdbcType=BIT},
+      </if>
+      <if test="guarantorMaritalStatusText != null" >
+        GuarantorMaritalStatusText = #{guarantorMaritalStatusText,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorCompany != null" >
+        GuarantorCompany = #{guarantorCompany,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorPhone != null" >
+        GuarantorPhone = #{guarantorPhone,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorAddress != null" >
+        GuarantorAddress = #{guarantorAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorBasicInformation != null" >
+        GuarantorBasicInformation = #{guarantorBasicInformation,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.ProjectCreditPerson" >
+    update ProjectCreditPerson
+    set ProjectId = #{projectId,jdbcType=INTEGER},
+      GuarantorName = #{guarantorName,jdbcType=NVARCHAR},
+      GuarantorIDCardNo = #{guarantorIDCardNo,jdbcType=NVARCHAR},
+      GuarantorMaritalStatus = #{guarantorMaritalStatus,jdbcType=BIT},
+      GuarantorMaritalStatusText = #{guarantorMaritalStatusText,jdbcType=NVARCHAR},
+      GuarantorCompany = #{guarantorCompany,jdbcType=NVARCHAR},
+      GuarantorPhone = #{guarantorPhone,jdbcType=NVARCHAR},
+      GuarantorAddress = #{guarantorAddress,jdbcType=NVARCHAR},
+      GuarantorBasicInformation = #{guarantorBasicInformation,jdbcType=NVARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

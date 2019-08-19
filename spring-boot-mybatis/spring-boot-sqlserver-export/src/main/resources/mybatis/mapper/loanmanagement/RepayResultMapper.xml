@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.RepayResultMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.RepayResult" >
+    <id column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <id column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <id column="RepayNo" property="repayNo" jdbcType="NVARCHAR" />
+    <result column="LoanName" property="loanName" jdbcType="NVARCHAR" />
+    <result column="CurrentIssue" property="currentIssue" jdbcType="INTEGER" />
+    <result column="CurrentIssueStatus" property="currentIssueStatus" jdbcType="NVARCHAR" />
+    <result column="CurrentIssueStatusText" property="currentIssueStatusText" jdbcType="NVARCHAR" />
+    <result column="MoneyFlowType" property="moneyFlowType" jdbcType="NVARCHAR" />
+    <result column="MoneyFlowTypeText" property="moneyFlowTypeText" jdbcType="NVARCHAR" />
+    <result column="PrincipalPaid" property="principalPaid" jdbcType="DECIMAL" />
+    <result column="InterestPaid" property="interestPaid" jdbcType="DECIMAL" />
+    <result column="SecurityChargePaid" property="securityChargePaid" jdbcType="DECIMAL" />
+    <result column="ServiceChargePaid" property="serviceChargePaid" jdbcType="DECIMAL" />
+    <result column="ChargeMoneyPaid" property="chargeMoneyPaid" jdbcType="DECIMAL" />
+    <result column="OtherPaymentPaid" property="otherPaymentPaid" jdbcType="DECIMAL" />
+    <result column="PayDate" property="payDate" jdbcType="DATE" />
+    <result column="OverdueArrears" property="overdueArrears" jdbcType="INTEGER" />
+    <result column="OverdueAmount" property="overdueAmount" jdbcType="DECIMAL" />
+    <result column="SubstitutionPaymentDate" property="substitutionPaymentDate" jdbcType="DATE" />
+    <result column="SubstitutionPaymentAmount" property="substitutionPaymentAmount" jdbcType="DECIMAL" />
+    <result column="ContinuousTimesOverdue" property="continuousTimesOverdue" jdbcType="INTEGER" />
+    <result column="AccumulateOverdueTimes" property="accumulateOverdueTimes" jdbcType="INTEGER" />
+    <result column="SubstitutePaymentTimes" property="substitutePaymentTimes" jdbcType="INTEGER" />
+    <result column="DuePenaltyTotalAmount" property="duePenaltyTotalAmount" jdbcType="DECIMAL" />
+    <result column="PaidPenaltyTotalAmount" property="paidPenaltyTotalAmount" jdbcType="DECIMAL" />
+    <result column="SurplusPenaltyAmount" property="surplusPenaltyAmount" jdbcType="DECIMAL" />
+    <result column="DeductionMarginAmount" property="deductionMarginAmount" jdbcType="DECIMAL" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="CreatedTime" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="ModifedTime" property="modifedTime" jdbcType="TIMESTAMP" />
+    <result column="Remark" property="remark" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ProjectNo, LoanNo, RepayNo, LoanName, CurrentIssue, CurrentIssueStatus, CurrentIssueStatusText, 
+    MoneyFlowType, MoneyFlowTypeText, PrincipalPaid, InterestPaid, SecurityChargePaid, 
+    ServiceChargePaid, ChargeMoneyPaid, OtherPaymentPaid, PayDate, OverdueArrears, OverdueAmount, 
+    SubstitutionPaymentDate, SubstitutionPaymentAmount, ContinuousTimesOverdue, AccumulateOverdueTimes, 
+    SubstitutePaymentTimes, DuePenaltyTotalAmount, PaidPenaltyTotalAmount, SurplusPenaltyAmount, 
+    DeductionMarginAmount, CreatedUser, CreatedTime, ModifedTime, Remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from RepayResult
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.example.model.RepayResultKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from RepayResult
+    where ProjectNo = #{projectNo,jdbcType=NVARCHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and RepayNo = #{repayNo,jdbcType=NVARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.example.model.RepayResultKey" >
+    delete from RepayResult
+    where ProjectNo = #{projectNo,jdbcType=NVARCHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and RepayNo = #{repayNo,jdbcType=NVARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.RepayResult" >
+    insert into RepayResult (ProjectNo, LoanNo, RepayNo, 
+      LoanName, CurrentIssue, CurrentIssueStatus, 
+      CurrentIssueStatusText, MoneyFlowType, 
+      MoneyFlowTypeText, PrincipalPaid, InterestPaid, 
+      SecurityChargePaid, ServiceChargePaid, 
+      ChargeMoneyPaid, OtherPaymentPaid, PayDate, 
+      OverdueArrears, OverdueAmount, SubstitutionPaymentDate, 
+      SubstitutionPaymentAmount, ContinuousTimesOverdue, 
+      AccumulateOverdueTimes, SubstitutePaymentTimes, 
+      DuePenaltyTotalAmount, PaidPenaltyTotalAmount, 
+      SurplusPenaltyAmount, DeductionMarginAmount, 
+      CreatedUser, CreatedTime, ModifedTime, 
+      Remark)
+    values (#{projectNo,jdbcType=NVARCHAR}, #{loanNo,jdbcType=NVARCHAR}, #{repayNo,jdbcType=NVARCHAR}, 
+      #{loanName,jdbcType=NVARCHAR}, #{currentIssue,jdbcType=INTEGER}, #{currentIssueStatus,jdbcType=NVARCHAR}, 
+      #{currentIssueStatusText,jdbcType=NVARCHAR}, #{moneyFlowType,jdbcType=NVARCHAR}, 
+      #{moneyFlowTypeText,jdbcType=NVARCHAR}, #{principalPaid,jdbcType=DECIMAL}, #{interestPaid,jdbcType=DECIMAL}, 
+      #{securityChargePaid,jdbcType=DECIMAL}, #{serviceChargePaid,jdbcType=DECIMAL}, 
+      #{chargeMoneyPaid,jdbcType=DECIMAL}, #{otherPaymentPaid,jdbcType=DECIMAL}, #{payDate,jdbcType=DATE}, 
+      #{overdueArrears,jdbcType=INTEGER}, #{overdueAmount,jdbcType=DECIMAL}, #{substitutionPaymentDate,jdbcType=DATE}, 
+      #{substitutionPaymentAmount,jdbcType=DECIMAL}, #{continuousTimesOverdue,jdbcType=INTEGER}, 
+      #{accumulateOverdueTimes,jdbcType=INTEGER}, #{substitutePaymentTimes,jdbcType=INTEGER}, 
+      #{duePenaltyTotalAmount,jdbcType=DECIMAL}, #{paidPenaltyTotalAmount,jdbcType=DECIMAL}, 
+      #{surplusPenaltyAmount,jdbcType=DECIMAL}, #{deductionMarginAmount,jdbcType=DECIMAL}, 
+      #{createdUser,jdbcType=NVARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{modifedTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.RepayResult" >
+    insert into RepayResult
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="repayNo != null" >
+        RepayNo,
+      </if>
+      <if test="loanName != null" >
+        LoanName,
+      </if>
+      <if test="currentIssue != null" >
+        CurrentIssue,
+      </if>
+      <if test="currentIssueStatus != null" >
+        CurrentIssueStatus,
+      </if>
+      <if test="currentIssueStatusText != null" >
+        CurrentIssueStatusText,
+      </if>
+      <if test="moneyFlowType != null" >
+        MoneyFlowType,
+      </if>
+      <if test="moneyFlowTypeText != null" >
+        MoneyFlowTypeText,
+      </if>
+      <if test="principalPaid != null" >
+        PrincipalPaid,
+      </if>
+      <if test="interestPaid != null" >
+        InterestPaid,
+      </if>
+      <if test="securityChargePaid != null" >
+        SecurityChargePaid,
+      </if>
+      <if test="serviceChargePaid != null" >
+        ServiceChargePaid,
+      </if>
+      <if test="chargeMoneyPaid != null" >
+        ChargeMoneyPaid,
+      </if>
+      <if test="otherPaymentPaid != null" >
+        OtherPaymentPaid,
+      </if>
+      <if test="payDate != null" >
+        PayDate,
+      </if>
+      <if test="overdueArrears != null" >
+        OverdueArrears,
+      </if>
+      <if test="overdueAmount != null" >
+        OverdueAmount,
+      </if>
+      <if test="substitutionPaymentDate != null" >
+        SubstitutionPaymentDate,
+      </if>
+      <if test="substitutionPaymentAmount != null" >
+        SubstitutionPaymentAmount,
+      </if>
+      <if test="continuousTimesOverdue != null" >
+        ContinuousTimesOverdue,
+      </if>
+      <if test="accumulateOverdueTimes != null" >
+        AccumulateOverdueTimes,
+      </if>
+      <if test="substitutePaymentTimes != null" >
+        SubstitutePaymentTimes,
+      </if>
+      <if test="duePenaltyTotalAmount != null" >
+        DuePenaltyTotalAmount,
+      </if>
+      <if test="paidPenaltyTotalAmount != null" >
+        PaidPenaltyTotalAmount,
+      </if>
+      <if test="surplusPenaltyAmount != null" >
+        SurplusPenaltyAmount,
+      </if>
+      <if test="deductionMarginAmount != null" >
+        DeductionMarginAmount,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime,
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="repayNo != null" >
+        #{repayNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanName != null" >
+        #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="currentIssue != null" >
+        #{currentIssue,jdbcType=INTEGER},
+      </if>
+      <if test="currentIssueStatus != null" >
+        #{currentIssueStatus,jdbcType=NVARCHAR},
+      </if>
+      <if test="currentIssueStatusText != null" >
+        #{currentIssueStatusText,jdbcType=NVARCHAR},
+      </if>
+      <if test="moneyFlowType != null" >
+        #{moneyFlowType,jdbcType=NVARCHAR},
+      </if>
+      <if test="moneyFlowTypeText != null" >
+        #{moneyFlowTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="principalPaid != null" >
+        #{principalPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="interestPaid != null" >
+        #{interestPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="securityChargePaid != null" >
+        #{securityChargePaid,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceChargePaid != null" >
+        #{serviceChargePaid,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeMoneyPaid != null" >
+        #{chargeMoneyPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="otherPaymentPaid != null" >
+        #{otherPaymentPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="payDate != null" >
+        #{payDate,jdbcType=DATE},
+      </if>
+      <if test="overdueArrears != null" >
+        #{overdueArrears,jdbcType=INTEGER},
+      </if>
+      <if test="overdueAmount != null" >
+        #{overdueAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="substitutionPaymentDate != null" >
+        #{substitutionPaymentDate,jdbcType=DATE},
+      </if>
+      <if test="substitutionPaymentAmount != null" >
+        #{substitutionPaymentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="continuousTimesOverdue != null" >
+        #{continuousTimesOverdue,jdbcType=INTEGER},
+      </if>
+      <if test="accumulateOverdueTimes != null" >
+        #{accumulateOverdueTimes,jdbcType=INTEGER},
+      </if>
+      <if test="substitutePaymentTimes != null" >
+        #{substitutePaymentTimes,jdbcType=INTEGER},
+      </if>
+      <if test="duePenaltyTotalAmount != null" >
+        #{duePenaltyTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="paidPenaltyTotalAmount != null" >
+        #{paidPenaltyTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="surplusPenaltyAmount != null" >
+        #{surplusPenaltyAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="deductionMarginAmount != null" >
+        #{deductionMarginAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null" >
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.RepayResult" >
+    update RepayResult
+    <set >
+      <if test="loanName != null" >
+        LoanName = #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="currentIssue != null" >
+        CurrentIssue = #{currentIssue,jdbcType=INTEGER},
+      </if>
+      <if test="currentIssueStatus != null" >
+        CurrentIssueStatus = #{currentIssueStatus,jdbcType=NVARCHAR},
+      </if>
+      <if test="currentIssueStatusText != null" >
+        CurrentIssueStatusText = #{currentIssueStatusText,jdbcType=NVARCHAR},
+      </if>
+      <if test="moneyFlowType != null" >
+        MoneyFlowType = #{moneyFlowType,jdbcType=NVARCHAR},
+      </if>
+      <if test="moneyFlowTypeText != null" >
+        MoneyFlowTypeText = #{moneyFlowTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="principalPaid != null" >
+        PrincipalPaid = #{principalPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="interestPaid != null" >
+        InterestPaid = #{interestPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="securityChargePaid != null" >
+        SecurityChargePaid = #{securityChargePaid,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceChargePaid != null" >
+        ServiceChargePaid = #{serviceChargePaid,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeMoneyPaid != null" >
+        ChargeMoneyPaid = #{chargeMoneyPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="otherPaymentPaid != null" >
+        OtherPaymentPaid = #{otherPaymentPaid,jdbcType=DECIMAL},
+      </if>
+      <if test="payDate != null" >
+        PayDate = #{payDate,jdbcType=DATE},
+      </if>
+      <if test="overdueArrears != null" >
+        OverdueArrears = #{overdueArrears,jdbcType=INTEGER},
+      </if>
+      <if test="overdueAmount != null" >
+        OverdueAmount = #{overdueAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="substitutionPaymentDate != null" >
+        SubstitutionPaymentDate = #{substitutionPaymentDate,jdbcType=DATE},
+      </if>
+      <if test="substitutionPaymentAmount != null" >
+        SubstitutionPaymentAmount = #{substitutionPaymentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="continuousTimesOverdue != null" >
+        ContinuousTimesOverdue = #{continuousTimesOverdue,jdbcType=INTEGER},
+      </if>
+      <if test="accumulateOverdueTimes != null" >
+        AccumulateOverdueTimes = #{accumulateOverdueTimes,jdbcType=INTEGER},
+      </if>
+      <if test="substitutePaymentTimes != null" >
+        SubstitutePaymentTimes = #{substitutePaymentTimes,jdbcType=INTEGER},
+      </if>
+      <if test="duePenaltyTotalAmount != null" >
+        DuePenaltyTotalAmount = #{duePenaltyTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="paidPenaltyTotalAmount != null" >
+        PaidPenaltyTotalAmount = #{paidPenaltyTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="surplusPenaltyAmount != null" >
+        SurplusPenaltyAmount = #{surplusPenaltyAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="deductionMarginAmount != null" >
+        DeductionMarginAmount = #{deductionMarginAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where ProjectNo = #{projectNo,jdbcType=NVARCHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and RepayNo = #{repayNo,jdbcType=NVARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.RepayResult" >
+    update RepayResult
+    set LoanName = #{loanName,jdbcType=NVARCHAR},
+      CurrentIssue = #{currentIssue,jdbcType=INTEGER},
+      CurrentIssueStatus = #{currentIssueStatus,jdbcType=NVARCHAR},
+      CurrentIssueStatusText = #{currentIssueStatusText,jdbcType=NVARCHAR},
+      MoneyFlowType = #{moneyFlowType,jdbcType=NVARCHAR},
+      MoneyFlowTypeText = #{moneyFlowTypeText,jdbcType=NVARCHAR},
+      PrincipalPaid = #{principalPaid,jdbcType=DECIMAL},
+      InterestPaid = #{interestPaid,jdbcType=DECIMAL},
+      SecurityChargePaid = #{securityChargePaid,jdbcType=DECIMAL},
+      ServiceChargePaid = #{serviceChargePaid,jdbcType=DECIMAL},
+      ChargeMoneyPaid = #{chargeMoneyPaid,jdbcType=DECIMAL},
+      OtherPaymentPaid = #{otherPaymentPaid,jdbcType=DECIMAL},
+      PayDate = #{payDate,jdbcType=DATE},
+      OverdueArrears = #{overdueArrears,jdbcType=INTEGER},
+      OverdueAmount = #{overdueAmount,jdbcType=DECIMAL},
+      SubstitutionPaymentDate = #{substitutionPaymentDate,jdbcType=DATE},
+      SubstitutionPaymentAmount = #{substitutionPaymentAmount,jdbcType=DECIMAL},
+      ContinuousTimesOverdue = #{continuousTimesOverdue,jdbcType=INTEGER},
+      AccumulateOverdueTimes = #{accumulateOverdueTimes,jdbcType=INTEGER},
+      SubstitutePaymentTimes = #{substitutePaymentTimes,jdbcType=INTEGER},
+      DuePenaltyTotalAmount = #{duePenaltyTotalAmount,jdbcType=DECIMAL},
+      PaidPenaltyTotalAmount = #{paidPenaltyTotalAmount,jdbcType=DECIMAL},
+      SurplusPenaltyAmount = #{surplusPenaltyAmount,jdbcType=DECIMAL},
+      DeductionMarginAmount = #{deductionMarginAmount,jdbcType=DECIMAL},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      Remark = #{remark,jdbcType=NVARCHAR}
+    where ProjectNo = #{projectNo,jdbcType=NVARCHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and RepayNo = #{repayNo,jdbcType=NVARCHAR}
+  </update>
+</mapper>

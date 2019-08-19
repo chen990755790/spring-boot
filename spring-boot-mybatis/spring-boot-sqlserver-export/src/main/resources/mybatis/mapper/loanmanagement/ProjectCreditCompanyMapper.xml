@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.ProjectCreditCompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.ProjectCreditCompany" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="ProjectId" property="projectId" jdbcType="INTEGER" />
+    <result column="CompanyCode" property="companyCode" jdbcType="NVARCHAR" />
+    <result column="CompanyGuarantorName" property="companyGuarantorName" jdbcType="NVARCHAR" />
+    <result column="RegisteredCapitalAmount" property="registeredCapitalAmount" jdbcType="DECIMAL" />
+    <result column="RegisterAddress" property="registerAddress" jdbcType="NVARCHAR" />
+    <result column="BusinessAddress" property="businessAddress" jdbcType="NVARCHAR" />
+    <result column="CompanyType" property="companyType" jdbcType="NVARCHAR" />
+    <result column="Industry" property="industry" jdbcType="NVARCHAR" />
+    <result column="LegalRepresentativeName" property="legalRepresentativeName" jdbcType="NVARCHAR" />
+    <result column="TotalAmount" property="totalAmount" jdbcType="DECIMAL" />
+    <result column="TotalLiability" property="totalLiability" jdbcType="DECIMAL" />
+    <result column="AssetLiabilityRatio" property="assetLiabilityRatio" jdbcType="DECIMAL" />
+    <result column="TotalIncomeAmount" property="totalIncomeAmount" jdbcType="DECIMAL" />
+    <result column="NetProfits" property="netProfits" jdbcType="DECIMAL" />
+    <result column="GuarantorAndFinanceCompanyRelation" property="guarantorAndFinanceCompanyRelation" jdbcType="INTEGER" />
+    <result column="GuarantorAndFinanceCompanyRelationText" property="guarantorAndFinanceCompanyRelationText" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, ProjectId, CompanyCode, CompanyGuarantorName, RegisteredCapitalAmount, RegisterAddress, 
+    BusinessAddress, CompanyType, Industry, LegalRepresentativeName, TotalAmount, TotalLiability, 
+    AssetLiabilityRatio, TotalIncomeAmount, NetProfits, GuarantorAndFinanceCompanyRelation, 
+    GuarantorAndFinanceCompanyRelationText
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ProjectCreditCompany
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ProjectCreditCompany
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ProjectCreditCompany
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.ProjectCreditCompany" >
+    insert into ProjectCreditCompany (Id, ProjectId, CompanyCode, 
+      CompanyGuarantorName, RegisteredCapitalAmount, 
+      RegisterAddress, BusinessAddress, CompanyType, 
+      Industry, LegalRepresentativeName, TotalAmount, 
+      TotalLiability, AssetLiabilityRatio, TotalIncomeAmount, 
+      NetProfits, GuarantorAndFinanceCompanyRelation, 
+      GuarantorAndFinanceCompanyRelationText)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{companyCode,jdbcType=NVARCHAR}, 
+      #{companyGuarantorName,jdbcType=NVARCHAR}, #{registeredCapitalAmount,jdbcType=DECIMAL}, 
+      #{registerAddress,jdbcType=NVARCHAR}, #{businessAddress,jdbcType=NVARCHAR}, #{companyType,jdbcType=NVARCHAR}, 
+      #{industry,jdbcType=NVARCHAR}, #{legalRepresentativeName,jdbcType=NVARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
+      #{totalLiability,jdbcType=DECIMAL}, #{assetLiabilityRatio,jdbcType=DECIMAL}, #{totalIncomeAmount,jdbcType=DECIMAL}, 
+      #{netProfits,jdbcType=DECIMAL}, #{guarantorAndFinanceCompanyRelation,jdbcType=INTEGER}, 
+      #{guarantorAndFinanceCompanyRelationText,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.ProjectCreditCompany" >
+    insert into ProjectCreditCompany
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="projectId != null" >
+        ProjectId,
+      </if>
+      <if test="companyCode != null" >
+        CompanyCode,
+      </if>
+      <if test="companyGuarantorName != null" >
+        CompanyGuarantorName,
+      </if>
+      <if test="registeredCapitalAmount != null" >
+        RegisteredCapitalAmount,
+      </if>
+      <if test="registerAddress != null" >
+        RegisterAddress,
+      </if>
+      <if test="businessAddress != null" >
+        BusinessAddress,
+      </if>
+      <if test="companyType != null" >
+        CompanyType,
+      </if>
+      <if test="industry != null" >
+        Industry,
+      </if>
+      <if test="legalRepresentativeName != null" >
+        LegalRepresentativeName,
+      </if>
+      <if test="totalAmount != null" >
+        TotalAmount,
+      </if>
+      <if test="totalLiability != null" >
+        TotalLiability,
+      </if>
+      <if test="assetLiabilityRatio != null" >
+        AssetLiabilityRatio,
+      </if>
+      <if test="totalIncomeAmount != null" >
+        TotalIncomeAmount,
+      </if>
+      <if test="netProfits != null" >
+        NetProfits,
+      </if>
+      <if test="guarantorAndFinanceCompanyRelation != null" >
+        GuarantorAndFinanceCompanyRelation,
+      </if>
+      <if test="guarantorAndFinanceCompanyRelationText != null" >
+        GuarantorAndFinanceCompanyRelationText,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="companyCode != null" >
+        #{companyCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyGuarantorName != null" >
+        #{companyGuarantorName,jdbcType=NVARCHAR},
+      </if>
+      <if test="registeredCapitalAmount != null" >
+        #{registeredCapitalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="registerAddress != null" >
+        #{registerAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessAddress != null" >
+        #{businessAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyType != null" >
+        #{companyType,jdbcType=NVARCHAR},
+      </if>
+      <if test="industry != null" >
+        #{industry,jdbcType=NVARCHAR},
+      </if>
+      <if test="legalRepresentativeName != null" >
+        #{legalRepresentativeName,jdbcType=NVARCHAR},
+      </if>
+      <if test="totalAmount != null" >
+        #{totalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalLiability != null" >
+        #{totalLiability,jdbcType=DECIMAL},
+      </if>
+      <if test="assetLiabilityRatio != null" >
+        #{assetLiabilityRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="totalIncomeAmount != null" >
+        #{totalIncomeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="netProfits != null" >
+        #{netProfits,jdbcType=DECIMAL},
+      </if>
+      <if test="guarantorAndFinanceCompanyRelation != null" >
+        #{guarantorAndFinanceCompanyRelation,jdbcType=INTEGER},
+      </if>
+      <if test="guarantorAndFinanceCompanyRelationText != null" >
+        #{guarantorAndFinanceCompanyRelationText,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.ProjectCreditCompany" >
+    update ProjectCreditCompany
+    <set >
+      <if test="projectId != null" >
+        ProjectId = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="companyCode != null" >
+        CompanyCode = #{companyCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyGuarantorName != null" >
+        CompanyGuarantorName = #{companyGuarantorName,jdbcType=NVARCHAR},
+      </if>
+      <if test="registeredCapitalAmount != null" >
+        RegisteredCapitalAmount = #{registeredCapitalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="registerAddress != null" >
+        RegisterAddress = #{registerAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessAddress != null" >
+        BusinessAddress = #{businessAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyType != null" >
+        CompanyType = #{companyType,jdbcType=NVARCHAR},
+      </if>
+      <if test="industry != null" >
+        Industry = #{industry,jdbcType=NVARCHAR},
+      </if>
+      <if test="legalRepresentativeName != null" >
+        LegalRepresentativeName = #{legalRepresentativeName,jdbcType=NVARCHAR},
+      </if>
+      <if test="totalAmount != null" >
+        TotalAmount = #{totalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalLiability != null" >
+        TotalLiability = #{totalLiability,jdbcType=DECIMAL},
+      </if>
+      <if test="assetLiabilityRatio != null" >
+        AssetLiabilityRatio = #{assetLiabilityRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="totalIncomeAmount != null" >
+        TotalIncomeAmount = #{totalIncomeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="netProfits != null" >
+        NetProfits = #{netProfits,jdbcType=DECIMAL},
+      </if>
+      <if test="guarantorAndFinanceCompanyRelation != null" >
+        GuarantorAndFinanceCompanyRelation = #{guarantorAndFinanceCompanyRelation,jdbcType=INTEGER},
+      </if>
+      <if test="guarantorAndFinanceCompanyRelationText != null" >
+        GuarantorAndFinanceCompanyRelationText = #{guarantorAndFinanceCompanyRelationText,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.ProjectCreditCompany" >
+    update ProjectCreditCompany
+    set ProjectId = #{projectId,jdbcType=INTEGER},
+      CompanyCode = #{companyCode,jdbcType=NVARCHAR},
+      CompanyGuarantorName = #{companyGuarantorName,jdbcType=NVARCHAR},
+      RegisteredCapitalAmount = #{registeredCapitalAmount,jdbcType=DECIMAL},
+      RegisterAddress = #{registerAddress,jdbcType=NVARCHAR},
+      BusinessAddress = #{businessAddress,jdbcType=NVARCHAR},
+      CompanyType = #{companyType,jdbcType=NVARCHAR},
+      Industry = #{industry,jdbcType=NVARCHAR},
+      LegalRepresentativeName = #{legalRepresentativeName,jdbcType=NVARCHAR},
+      TotalAmount = #{totalAmount,jdbcType=DECIMAL},
+      TotalLiability = #{totalLiability,jdbcType=DECIMAL},
+      AssetLiabilityRatio = #{assetLiabilityRatio,jdbcType=DECIMAL},
+      TotalIncomeAmount = #{totalIncomeAmount,jdbcType=DECIMAL},
+      NetProfits = #{netProfits,jdbcType=DECIMAL},
+      GuarantorAndFinanceCompanyRelation = #{guarantorAndFinanceCompanyRelation,jdbcType=INTEGER},
+      GuarantorAndFinanceCompanyRelationText = #{guarantorAndFinanceCompanyRelationText,jdbcType=NVARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

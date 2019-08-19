@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.CollateralHouseRelationMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.CollateralHouseRelation" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <result column="HouseNo" property="houseNo" jdbcType="NVARCHAR" />
+    <result column="RelationUserType" property="relationUserType" jdbcType="NVARCHAR" />
+    <result column="RelationUserTypeText" property="relationUserTypeText" jdbcType="NVARCHAR" />
+    <result column="RelationType" property="relationType" jdbcType="NVARCHAR" />
+    <result column="RelationTypeText" property="relationTypeText" jdbcType="NVARCHAR" />
+    <result column="RelationUserName" property="relationUserName" jdbcType="NVARCHAR" />
+    <result column="RelationUserCertificateType" property="relationUserCertificateType" jdbcType="NVARCHAR" />
+    <result column="RelationUserCertificateTypeText" property="relationUserCertificateTypeText" jdbcType="NVARCHAR" />
+    <result column="RelationUserCertificateNo" property="relationUserCertificateNo" jdbcType="NVARCHAR" />
+    <result column="CompanyAddress" property="companyAddress" jdbcType="NVARCHAR" />
+    <result column="Telephone" property="telephone" jdbcType="NVARCHAR" />
+    <result column="HomeAddress" property="homeAddress" jdbcType="NVARCHAR" />
+    <result column="CreationTime" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="ModifyTime" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="Remark" property="remark" jdbcType="NVARCHAR" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, ProjectNo, LoanNo, HouseNo, RelationUserType, RelationUserTypeText, RelationType, 
+    RelationTypeText, RelationUserName, RelationUserCertificateType, RelationUserCertificateTypeText, 
+    RelationUserCertificateNo, CompanyAddress, Telephone, HomeAddress, CreationTime, 
+    ModifyTime, Remark, CreatedUser
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from CollateralHouseRelation
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from CollateralHouseRelation
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from CollateralHouseRelation
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.CollateralHouseRelation" >
+    insert into CollateralHouseRelation (Id, ProjectNo, LoanNo, 
+      HouseNo, RelationUserType, RelationUserTypeText, 
+      RelationType, RelationTypeText, RelationUserName, 
+      RelationUserCertificateType, RelationUserCertificateTypeText, 
+      RelationUserCertificateNo, CompanyAddress, 
+      Telephone, HomeAddress, CreationTime, 
+      ModifyTime, Remark, CreatedUser
+      )
+    values (#{id,jdbcType=INTEGER}, #{projectNo,jdbcType=NVARCHAR}, #{loanNo,jdbcType=NVARCHAR}, 
+      #{houseNo,jdbcType=NVARCHAR}, #{relationUserType,jdbcType=NVARCHAR}, #{relationUserTypeText,jdbcType=NVARCHAR}, 
+      #{relationType,jdbcType=NVARCHAR}, #{relationTypeText,jdbcType=NVARCHAR}, #{relationUserName,jdbcType=NVARCHAR}, 
+      #{relationUserCertificateType,jdbcType=NVARCHAR}, #{relationUserCertificateTypeText,jdbcType=NVARCHAR}, 
+      #{relationUserCertificateNo,jdbcType=NVARCHAR}, #{companyAddress,jdbcType=NVARCHAR}, 
+      #{telephone,jdbcType=NVARCHAR}, #{homeAddress,jdbcType=NVARCHAR}, #{creationTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=NVARCHAR}, #{createdUser,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.CollateralHouseRelation" >
+    insert into CollateralHouseRelation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="houseNo != null" >
+        HouseNo,
+      </if>
+      <if test="relationUserType != null" >
+        RelationUserType,
+      </if>
+      <if test="relationUserTypeText != null" >
+        RelationUserTypeText,
+      </if>
+      <if test="relationType != null" >
+        RelationType,
+      </if>
+      <if test="relationTypeText != null" >
+        RelationTypeText,
+      </if>
+      <if test="relationUserName != null" >
+        RelationUserName,
+      </if>
+      <if test="relationUserCertificateType != null" >
+        RelationUserCertificateType,
+      </if>
+      <if test="relationUserCertificateTypeText != null" >
+        RelationUserCertificateTypeText,
+      </if>
+      <if test="relationUserCertificateNo != null" >
+        RelationUserCertificateNo,
+      </if>
+      <if test="companyAddress != null" >
+        CompanyAddress,
+      </if>
+      <if test="telephone != null" >
+        Telephone,
+      </if>
+      <if test="homeAddress != null" >
+        HomeAddress,
+      </if>
+      <if test="creationTime != null" >
+        CreationTime,
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseNo != null" >
+        #{houseNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserType != null" >
+        #{relationUserType,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserTypeText != null" >
+        #{relationUserTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationType != null" >
+        #{relationType,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationTypeText != null" >
+        #{relationTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserName != null" >
+        #{relationUserName,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserCertificateType != null" >
+        #{relationUserCertificateType,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserCertificateTypeText != null" >
+        #{relationUserCertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserCertificateNo != null" >
+        #{relationUserCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="homeAddress != null" >
+        #{homeAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.CollateralHouseRelation" >
+    update CollateralHouseRelation
+    <set >
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanNo != null" >
+        LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseNo != null" >
+        HouseNo = #{houseNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserType != null" >
+        RelationUserType = #{relationUserType,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserTypeText != null" >
+        RelationUserTypeText = #{relationUserTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationType != null" >
+        RelationType = #{relationType,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationTypeText != null" >
+        RelationTypeText = #{relationTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserName != null" >
+        RelationUserName = #{relationUserName,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserCertificateType != null" >
+        RelationUserCertificateType = #{relationUserCertificateType,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserCertificateTypeText != null" >
+        RelationUserCertificateTypeText = #{relationUserCertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationUserCertificateNo != null" >
+        RelationUserCertificateNo = #{relationUserCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        CompanyAddress = #{companyAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="telephone != null" >
+        Telephone = #{telephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="homeAddress != null" >
+        HomeAddress = #{homeAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.CollateralHouseRelation" >
+    update CollateralHouseRelation
+    set ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      HouseNo = #{houseNo,jdbcType=NVARCHAR},
+      RelationUserType = #{relationUserType,jdbcType=NVARCHAR},
+      RelationUserTypeText = #{relationUserTypeText,jdbcType=NVARCHAR},
+      RelationType = #{relationType,jdbcType=NVARCHAR},
+      RelationTypeText = #{relationTypeText,jdbcType=NVARCHAR},
+      RelationUserName = #{relationUserName,jdbcType=NVARCHAR},
+      RelationUserCertificateType = #{relationUserCertificateType,jdbcType=NVARCHAR},
+      RelationUserCertificateTypeText = #{relationUserCertificateTypeText,jdbcType=NVARCHAR},
+      RelationUserCertificateNo = #{relationUserCertificateNo,jdbcType=NVARCHAR},
+      CompanyAddress = #{companyAddress,jdbcType=NVARCHAR},
+      Telephone = #{telephone,jdbcType=NVARCHAR},
+      HomeAddress = #{homeAddress,jdbcType=NVARCHAR},
+      CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      Remark = #{remark,jdbcType=NVARCHAR},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.CollateralBillMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.CollateralBill" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <id column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="PledgedBillNumber" property="pledgedBillNumber" jdbcType="NVARCHAR" />
+    <result column="CollertalModel" property="collertalModel" jdbcType="NVARCHAR" />
+    <result column="CollertalModelText" property="collertalModelText" jdbcType="NVARCHAR" />
+    <result column="BillType" property="billType" jdbcType="NVARCHAR" />
+    <result column="BillTypeText" property="billTypeText" jdbcType="NVARCHAR" />
+    <result column="BillAmount" property="billAmount" jdbcType="DECIMAL" />
+    <result column="IssueDate" property="issueDate" jdbcType="DATE" />
+    <result column="ExpiryDate" property="expiryDate" jdbcType="DATE" />
+    <result column="DrawerName" property="drawerName" jdbcType="NVARCHAR" />
+    <result column="DrawerAccount" property="drawerAccount" jdbcType="NVARCHAR" />
+    <result column="BeneficiaryName" property="beneficiaryName" jdbcType="NVARCHAR" />
+    <result column="BeneficiaryAccount" property="beneficiaryAccount" jdbcType="NVARCHAR" />
+    <result column="BillViewCount" property="billViewCount" jdbcType="INTEGER" />
+    <result column="PaymentCredit" property="paymentCredit" jdbcType="NVARCHAR" />
+    <result column="CreationTime" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="ModifyTime" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="Remarks" property="remarks" jdbcType="NVARCHAR" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="BillAcceptor" property="billAcceptor" jdbcType="NVARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    Id, LoanNo, ProjectNo, PledgedBillNumber, CollertalModel, CollertalModelText, BillType, 
+    BillTypeText, BillAmount, IssueDate, ExpiryDate, DrawerName, DrawerAccount, BeneficiaryName, 
+    BeneficiaryAccount, BillViewCount, PaymentCredit, CreationTime, ModifyTime, Remarks, 
+    CreatedUser, BillAcceptor
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from CollateralBill
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.example.model.CollateralBillKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from CollateralBill
+    where Id = #{id,jdbcType=CHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.example.model.CollateralBillKey" >
+    delete from CollateralBill
+    where Id = #{id,jdbcType=CHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.CollateralBill" >
+    insert into CollateralBill (Id, LoanNo, ProjectNo, 
+      PledgedBillNumber, CollertalModel, CollertalModelText, 
+      BillType, BillTypeText, BillAmount, 
+      IssueDate, ExpiryDate, DrawerName, 
+      DrawerAccount, BeneficiaryName, BeneficiaryAccount, 
+      BillViewCount, PaymentCredit, CreationTime, 
+      ModifyTime, Remarks, CreatedUser, 
+      BillAcceptor)
+    values (#{id,jdbcType=CHAR}, #{loanNo,jdbcType=NVARCHAR}, #{projectNo,jdbcType=NVARCHAR}, 
+      #{pledgedBillNumber,jdbcType=NVARCHAR}, #{collertalModel,jdbcType=NVARCHAR}, #{collertalModelText,jdbcType=NVARCHAR}, 
+      #{billType,jdbcType=NVARCHAR}, #{billTypeText,jdbcType=NVARCHAR}, #{billAmount,jdbcType=DECIMAL}, 
+      #{issueDate,jdbcType=DATE}, #{expiryDate,jdbcType=DATE}, #{drawerName,jdbcType=NVARCHAR}, 
+      #{drawerAccount,jdbcType=NVARCHAR}, #{beneficiaryName,jdbcType=NVARCHAR}, #{beneficiaryAccount,jdbcType=NVARCHAR}, 
+      #{billViewCount,jdbcType=INTEGER}, #{paymentCredit,jdbcType=NVARCHAR}, #{creationTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{remarks,jdbcType=NVARCHAR}, #{createdUser,jdbcType=NVARCHAR}, 
+      #{billAcceptor,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.CollateralBill" >
+    insert into CollateralBill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="pledgedBillNumber != null" >
+        PledgedBillNumber,
+      </if>
+      <if test="collertalModel != null" >
+        CollertalModel,
+      </if>
+      <if test="collertalModelText != null" >
+        CollertalModelText,
+      </if>
+      <if test="billType != null" >
+        BillType,
+      </if>
+      <if test="billTypeText != null" >
+        BillTypeText,
+      </if>
+      <if test="billAmount != null" >
+        BillAmount,
+      </if>
+      <if test="issueDate != null" >
+        IssueDate,
+      </if>
+      <if test="expiryDate != null" >
+        ExpiryDate,
+      </if>
+      <if test="drawerName != null" >
+        DrawerName,
+      </if>
+      <if test="drawerAccount != null" >
+        DrawerAccount,
+      </if>
+      <if test="beneficiaryName != null" >
+        BeneficiaryName,
+      </if>
+      <if test="beneficiaryAccount != null" >
+        BeneficiaryAccount,
+      </if>
+      <if test="billViewCount != null" >
+        BillViewCount,
+      </if>
+      <if test="paymentCredit != null" >
+        PaymentCredit,
+      </if>
+      <if test="creationTime != null" >
+        CreationTime,
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="billAcceptor != null" >
+        BillAcceptor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="pledgedBillNumber != null" >
+        #{pledgedBillNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModel != null" >
+        #{collertalModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModelText != null" >
+        #{collertalModelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="billType != null" >
+        #{billType,jdbcType=NVARCHAR},
+      </if>
+      <if test="billTypeText != null" >
+        #{billTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="billAmount != null" >
+        #{billAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="issueDate != null" >
+        #{issueDate,jdbcType=DATE},
+      </if>
+      <if test="expiryDate != null" >
+        #{expiryDate,jdbcType=DATE},
+      </if>
+      <if test="drawerName != null" >
+        #{drawerName,jdbcType=NVARCHAR},
+      </if>
+      <if test="drawerAccount != null" >
+        #{drawerAccount,jdbcType=NVARCHAR},
+      </if>
+      <if test="beneficiaryName != null" >
+        #{beneficiaryName,jdbcType=NVARCHAR},
+      </if>
+      <if test="beneficiaryAccount != null" >
+        #{beneficiaryAccount,jdbcType=NVARCHAR},
+      </if>
+      <if test="billViewCount != null" >
+        #{billViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="paymentCredit != null" >
+        #{paymentCredit,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="billAcceptor != null" >
+        #{billAcceptor,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.CollateralBill" >
+    update CollateralBill
+    <set >
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="pledgedBillNumber != null" >
+        PledgedBillNumber = #{pledgedBillNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModel != null" >
+        CollertalModel = #{collertalModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModelText != null" >
+        CollertalModelText = #{collertalModelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="billType != null" >
+        BillType = #{billType,jdbcType=NVARCHAR},
+      </if>
+      <if test="billTypeText != null" >
+        BillTypeText = #{billTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="billAmount != null" >
+        BillAmount = #{billAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="issueDate != null" >
+        IssueDate = #{issueDate,jdbcType=DATE},
+      </if>
+      <if test="expiryDate != null" >
+        ExpiryDate = #{expiryDate,jdbcType=DATE},
+      </if>
+      <if test="drawerName != null" >
+        DrawerName = #{drawerName,jdbcType=NVARCHAR},
+      </if>
+      <if test="drawerAccount != null" >
+        DrawerAccount = #{drawerAccount,jdbcType=NVARCHAR},
+      </if>
+      <if test="beneficiaryName != null" >
+        BeneficiaryName = #{beneficiaryName,jdbcType=NVARCHAR},
+      </if>
+      <if test="beneficiaryAccount != null" >
+        BeneficiaryAccount = #{beneficiaryAccount,jdbcType=NVARCHAR},
+      </if>
+      <if test="billViewCount != null" >
+        BillViewCount = #{billViewCount,jdbcType=INTEGER},
+      </if>
+      <if test="paymentCredit != null" >
+        PaymentCredit = #{paymentCredit,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="billAcceptor != null" >
+        BillAcceptor = #{billAcceptor,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.CollateralBill" >
+    update CollateralBill
+    set ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      PledgedBillNumber = #{pledgedBillNumber,jdbcType=NVARCHAR},
+      CollertalModel = #{collertalModel,jdbcType=NVARCHAR},
+      CollertalModelText = #{collertalModelText,jdbcType=NVARCHAR},
+      BillType = #{billType,jdbcType=NVARCHAR},
+      BillTypeText = #{billTypeText,jdbcType=NVARCHAR},
+      BillAmount = #{billAmount,jdbcType=DECIMAL},
+      IssueDate = #{issueDate,jdbcType=DATE},
+      ExpiryDate = #{expiryDate,jdbcType=DATE},
+      DrawerName = #{drawerName,jdbcType=NVARCHAR},
+      DrawerAccount = #{drawerAccount,jdbcType=NVARCHAR},
+      BeneficiaryName = #{beneficiaryName,jdbcType=NVARCHAR},
+      BeneficiaryAccount = #{beneficiaryAccount,jdbcType=NVARCHAR},
+      BillViewCount = #{billViewCount,jdbcType=INTEGER},
+      PaymentCredit = #{paymentCredit,jdbcType=NVARCHAR},
+      CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      Remarks = #{remarks,jdbcType=NVARCHAR},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      BillAcceptor = #{billAcceptor,jdbcType=NVARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+  </update>
+</mapper>

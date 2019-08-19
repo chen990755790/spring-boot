@@ -1,0 +1,1220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.LoanUserMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.LoanUser" >
+    <id column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <id column="ProjectId" property="projectId" jdbcType="INTEGER" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="CustomerName" property="customerName" jdbcType="NVARCHAR" />
+    <result column="CertificateType" property="certificateType" jdbcType="INTEGER" />
+    <result column="CertificateTypeText" property="certificateTypeText" jdbcType="NVARCHAR" />
+    <result column="CertificateNo" property="certificateNo" jdbcType="NVARCHAR" />
+    <result column="CertificateValidityPeriod" property="certificateValidityPeriod" jdbcType="DATE" />
+    <result column="Nationality" property="nationality" jdbcType="NVARCHAR" />
+    <result column="Province" property="province" jdbcType="NVARCHAR" />
+    <result column="City" property="city" jdbcType="NVARCHAR" />
+    <result column="District" property="district" jdbcType="NVARCHAR" />
+    <result column="ProvinceCode" property="provinceCode" jdbcType="INTEGER" />
+    <result column="CityCode" property="cityCode" jdbcType="INTEGER" />
+    <result column="DistrictCode" property="districtCode" jdbcType="INTEGER" />
+    <result column="Gender" property="gender" jdbcType="NVARCHAR" />
+    <result column="OfficePhone" property="officePhone" jdbcType="NVARCHAR" />
+    <result column="WorkingYears" property="workingYears" jdbcType="DECIMAL" />
+    <result column="Position" property="position" jdbcType="NVARCHAR" />
+    <result column="IndustryExperience" property="industryExperience" jdbcType="NVARCHAR" />
+    <result column="IndustryExperienceBasis" property="industryExperienceBasis" jdbcType="NVARCHAR" />
+    <result column="CensusRegisterAddress" property="censusRegisterAddress" jdbcType="NVARCHAR" />
+    <result column="HouseAddress" property="houseAddress" jdbcType="NVARCHAR" />
+    <result column="HouseCharacter" property="houseCharacter" jdbcType="INTEGER" />
+    <result column="HouseCharacterText" property="houseCharacterText" jdbcType="NVARCHAR" />
+    <result column="StartLiveDate" property="startLiveDate" jdbcType="DATE" />
+    <result column="EducationStatus" property="educationStatus" jdbcType="INTEGER" />
+    <result column="EducationStatusText" property="educationStatusText" jdbcType="NVARCHAR" />
+    <result column="MaritalStatus" property="maritalStatus" jdbcType="INTEGER" />
+    <result column="MaritalStatusText" property="maritalStatusText" jdbcType="NVARCHAR" />
+    <result column="DivorceDate" property="divorceDate" jdbcType="DATE" />
+    <result column="WeChatNo" property="weChatNo" jdbcType="NVARCHAR" />
+    <result column="Email" property="email" jdbcType="NVARCHAR" />
+    <result column="Telephone" property="telephone" jdbcType="NVARCHAR" />
+    <result column="CustomerSource" property="customerSource" jdbcType="NVARCHAR" />
+    <result column="AgencyName" property="agencyName" jdbcType="NVARCHAR" />
+    <result column="AccountManager" property="accountManager" jdbcType="NVARCHAR" />
+    <result column="Region" property="region" jdbcType="NVARCHAR" />
+    <result column="IsOpenInventoryPermissions" property="isOpenInventoryPermissions" jdbcType="BIT" />
+    <result column="WorkType" property="workType" jdbcType="INTEGER" />
+    <result column="WorkTypeText" property="workTypeText" jdbcType="NVARCHAR" />
+    <result column="WorkIndustry" property="workIndustry" jdbcType="INTEGER" />
+    <result column="WorkIndustryText" property="workIndustryText" jdbcType="NVARCHAR" />
+    <result column="WorkStartDate" property="workStartDate" jdbcType="DATE" />
+    <result column="WorkEndDate" property="workEndDate" jdbcType="DATE" />
+    <result column="WorkUnit" property="workUnit" jdbcType="NVARCHAR" />
+    <result column="CompanyAddress" property="companyAddress" jdbcType="NVARCHAR" />
+    <result column="IsPaymentSocialSecurity" property="isPaymentSocialSecurity" jdbcType="BIT" />
+    <result column="SocialSecurityFixedNumberYears" property="socialSecurityFixedNumberYears" jdbcType="INTEGER" />
+    <result column="Post" property="post" jdbcType="NVARCHAR" />
+    <result column="Phone" property="phone" jdbcType="NVARCHAR" />
+    <result column="PersonalAnnualIncome" property="personalAnnualIncome" jdbcType="INTEGER" />
+    <result column="PersonalAnnualIncomeText" property="personalAnnualIncomeText" jdbcType="NVARCHAR" />
+    <result column="FamilyAnnualIncome" property="familyAnnualIncome" jdbcType="INTEGER" />
+    <result column="FamilyAnnualIncomeText" property="familyAnnualIncomeText" jdbcType="NVARCHAR" />
+    <result column="SpouseName" property="spouseName" jdbcType="NVARCHAR" />
+    <result column="SpouseGender" property="spouseGender" jdbcType="NVARCHAR" />
+    <result column="SpouseBirthday" property="spouseBirthday" jdbcType="DATE" />
+    <result column="SpouseCertificateType" property="spouseCertificateType" jdbcType="INTEGER" />
+    <result column="SpouseCertificateTypeText" property="spouseCertificateTypeText" jdbcType="NVARCHAR" />
+    <result column="SpouseCertificateNo" property="spouseCertificateNo" jdbcType="NVARCHAR" />
+    <result column="SpouseEducation" property="spouseEducation" jdbcType="INTEGER" />
+    <result column="SpouseEducationText" property="spouseEducationText" jdbcType="NVARCHAR" />
+    <result column="SpouseTelephone" property="spouseTelephone" jdbcType="NVARCHAR" />
+    <result column="SpouseHouseAddress" property="spouseHouseAddress" jdbcType="NVARCHAR" />
+    <result column="SpouseWorkType" property="spouseWorkType" jdbcType="INTEGER" />
+    <result column="SpouseWorkTypeText" property="spouseWorkTypeText" jdbcType="NVARCHAR" />
+    <result column="SpouseWorkUnit" property="spouseWorkUnit" jdbcType="NVARCHAR" />
+    <result column="ChildSituation" property="childSituation" jdbcType="NVARCHAR" />
+    <result column="HaveChildren" property="haveChildren" jdbcType="NVARCHAR" />
+    <result column="OutstandingBusinessLoansCount" property="outstandingBusinessLoansCount" jdbcType="INTEGER" />
+    <result column="UnfinishedLoanAmount" property="unfinishedLoanAmount" jdbcType="DECIMAL" />
+    <result column="UnfinishedLoanBalanceAmount" property="unfinishedLoanBalanceAmount" jdbcType="DECIMAL" />
+    <result column="ExternalGuaranteesCount" property="externalGuaranteesCount" jdbcType="INTEGER" />
+    <result column="ExternalGuaranteeBalanceAmount" property="externalGuaranteeBalanceAmount" jdbcType="DECIMAL" />
+    <result column="OverdueCount" property="overdueCount" jdbcType="INTEGER" />
+    <result column="OverdueMaxAmount" property="overdueMaxAmount" jdbcType="DECIMAL" />
+    <result column="OverdueCurrentAmount" property="overdueCurrentAmount" jdbcType="DECIMAL" />
+    <result column="OverdueMaxDays" property="overdueMaxDays" jdbcType="INTEGER" />
+    <result column="Remarks" property="remarks" jdbcType="NVARCHAR" />
+    <result column="LoanName" property="loanName" jdbcType="NVARCHAR" />
+    <result column="CreatedTime" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="ModifedTime" property="modifedTime" jdbcType="TIMESTAMP" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="LoanBankName" property="loanBankName" jdbcType="NVARCHAR" />
+    <result column="LoanBankCard" property="loanBankCard" jdbcType="NVARCHAR" />
+    <result column="LoanBankAddress" property="loanBankAddress" jdbcType="NVARCHAR" />
+    <result column="RepaymentBankName" property="repaymentBankName" jdbcType="NVARCHAR" />
+    <result column="RepaymentBankCard" property="repaymentBankCard" jdbcType="NVARCHAR" />
+    <result column="RepaymentAddress" property="repaymentAddress" jdbcType="NVARCHAR" />
+    <result column="BirthDate" property="birthDate" jdbcType="DATE" />
+    <result column="CreditAmount" property="creditAmount" jdbcType="DECIMAL" />
+    <result column="CreditLevel" property="creditLevel" jdbcType="INTEGER" />
+    <result column="CreditLevelText" property="creditLevelText" jdbcType="NVARCHAR" />
+    <result column="CreditScore" property="creditScore" jdbcType="DECIMAL" />
+    <result column="CreditRecordIsNull" property="creditRecordIsNull" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    LoanNo, ProjectId, ProjectNo, CustomerName, CertificateType, CertificateTypeText, 
+    CertificateNo, CertificateValidityPeriod, Nationality, Province, City, District, 
+    ProvinceCode, CityCode, DistrictCode, Gender, OfficePhone, WorkingYears, Position, 
+    IndustryExperience, IndustryExperienceBasis, CensusRegisterAddress, HouseAddress, 
+    HouseCharacter, HouseCharacterText, StartLiveDate, EducationStatus, EducationStatusText, 
+    MaritalStatus, MaritalStatusText, DivorceDate, WeChatNo, Email, Telephone, CustomerSource, 
+    AgencyName, AccountManager, Region, IsOpenInventoryPermissions, WorkType, WorkTypeText, 
+    WorkIndustry, WorkIndustryText, WorkStartDate, WorkEndDate, WorkUnit, CompanyAddress, 
+    IsPaymentSocialSecurity, SocialSecurityFixedNumberYears, Post, Phone, PersonalAnnualIncome, 
+    PersonalAnnualIncomeText, FamilyAnnualIncome, FamilyAnnualIncomeText, SpouseName, 
+    SpouseGender, SpouseBirthday, SpouseCertificateType, SpouseCertificateTypeText, SpouseCertificateNo, 
+    SpouseEducation, SpouseEducationText, SpouseTelephone, SpouseHouseAddress, SpouseWorkType, 
+    SpouseWorkTypeText, SpouseWorkUnit, ChildSituation, HaveChildren, OutstandingBusinessLoansCount, 
+    UnfinishedLoanAmount, UnfinishedLoanBalanceAmount, ExternalGuaranteesCount, ExternalGuaranteeBalanceAmount, 
+    OverdueCount, OverdueMaxAmount, OverdueCurrentAmount, OverdueMaxDays, Remarks, LoanName, 
+    CreatedTime, ModifedTime, CreatedUser, LoanBankName, LoanBankCard, LoanBankAddress, 
+    RepaymentBankName, RepaymentBankCard, RepaymentAddress, BirthDate, CreditAmount, 
+    CreditLevel, CreditLevelText, CreditScore, CreditRecordIsNull
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from LoanUser
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.example.model.LoanUserKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from LoanUser
+    where LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and ProjectId = #{projectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.example.model.LoanUserKey" >
+    delete from LoanUser
+    where LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and ProjectId = #{projectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.LoanUser" >
+    insert into LoanUser (LoanNo, ProjectId, ProjectNo, 
+      CustomerName, CertificateType, CertificateTypeText, 
+      CertificateNo, CertificateValidityPeriod, 
+      Nationality, Province, City, 
+      District, ProvinceCode, CityCode, 
+      DistrictCode, Gender, OfficePhone, 
+      WorkingYears, Position, IndustryExperience, 
+      IndustryExperienceBasis, CensusRegisterAddress, 
+      HouseAddress, HouseCharacter, HouseCharacterText, 
+      StartLiveDate, EducationStatus, EducationStatusText, 
+      MaritalStatus, MaritalStatusText, DivorceDate, 
+      WeChatNo, Email, Telephone, 
+      CustomerSource, AgencyName, AccountManager, 
+      Region, IsOpenInventoryPermissions, WorkType, 
+      WorkTypeText, WorkIndustry, WorkIndustryText, 
+      WorkStartDate, WorkEndDate, WorkUnit, 
+      CompanyAddress, IsPaymentSocialSecurity, SocialSecurityFixedNumberYears, 
+      Post, Phone, PersonalAnnualIncome, 
+      PersonalAnnualIncomeText, FamilyAnnualIncome, 
+      FamilyAnnualIncomeText, SpouseName, SpouseGender, 
+      SpouseBirthday, SpouseCertificateType, SpouseCertificateTypeText, 
+      SpouseCertificateNo, SpouseEducation, 
+      SpouseEducationText, SpouseTelephone, 
+      SpouseHouseAddress, SpouseWorkType, SpouseWorkTypeText, 
+      SpouseWorkUnit, ChildSituation, HaveChildren, 
+      OutstandingBusinessLoansCount, UnfinishedLoanAmount, 
+      UnfinishedLoanBalanceAmount, ExternalGuaranteesCount, 
+      ExternalGuaranteeBalanceAmount, OverdueCount, 
+      OverdueMaxAmount, OverdueCurrentAmount, 
+      OverdueMaxDays, Remarks, LoanName, 
+      CreatedTime, ModifedTime, CreatedUser, 
+      LoanBankName, LoanBankCard, LoanBankAddress, 
+      RepaymentBankName, RepaymentBankCard, 
+      RepaymentAddress, BirthDate, CreditAmount, 
+      CreditLevel, CreditLevelText, CreditScore, 
+      CreditRecordIsNull)
+    values (#{loanNo,jdbcType=NVARCHAR}, #{projectId,jdbcType=INTEGER}, #{projectNo,jdbcType=NVARCHAR}, 
+      #{customerName,jdbcType=NVARCHAR}, #{certificateType,jdbcType=INTEGER}, #{certificateTypeText,jdbcType=NVARCHAR}, 
+      #{certificateNo,jdbcType=NVARCHAR}, #{certificateValidityPeriod,jdbcType=DATE}, 
+      #{nationality,jdbcType=NVARCHAR}, #{province,jdbcType=NVARCHAR}, #{city,jdbcType=NVARCHAR}, 
+      #{district,jdbcType=NVARCHAR}, #{provinceCode,jdbcType=INTEGER}, #{cityCode,jdbcType=INTEGER}, 
+      #{districtCode,jdbcType=INTEGER}, #{gender,jdbcType=NVARCHAR}, #{officePhone,jdbcType=NVARCHAR}, 
+      #{workingYears,jdbcType=DECIMAL}, #{position,jdbcType=NVARCHAR}, #{industryExperience,jdbcType=NVARCHAR}, 
+      #{industryExperienceBasis,jdbcType=NVARCHAR}, #{censusRegisterAddress,jdbcType=NVARCHAR}, 
+      #{houseAddress,jdbcType=NVARCHAR}, #{houseCharacter,jdbcType=INTEGER}, #{houseCharacterText,jdbcType=NVARCHAR}, 
+      #{startLiveDate,jdbcType=DATE}, #{educationStatus,jdbcType=INTEGER}, #{educationStatusText,jdbcType=NVARCHAR}, 
+      #{maritalStatus,jdbcType=INTEGER}, #{maritalStatusText,jdbcType=NVARCHAR}, #{divorceDate,jdbcType=DATE}, 
+      #{weChatNo,jdbcType=NVARCHAR}, #{email,jdbcType=NVARCHAR}, #{telephone,jdbcType=NVARCHAR}, 
+      #{customerSource,jdbcType=NVARCHAR}, #{agencyName,jdbcType=NVARCHAR}, #{accountManager,jdbcType=NVARCHAR}, 
+      #{region,jdbcType=NVARCHAR}, #{isOpenInventoryPermissions,jdbcType=BIT}, #{workType,jdbcType=INTEGER}, 
+      #{workTypeText,jdbcType=NVARCHAR}, #{workIndustry,jdbcType=INTEGER}, #{workIndustryText,jdbcType=NVARCHAR}, 
+      #{workStartDate,jdbcType=DATE}, #{workEndDate,jdbcType=DATE}, #{workUnit,jdbcType=NVARCHAR}, 
+      #{companyAddress,jdbcType=NVARCHAR}, #{isPaymentSocialSecurity,jdbcType=BIT}, #{socialSecurityFixedNumberYears,jdbcType=INTEGER}, 
+      #{post,jdbcType=NVARCHAR}, #{phone,jdbcType=NVARCHAR}, #{personalAnnualIncome,jdbcType=INTEGER}, 
+      #{personalAnnualIncomeText,jdbcType=NVARCHAR}, #{familyAnnualIncome,jdbcType=INTEGER}, 
+      #{familyAnnualIncomeText,jdbcType=NVARCHAR}, #{spouseName,jdbcType=NVARCHAR}, #{spouseGender,jdbcType=NVARCHAR}, 
+      #{spouseBirthday,jdbcType=DATE}, #{spouseCertificateType,jdbcType=INTEGER}, #{spouseCertificateTypeText,jdbcType=NVARCHAR}, 
+      #{spouseCertificateNo,jdbcType=NVARCHAR}, #{spouseEducation,jdbcType=INTEGER}, 
+      #{spouseEducationText,jdbcType=NVARCHAR}, #{spouseTelephone,jdbcType=NVARCHAR}, 
+      #{spouseHouseAddress,jdbcType=NVARCHAR}, #{spouseWorkType,jdbcType=INTEGER}, #{spouseWorkTypeText,jdbcType=NVARCHAR}, 
+      #{spouseWorkUnit,jdbcType=NVARCHAR}, #{childSituation,jdbcType=NVARCHAR}, #{haveChildren,jdbcType=NVARCHAR}, 
+      #{outstandingBusinessLoansCount,jdbcType=INTEGER}, #{unfinishedLoanAmount,jdbcType=DECIMAL}, 
+      #{unfinishedLoanBalanceAmount,jdbcType=DECIMAL}, #{externalGuaranteesCount,jdbcType=INTEGER}, 
+      #{externalGuaranteeBalanceAmount,jdbcType=DECIMAL}, #{overdueCount,jdbcType=INTEGER}, 
+      #{overdueMaxAmount,jdbcType=DECIMAL}, #{overdueCurrentAmount,jdbcType=DECIMAL}, 
+      #{overdueMaxDays,jdbcType=INTEGER}, #{remarks,jdbcType=NVARCHAR}, #{loanName,jdbcType=NVARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{modifedTime,jdbcType=TIMESTAMP}, #{createdUser,jdbcType=NVARCHAR}, 
+      #{loanBankName,jdbcType=NVARCHAR}, #{loanBankCard,jdbcType=NVARCHAR}, #{loanBankAddress,jdbcType=NVARCHAR}, 
+      #{repaymentBankName,jdbcType=NVARCHAR}, #{repaymentBankCard,jdbcType=NVARCHAR}, 
+      #{repaymentAddress,jdbcType=NVARCHAR}, #{birthDate,jdbcType=DATE}, #{creditAmount,jdbcType=DECIMAL}, 
+      #{creditLevel,jdbcType=INTEGER}, #{creditLevelText,jdbcType=NVARCHAR}, #{creditScore,jdbcType=DECIMAL}, 
+      #{creditRecordIsNull,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.LoanUser" >
+    insert into LoanUser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="projectId != null" >
+        ProjectId,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="customerName != null" >
+        CustomerName,
+      </if>
+      <if test="certificateType != null" >
+        CertificateType,
+      </if>
+      <if test="certificateTypeText != null" >
+        CertificateTypeText,
+      </if>
+      <if test="certificateNo != null" >
+        CertificateNo,
+      </if>
+      <if test="certificateValidityPeriod != null" >
+        CertificateValidityPeriod,
+      </if>
+      <if test="nationality != null" >
+        Nationality,
+      </if>
+      <if test="province != null" >
+        Province,
+      </if>
+      <if test="city != null" >
+        City,
+      </if>
+      <if test="district != null" >
+        District,
+      </if>
+      <if test="provinceCode != null" >
+        ProvinceCode,
+      </if>
+      <if test="cityCode != null" >
+        CityCode,
+      </if>
+      <if test="districtCode != null" >
+        DistrictCode,
+      </if>
+      <if test="gender != null" >
+        Gender,
+      </if>
+      <if test="officePhone != null" >
+        OfficePhone,
+      </if>
+      <if test="workingYears != null" >
+        WorkingYears,
+      </if>
+      <if test="position != null" >
+        Position,
+      </if>
+      <if test="industryExperience != null" >
+        IndustryExperience,
+      </if>
+      <if test="industryExperienceBasis != null" >
+        IndustryExperienceBasis,
+      </if>
+      <if test="censusRegisterAddress != null" >
+        CensusRegisterAddress,
+      </if>
+      <if test="houseAddress != null" >
+        HouseAddress,
+      </if>
+      <if test="houseCharacter != null" >
+        HouseCharacter,
+      </if>
+      <if test="houseCharacterText != null" >
+        HouseCharacterText,
+      </if>
+      <if test="startLiveDate != null" >
+        StartLiveDate,
+      </if>
+      <if test="educationStatus != null" >
+        EducationStatus,
+      </if>
+      <if test="educationStatusText != null" >
+        EducationStatusText,
+      </if>
+      <if test="maritalStatus != null" >
+        MaritalStatus,
+      </if>
+      <if test="maritalStatusText != null" >
+        MaritalStatusText,
+      </if>
+      <if test="divorceDate != null" >
+        DivorceDate,
+      </if>
+      <if test="weChatNo != null" >
+        WeChatNo,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="telephone != null" >
+        Telephone,
+      </if>
+      <if test="customerSource != null" >
+        CustomerSource,
+      </if>
+      <if test="agencyName != null" >
+        AgencyName,
+      </if>
+      <if test="accountManager != null" >
+        AccountManager,
+      </if>
+      <if test="region != null" >
+        Region,
+      </if>
+      <if test="isOpenInventoryPermissions != null" >
+        IsOpenInventoryPermissions,
+      </if>
+      <if test="workType != null" >
+        WorkType,
+      </if>
+      <if test="workTypeText != null" >
+        WorkTypeText,
+      </if>
+      <if test="workIndustry != null" >
+        WorkIndustry,
+      </if>
+      <if test="workIndustryText != null" >
+        WorkIndustryText,
+      </if>
+      <if test="workStartDate != null" >
+        WorkStartDate,
+      </if>
+      <if test="workEndDate != null" >
+        WorkEndDate,
+      </if>
+      <if test="workUnit != null" >
+        WorkUnit,
+      </if>
+      <if test="companyAddress != null" >
+        CompanyAddress,
+      </if>
+      <if test="isPaymentSocialSecurity != null" >
+        IsPaymentSocialSecurity,
+      </if>
+      <if test="socialSecurityFixedNumberYears != null" >
+        SocialSecurityFixedNumberYears,
+      </if>
+      <if test="post != null" >
+        Post,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="personalAnnualIncome != null" >
+        PersonalAnnualIncome,
+      </if>
+      <if test="personalAnnualIncomeText != null" >
+        PersonalAnnualIncomeText,
+      </if>
+      <if test="familyAnnualIncome != null" >
+        FamilyAnnualIncome,
+      </if>
+      <if test="familyAnnualIncomeText != null" >
+        FamilyAnnualIncomeText,
+      </if>
+      <if test="spouseName != null" >
+        SpouseName,
+      </if>
+      <if test="spouseGender != null" >
+        SpouseGender,
+      </if>
+      <if test="spouseBirthday != null" >
+        SpouseBirthday,
+      </if>
+      <if test="spouseCertificateType != null" >
+        SpouseCertificateType,
+      </if>
+      <if test="spouseCertificateTypeText != null" >
+        SpouseCertificateTypeText,
+      </if>
+      <if test="spouseCertificateNo != null" >
+        SpouseCertificateNo,
+      </if>
+      <if test="spouseEducation != null" >
+        SpouseEducation,
+      </if>
+      <if test="spouseEducationText != null" >
+        SpouseEducationText,
+      </if>
+      <if test="spouseTelephone != null" >
+        SpouseTelephone,
+      </if>
+      <if test="spouseHouseAddress != null" >
+        SpouseHouseAddress,
+      </if>
+      <if test="spouseWorkType != null" >
+        SpouseWorkType,
+      </if>
+      <if test="spouseWorkTypeText != null" >
+        SpouseWorkTypeText,
+      </if>
+      <if test="spouseWorkUnit != null" >
+        SpouseWorkUnit,
+      </if>
+      <if test="childSituation != null" >
+        ChildSituation,
+      </if>
+      <if test="haveChildren != null" >
+        HaveChildren,
+      </if>
+      <if test="outstandingBusinessLoansCount != null" >
+        OutstandingBusinessLoansCount,
+      </if>
+      <if test="unfinishedLoanAmount != null" >
+        UnfinishedLoanAmount,
+      </if>
+      <if test="unfinishedLoanBalanceAmount != null" >
+        UnfinishedLoanBalanceAmount,
+      </if>
+      <if test="externalGuaranteesCount != null" >
+        ExternalGuaranteesCount,
+      </if>
+      <if test="externalGuaranteeBalanceAmount != null" >
+        ExternalGuaranteeBalanceAmount,
+      </if>
+      <if test="overdueCount != null" >
+        OverdueCount,
+      </if>
+      <if test="overdueMaxAmount != null" >
+        OverdueMaxAmount,
+      </if>
+      <if test="overdueCurrentAmount != null" >
+        OverdueCurrentAmount,
+      </if>
+      <if test="overdueMaxDays != null" >
+        OverdueMaxDays,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="loanName != null" >
+        LoanName,
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime,
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="loanBankName != null" >
+        LoanBankName,
+      </if>
+      <if test="loanBankCard != null" >
+        LoanBankCard,
+      </if>
+      <if test="loanBankAddress != null" >
+        LoanBankAddress,
+      </if>
+      <if test="repaymentBankName != null" >
+        RepaymentBankName,
+      </if>
+      <if test="repaymentBankCard != null" >
+        RepaymentBankCard,
+      </if>
+      <if test="repaymentAddress != null" >
+        RepaymentAddress,
+      </if>
+      <if test="birthDate != null" >
+        BirthDate,
+      </if>
+      <if test="creditAmount != null" >
+        CreditAmount,
+      </if>
+      <if test="creditLevel != null" >
+        CreditLevel,
+      </if>
+      <if test="creditLevelText != null" >
+        CreditLevelText,
+      </if>
+      <if test="creditScore != null" >
+        CreditScore,
+      </if>
+      <if test="creditRecordIsNull != null" >
+        CreditRecordIsNull,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        #{certificateType,jdbcType=INTEGER},
+      </if>
+      <if test="certificateTypeText != null" >
+        #{certificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateNo != null" >
+        #{certificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateValidityPeriod != null" >
+        #{certificateValidityPeriod,jdbcType=DATE},
+      </if>
+      <if test="nationality != null" >
+        #{nationality,jdbcType=NVARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=NVARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=NVARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=NVARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=INTEGER},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=INTEGER},
+      </if>
+      <if test="districtCode != null" >
+        #{districtCode,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=NVARCHAR},
+      </if>
+      <if test="officePhone != null" >
+        #{officePhone,jdbcType=NVARCHAR},
+      </if>
+      <if test="workingYears != null" >
+        #{workingYears,jdbcType=DECIMAL},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=NVARCHAR},
+      </if>
+      <if test="industryExperience != null" >
+        #{industryExperience,jdbcType=NVARCHAR},
+      </if>
+      <if test="industryExperienceBasis != null" >
+        #{industryExperienceBasis,jdbcType=NVARCHAR},
+      </if>
+      <if test="censusRegisterAddress != null" >
+        #{censusRegisterAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseAddress != null" >
+        #{houseAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseCharacter != null" >
+        #{houseCharacter,jdbcType=INTEGER},
+      </if>
+      <if test="houseCharacterText != null" >
+        #{houseCharacterText,jdbcType=NVARCHAR},
+      </if>
+      <if test="startLiveDate != null" >
+        #{startLiveDate,jdbcType=DATE},
+      </if>
+      <if test="educationStatus != null" >
+        #{educationStatus,jdbcType=INTEGER},
+      </if>
+      <if test="educationStatusText != null" >
+        #{educationStatusText,jdbcType=NVARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="maritalStatusText != null" >
+        #{maritalStatusText,jdbcType=NVARCHAR},
+      </if>
+      <if test="divorceDate != null" >
+        #{divorceDate,jdbcType=DATE},
+      </if>
+      <if test="weChatNo != null" >
+        #{weChatNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=NVARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="customerSource != null" >
+        #{customerSource,jdbcType=NVARCHAR},
+      </if>
+      <if test="agencyName != null" >
+        #{agencyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="accountManager != null" >
+        #{accountManager,jdbcType=NVARCHAR},
+      </if>
+      <if test="region != null" >
+        #{region,jdbcType=NVARCHAR},
+      </if>
+      <if test="isOpenInventoryPermissions != null" >
+        #{isOpenInventoryPermissions,jdbcType=BIT},
+      </if>
+      <if test="workType != null" >
+        #{workType,jdbcType=INTEGER},
+      </if>
+      <if test="workTypeText != null" >
+        #{workTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="workIndustry != null" >
+        #{workIndustry,jdbcType=INTEGER},
+      </if>
+      <if test="workIndustryText != null" >
+        #{workIndustryText,jdbcType=NVARCHAR},
+      </if>
+      <if test="workStartDate != null" >
+        #{workStartDate,jdbcType=DATE},
+      </if>
+      <if test="workEndDate != null" >
+        #{workEndDate,jdbcType=DATE},
+      </if>
+      <if test="workUnit != null" >
+        #{workUnit,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="isPaymentSocialSecurity != null" >
+        #{isPaymentSocialSecurity,jdbcType=BIT},
+      </if>
+      <if test="socialSecurityFixedNumberYears != null" >
+        #{socialSecurityFixedNumberYears,jdbcType=INTEGER},
+      </if>
+      <if test="post != null" >
+        #{post,jdbcType=NVARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=NVARCHAR},
+      </if>
+      <if test="personalAnnualIncome != null" >
+        #{personalAnnualIncome,jdbcType=INTEGER},
+      </if>
+      <if test="personalAnnualIncomeText != null" >
+        #{personalAnnualIncomeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="familyAnnualIncome != null" >
+        #{familyAnnualIncome,jdbcType=INTEGER},
+      </if>
+      <if test="familyAnnualIncomeText != null" >
+        #{familyAnnualIncomeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseName != null" >
+        #{spouseName,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseGender != null" >
+        #{spouseGender,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseBirthday != null" >
+        #{spouseBirthday,jdbcType=DATE},
+      </if>
+      <if test="spouseCertificateType != null" >
+        #{spouseCertificateType,jdbcType=INTEGER},
+      </if>
+      <if test="spouseCertificateTypeText != null" >
+        #{spouseCertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseCertificateNo != null" >
+        #{spouseCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseEducation != null" >
+        #{spouseEducation,jdbcType=INTEGER},
+      </if>
+      <if test="spouseEducationText != null" >
+        #{spouseEducationText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseTelephone != null" >
+        #{spouseTelephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseHouseAddress != null" >
+        #{spouseHouseAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseWorkType != null" >
+        #{spouseWorkType,jdbcType=INTEGER},
+      </if>
+      <if test="spouseWorkTypeText != null" >
+        #{spouseWorkTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseWorkUnit != null" >
+        #{spouseWorkUnit,jdbcType=NVARCHAR},
+      </if>
+      <if test="childSituation != null" >
+        #{childSituation,jdbcType=NVARCHAR},
+      </if>
+      <if test="haveChildren != null" >
+        #{haveChildren,jdbcType=NVARCHAR},
+      </if>
+      <if test="outstandingBusinessLoansCount != null" >
+        #{outstandingBusinessLoansCount,jdbcType=INTEGER},
+      </if>
+      <if test="unfinishedLoanAmount != null" >
+        #{unfinishedLoanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="unfinishedLoanBalanceAmount != null" >
+        #{unfinishedLoanBalanceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="externalGuaranteesCount != null" >
+        #{externalGuaranteesCount,jdbcType=INTEGER},
+      </if>
+      <if test="externalGuaranteeBalanceAmount != null" >
+        #{externalGuaranteeBalanceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueCount != null" >
+        #{overdueCount,jdbcType=INTEGER},
+      </if>
+      <if test="overdueMaxAmount != null" >
+        #{overdueMaxAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueCurrentAmount != null" >
+        #{overdueCurrentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueMaxDays != null" >
+        #{overdueMaxDays,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanName != null" >
+        #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null" >
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanBankName != null" >
+        #{loanBankName,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanBankCard != null" >
+        #{loanBankCard,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanBankAddress != null" >
+        #{loanBankAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="repaymentBankName != null" >
+        #{repaymentBankName,jdbcType=NVARCHAR},
+      </if>
+      <if test="repaymentBankCard != null" >
+        #{repaymentBankCard,jdbcType=NVARCHAR},
+      </if>
+      <if test="repaymentAddress != null" >
+        #{repaymentAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        #{birthDate,jdbcType=DATE},
+      </if>
+      <if test="creditAmount != null" >
+        #{creditAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="creditLevel != null" >
+        #{creditLevel,jdbcType=INTEGER},
+      </if>
+      <if test="creditLevelText != null" >
+        #{creditLevelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="creditScore != null" >
+        #{creditScore,jdbcType=DECIMAL},
+      </if>
+      <if test="creditRecordIsNull != null" >
+        #{creditRecordIsNull,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.LoanUser" >
+    update LoanUser
+    <set >
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="customerName != null" >
+        CustomerName = #{customerName,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        CertificateType = #{certificateType,jdbcType=INTEGER},
+      </if>
+      <if test="certificateTypeText != null" >
+        CertificateTypeText = #{certificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateNo != null" >
+        CertificateNo = #{certificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateValidityPeriod != null" >
+        CertificateValidityPeriod = #{certificateValidityPeriod,jdbcType=DATE},
+      </if>
+      <if test="nationality != null" >
+        Nationality = #{nationality,jdbcType=NVARCHAR},
+      </if>
+      <if test="province != null" >
+        Province = #{province,jdbcType=NVARCHAR},
+      </if>
+      <if test="city != null" >
+        City = #{city,jdbcType=NVARCHAR},
+      </if>
+      <if test="district != null" >
+        District = #{district,jdbcType=NVARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        ProvinceCode = #{provinceCode,jdbcType=INTEGER},
+      </if>
+      <if test="cityCode != null" >
+        CityCode = #{cityCode,jdbcType=INTEGER},
+      </if>
+      <if test="districtCode != null" >
+        DistrictCode = #{districtCode,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null" >
+        Gender = #{gender,jdbcType=NVARCHAR},
+      </if>
+      <if test="officePhone != null" >
+        OfficePhone = #{officePhone,jdbcType=NVARCHAR},
+      </if>
+      <if test="workingYears != null" >
+        WorkingYears = #{workingYears,jdbcType=DECIMAL},
+      </if>
+      <if test="position != null" >
+        Position = #{position,jdbcType=NVARCHAR},
+      </if>
+      <if test="industryExperience != null" >
+        IndustryExperience = #{industryExperience,jdbcType=NVARCHAR},
+      </if>
+      <if test="industryExperienceBasis != null" >
+        IndustryExperienceBasis = #{industryExperienceBasis,jdbcType=NVARCHAR},
+      </if>
+      <if test="censusRegisterAddress != null" >
+        CensusRegisterAddress = #{censusRegisterAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseAddress != null" >
+        HouseAddress = #{houseAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseCharacter != null" >
+        HouseCharacter = #{houseCharacter,jdbcType=INTEGER},
+      </if>
+      <if test="houseCharacterText != null" >
+        HouseCharacterText = #{houseCharacterText,jdbcType=NVARCHAR},
+      </if>
+      <if test="startLiveDate != null" >
+        StartLiveDate = #{startLiveDate,jdbcType=DATE},
+      </if>
+      <if test="educationStatus != null" >
+        EducationStatus = #{educationStatus,jdbcType=INTEGER},
+      </if>
+      <if test="educationStatusText != null" >
+        EducationStatusText = #{educationStatusText,jdbcType=NVARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        MaritalStatus = #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="maritalStatusText != null" >
+        MaritalStatusText = #{maritalStatusText,jdbcType=NVARCHAR},
+      </if>
+      <if test="divorceDate != null" >
+        DivorceDate = #{divorceDate,jdbcType=DATE},
+      </if>
+      <if test="weChatNo != null" >
+        WeChatNo = #{weChatNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=NVARCHAR},
+      </if>
+      <if test="telephone != null" >
+        Telephone = #{telephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="customerSource != null" >
+        CustomerSource = #{customerSource,jdbcType=NVARCHAR},
+      </if>
+      <if test="agencyName != null" >
+        AgencyName = #{agencyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="accountManager != null" >
+        AccountManager = #{accountManager,jdbcType=NVARCHAR},
+      </if>
+      <if test="region != null" >
+        Region = #{region,jdbcType=NVARCHAR},
+      </if>
+      <if test="isOpenInventoryPermissions != null" >
+        IsOpenInventoryPermissions = #{isOpenInventoryPermissions,jdbcType=BIT},
+      </if>
+      <if test="workType != null" >
+        WorkType = #{workType,jdbcType=INTEGER},
+      </if>
+      <if test="workTypeText != null" >
+        WorkTypeText = #{workTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="workIndustry != null" >
+        WorkIndustry = #{workIndustry,jdbcType=INTEGER},
+      </if>
+      <if test="workIndustryText != null" >
+        WorkIndustryText = #{workIndustryText,jdbcType=NVARCHAR},
+      </if>
+      <if test="workStartDate != null" >
+        WorkStartDate = #{workStartDate,jdbcType=DATE},
+      </if>
+      <if test="workEndDate != null" >
+        WorkEndDate = #{workEndDate,jdbcType=DATE},
+      </if>
+      <if test="workUnit != null" >
+        WorkUnit = #{workUnit,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        CompanyAddress = #{companyAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="isPaymentSocialSecurity != null" >
+        IsPaymentSocialSecurity = #{isPaymentSocialSecurity,jdbcType=BIT},
+      </if>
+      <if test="socialSecurityFixedNumberYears != null" >
+        SocialSecurityFixedNumberYears = #{socialSecurityFixedNumberYears,jdbcType=INTEGER},
+      </if>
+      <if test="post != null" >
+        Post = #{post,jdbcType=NVARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=NVARCHAR},
+      </if>
+      <if test="personalAnnualIncome != null" >
+        PersonalAnnualIncome = #{personalAnnualIncome,jdbcType=INTEGER},
+      </if>
+      <if test="personalAnnualIncomeText != null" >
+        PersonalAnnualIncomeText = #{personalAnnualIncomeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="familyAnnualIncome != null" >
+        FamilyAnnualIncome = #{familyAnnualIncome,jdbcType=INTEGER},
+      </if>
+      <if test="familyAnnualIncomeText != null" >
+        FamilyAnnualIncomeText = #{familyAnnualIncomeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseName != null" >
+        SpouseName = #{spouseName,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseGender != null" >
+        SpouseGender = #{spouseGender,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseBirthday != null" >
+        SpouseBirthday = #{spouseBirthday,jdbcType=DATE},
+      </if>
+      <if test="spouseCertificateType != null" >
+        SpouseCertificateType = #{spouseCertificateType,jdbcType=INTEGER},
+      </if>
+      <if test="spouseCertificateTypeText != null" >
+        SpouseCertificateTypeText = #{spouseCertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseCertificateNo != null" >
+        SpouseCertificateNo = #{spouseCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseEducation != null" >
+        SpouseEducation = #{spouseEducation,jdbcType=INTEGER},
+      </if>
+      <if test="spouseEducationText != null" >
+        SpouseEducationText = #{spouseEducationText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseTelephone != null" >
+        SpouseTelephone = #{spouseTelephone,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseHouseAddress != null" >
+        SpouseHouseAddress = #{spouseHouseAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseWorkType != null" >
+        SpouseWorkType = #{spouseWorkType,jdbcType=INTEGER},
+      </if>
+      <if test="spouseWorkTypeText != null" >
+        SpouseWorkTypeText = #{spouseWorkTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseWorkUnit != null" >
+        SpouseWorkUnit = #{spouseWorkUnit,jdbcType=NVARCHAR},
+      </if>
+      <if test="childSituation != null" >
+        ChildSituation = #{childSituation,jdbcType=NVARCHAR},
+      </if>
+      <if test="haveChildren != null" >
+        HaveChildren = #{haveChildren,jdbcType=NVARCHAR},
+      </if>
+      <if test="outstandingBusinessLoansCount != null" >
+        OutstandingBusinessLoansCount = #{outstandingBusinessLoansCount,jdbcType=INTEGER},
+      </if>
+      <if test="unfinishedLoanAmount != null" >
+        UnfinishedLoanAmount = #{unfinishedLoanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="unfinishedLoanBalanceAmount != null" >
+        UnfinishedLoanBalanceAmount = #{unfinishedLoanBalanceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="externalGuaranteesCount != null" >
+        ExternalGuaranteesCount = #{externalGuaranteesCount,jdbcType=INTEGER},
+      </if>
+      <if test="externalGuaranteeBalanceAmount != null" >
+        ExternalGuaranteeBalanceAmount = #{externalGuaranteeBalanceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueCount != null" >
+        OverdueCount = #{overdueCount,jdbcType=INTEGER},
+      </if>
+      <if test="overdueMaxAmount != null" >
+        OverdueMaxAmount = #{overdueMaxAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueCurrentAmount != null" >
+        OverdueCurrentAmount = #{overdueCurrentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="overdueMaxDays != null" >
+        OverdueMaxDays = #{overdueMaxDays,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanName != null" >
+        LoanName = #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanBankName != null" >
+        LoanBankName = #{loanBankName,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanBankCard != null" >
+        LoanBankCard = #{loanBankCard,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanBankAddress != null" >
+        LoanBankAddress = #{loanBankAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="repaymentBankName != null" >
+        RepaymentBankName = #{repaymentBankName,jdbcType=NVARCHAR},
+      </if>
+      <if test="repaymentBankCard != null" >
+        RepaymentBankCard = #{repaymentBankCard,jdbcType=NVARCHAR},
+      </if>
+      <if test="repaymentAddress != null" >
+        RepaymentAddress = #{repaymentAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        BirthDate = #{birthDate,jdbcType=DATE},
+      </if>
+      <if test="creditAmount != null" >
+        CreditAmount = #{creditAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="creditLevel != null" >
+        CreditLevel = #{creditLevel,jdbcType=INTEGER},
+      </if>
+      <if test="creditLevelText != null" >
+        CreditLevelText = #{creditLevelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="creditScore != null" >
+        CreditScore = #{creditScore,jdbcType=DECIMAL},
+      </if>
+      <if test="creditRecordIsNull != null" >
+        CreditRecordIsNull = #{creditRecordIsNull,jdbcType=BIT},
+      </if>
+    </set>
+    where LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and ProjectId = #{projectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.LoanUser" >
+    update LoanUser
+    set ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      CustomerName = #{customerName,jdbcType=NVARCHAR},
+      CertificateType = #{certificateType,jdbcType=INTEGER},
+      CertificateTypeText = #{certificateTypeText,jdbcType=NVARCHAR},
+      CertificateNo = #{certificateNo,jdbcType=NVARCHAR},
+      CertificateValidityPeriod = #{certificateValidityPeriod,jdbcType=DATE},
+      Nationality = #{nationality,jdbcType=NVARCHAR},
+      Province = #{province,jdbcType=NVARCHAR},
+      City = #{city,jdbcType=NVARCHAR},
+      District = #{district,jdbcType=NVARCHAR},
+      ProvinceCode = #{provinceCode,jdbcType=INTEGER},
+      CityCode = #{cityCode,jdbcType=INTEGER},
+      DistrictCode = #{districtCode,jdbcType=INTEGER},
+      Gender = #{gender,jdbcType=NVARCHAR},
+      OfficePhone = #{officePhone,jdbcType=NVARCHAR},
+      WorkingYears = #{workingYears,jdbcType=DECIMAL},
+      Position = #{position,jdbcType=NVARCHAR},
+      IndustryExperience = #{industryExperience,jdbcType=NVARCHAR},
+      IndustryExperienceBasis = #{industryExperienceBasis,jdbcType=NVARCHAR},
+      CensusRegisterAddress = #{censusRegisterAddress,jdbcType=NVARCHAR},
+      HouseAddress = #{houseAddress,jdbcType=NVARCHAR},
+      HouseCharacter = #{houseCharacter,jdbcType=INTEGER},
+      HouseCharacterText = #{houseCharacterText,jdbcType=NVARCHAR},
+      StartLiveDate = #{startLiveDate,jdbcType=DATE},
+      EducationStatus = #{educationStatus,jdbcType=INTEGER},
+      EducationStatusText = #{educationStatusText,jdbcType=NVARCHAR},
+      MaritalStatus = #{maritalStatus,jdbcType=INTEGER},
+      MaritalStatusText = #{maritalStatusText,jdbcType=NVARCHAR},
+      DivorceDate = #{divorceDate,jdbcType=DATE},
+      WeChatNo = #{weChatNo,jdbcType=NVARCHAR},
+      Email = #{email,jdbcType=NVARCHAR},
+      Telephone = #{telephone,jdbcType=NVARCHAR},
+      CustomerSource = #{customerSource,jdbcType=NVARCHAR},
+      AgencyName = #{agencyName,jdbcType=NVARCHAR},
+      AccountManager = #{accountManager,jdbcType=NVARCHAR},
+      Region = #{region,jdbcType=NVARCHAR},
+      IsOpenInventoryPermissions = #{isOpenInventoryPermissions,jdbcType=BIT},
+      WorkType = #{workType,jdbcType=INTEGER},
+      WorkTypeText = #{workTypeText,jdbcType=NVARCHAR},
+      WorkIndustry = #{workIndustry,jdbcType=INTEGER},
+      WorkIndustryText = #{workIndustryText,jdbcType=NVARCHAR},
+      WorkStartDate = #{workStartDate,jdbcType=DATE},
+      WorkEndDate = #{workEndDate,jdbcType=DATE},
+      WorkUnit = #{workUnit,jdbcType=NVARCHAR},
+      CompanyAddress = #{companyAddress,jdbcType=NVARCHAR},
+      IsPaymentSocialSecurity = #{isPaymentSocialSecurity,jdbcType=BIT},
+      SocialSecurityFixedNumberYears = #{socialSecurityFixedNumberYears,jdbcType=INTEGER},
+      Post = #{post,jdbcType=NVARCHAR},
+      Phone = #{phone,jdbcType=NVARCHAR},
+      PersonalAnnualIncome = #{personalAnnualIncome,jdbcType=INTEGER},
+      PersonalAnnualIncomeText = #{personalAnnualIncomeText,jdbcType=NVARCHAR},
+      FamilyAnnualIncome = #{familyAnnualIncome,jdbcType=INTEGER},
+      FamilyAnnualIncomeText = #{familyAnnualIncomeText,jdbcType=NVARCHAR},
+      SpouseName = #{spouseName,jdbcType=NVARCHAR},
+      SpouseGender = #{spouseGender,jdbcType=NVARCHAR},
+      SpouseBirthday = #{spouseBirthday,jdbcType=DATE},
+      SpouseCertificateType = #{spouseCertificateType,jdbcType=INTEGER},
+      SpouseCertificateTypeText = #{spouseCertificateTypeText,jdbcType=NVARCHAR},
+      SpouseCertificateNo = #{spouseCertificateNo,jdbcType=NVARCHAR},
+      SpouseEducation = #{spouseEducation,jdbcType=INTEGER},
+      SpouseEducationText = #{spouseEducationText,jdbcType=NVARCHAR},
+      SpouseTelephone = #{spouseTelephone,jdbcType=NVARCHAR},
+      SpouseHouseAddress = #{spouseHouseAddress,jdbcType=NVARCHAR},
+      SpouseWorkType = #{spouseWorkType,jdbcType=INTEGER},
+      SpouseWorkTypeText = #{spouseWorkTypeText,jdbcType=NVARCHAR},
+      SpouseWorkUnit = #{spouseWorkUnit,jdbcType=NVARCHAR},
+      ChildSituation = #{childSituation,jdbcType=NVARCHAR},
+      HaveChildren = #{haveChildren,jdbcType=NVARCHAR},
+      OutstandingBusinessLoansCount = #{outstandingBusinessLoansCount,jdbcType=INTEGER},
+      UnfinishedLoanAmount = #{unfinishedLoanAmount,jdbcType=DECIMAL},
+      UnfinishedLoanBalanceAmount = #{unfinishedLoanBalanceAmount,jdbcType=DECIMAL},
+      ExternalGuaranteesCount = #{externalGuaranteesCount,jdbcType=INTEGER},
+      ExternalGuaranteeBalanceAmount = #{externalGuaranteeBalanceAmount,jdbcType=DECIMAL},
+      OverdueCount = #{overdueCount,jdbcType=INTEGER},
+      OverdueMaxAmount = #{overdueMaxAmount,jdbcType=DECIMAL},
+      OverdueCurrentAmount = #{overdueCurrentAmount,jdbcType=DECIMAL},
+      OverdueMaxDays = #{overdueMaxDays,jdbcType=INTEGER},
+      Remarks = #{remarks,jdbcType=NVARCHAR},
+      LoanName = #{loanName,jdbcType=NVARCHAR},
+      CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      LoanBankName = #{loanBankName,jdbcType=NVARCHAR},
+      LoanBankCard = #{loanBankCard,jdbcType=NVARCHAR},
+      LoanBankAddress = #{loanBankAddress,jdbcType=NVARCHAR},
+      RepaymentBankName = #{repaymentBankName,jdbcType=NVARCHAR},
+      RepaymentBankCard = #{repaymentBankCard,jdbcType=NVARCHAR},
+      RepaymentAddress = #{repaymentAddress,jdbcType=NVARCHAR},
+      BirthDate = #{birthDate,jdbcType=DATE},
+      CreditAmount = #{creditAmount,jdbcType=DECIMAL},
+      CreditLevel = #{creditLevel,jdbcType=INTEGER},
+      CreditLevelText = #{creditLevelText,jdbcType=NVARCHAR},
+      CreditScore = #{creditScore,jdbcType=DECIMAL},
+      CreditRecordIsNull = #{creditRecordIsNull,jdbcType=BIT}
+    where LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and ProjectId = #{projectId,jdbcType=INTEGER}
+  </update>
+</mapper>

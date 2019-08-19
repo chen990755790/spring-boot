@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.CollateralHouseMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.CollateralHouse" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="HouseNo" property="houseNo" jdbcType="NVARCHAR" />
+    <result column="HouseRegisterCity" property="houseRegisterCity" jdbcType="NVARCHAR" />
+    <result column="HouseRegisterCityText" property="houseRegisterCityText" jdbcType="NVARCHAR" />
+    <result column="HouseRegisterDistinct" property="houseRegisterDistinct" jdbcType="NVARCHAR" />
+    <result column="HouseRegisterDistinctText" property="houseRegisterDistinctText" jdbcType="NVARCHAR" />
+    <result column="BuildingName" property="buildingName" jdbcType="NVARCHAR" />
+    <result column="BuildingArea" property="buildingArea" jdbcType="DECIMAL" />
+    <result column="HouseType" property="houseType" jdbcType="NVARCHAR" />
+    <result column="HouseTypeText" property="houseTypeText" jdbcType="NVARCHAR" />
+    <result column="CollertalModel" property="collertalModel" jdbcType="NVARCHAR" />
+    <result column="CollertalModelText" property="collertalModelText" jdbcType="NVARCHAR" />
+    <result column="HouseAddress" property="houseAddress" jdbcType="NVARCHAR" />
+    <result column="PropertyOwner" property="propertyOwner" jdbcType="NVARCHAR" />
+    <result column="PropertyOwnerICertificateType" property="propertyOwnerICertificateType" jdbcType="NVARCHAR" />
+    <result column="PropertyOwnerICertificateTypeText" property="propertyOwnerICertificateTypeText" jdbcType="NVARCHAR" />
+    <result column="PropertyOwnerCertificateNo" property="propertyOwnerCertificateNo" jdbcType="NVARCHAR" />
+    <result column="MortgagedLoanBalanceAmount" property="mortgagedLoanBalanceAmount" jdbcType="DECIMAL" />
+    <result column="ValuationPrice" property="valuationPrice" jdbcType="DECIMAL" />
+    <result column="UnitPrice" property="unitPrice" jdbcType="DECIMAL" />
+    <result column="HouseAge" property="houseAge" jdbcType="INTEGER" />
+    <result column="RoomType" property="roomType" jdbcType="NVARCHAR" />
+    <result column="RoomTypeText" property="roomTypeText" jdbcType="NVARCHAR" />
+    <result column="HouseMortgageRate" property="houseMortgageRate" jdbcType="DECIMAL" />
+    <result column="IsOnlyHouseForFamily" property="isOnlyHouseForFamily" jdbcType="BIT" />
+    <result column="IsOnlyHouseForFamilyText" property="isOnlyHouseForFamilyText" jdbcType="NVARCHAR" />
+    <result column="MortgageType" property="mortgageType" jdbcType="INTEGER" />
+    <result column="MortgageTypeText" property="mortgageTypeText" jdbcType="NVARCHAR" />
+    <result column="IsDebtor" property="isDebtor" jdbcType="BIT" />
+    <result column="IsDebtorText" property="isDebtorText" jdbcType="NVARCHAR" />
+    <result column="OneMortgageType" property="oneMortgageType" jdbcType="NVARCHAR" />
+    <result column="OneMortgageTypeText" property="oneMortgageTypeText" jdbcType="NVARCHAR" />
+    <result column="OneMortgageAmount" property="oneMortgageAmount" jdbcType="DECIMAL" />
+    <result column="OneMortgageTerm" property="oneMortgageTerm" jdbcType="NVARCHAR" />
+    <result column="NotaryFinishInfo" property="notaryFinishInfo" jdbcType="NVARCHAR" />
+    <result column="NotaryFinishInfoText" property="notaryFinishInfoText" jdbcType="NVARCHAR" />
+    <result column="MortgageFinishInfo" property="mortgageFinishInfo" jdbcType="NVARCHAR" />
+    <result column="MortgageFinishInfoText" property="mortgageFinishInfoText" jdbcType="NVARCHAR" />
+    <result column="HouseFloor" property="houseFloor" jdbcType="INTEGER" />
+    <result column="BuildingFloor" property="buildingFloor" jdbcType="INTEGER" />
+    <result column="BuildingStates" property="buildingStates" jdbcType="NVARCHAR" />
+    <result column="BuildingStatesText" property="buildingStatesText" jdbcType="NVARCHAR" />
+    <result column="HouseEstimateAgency" property="houseEstimateAgency" jdbcType="NVARCHAR" />
+    <result column="GuarantorAndBorrowerRelationship" property="guarantorAndBorrowerRelationship" jdbcType="NVARCHAR" />
+    <result column="GuarantorAndBorrowerRelationshipText" property="guarantorAndBorrowerRelationshipText" jdbcType="NVARCHAR" />
+    <result column="GuarantorType" property="guarantorType" jdbcType="NVARCHAR" />
+    <result column="GuarantorTypeText" property="guarantorTypeText" jdbcType="NVARCHAR" />
+    <result column="GuarantorName" property="guarantorName" jdbcType="NVARCHAR" />
+    <result column="GuarantorIDNumber" property="guarantorIDNumber" jdbcType="NVARCHAR" />
+    <result column="CreationTime" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="ModifyTime" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="Remark" property="remark" jdbcType="NVARCHAR" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="Provence" property="provence" jdbcType="NVARCHAR" />
+    <result column="ProvenceText" property="provenceText" jdbcType="NVARCHAR" />
+    <result column="YearOfPropertyRights" property="yearOfPropertyRights" jdbcType="INTEGER" />
+    <result column="BuildingNo" property="buildingNo" jdbcType="NVARCHAR" />
+    <result column="Orientation" property="orientation" jdbcType="NVARCHAR" />
+    <result column="OrientationText" property="orientationText" jdbcType="NVARCHAR" />
+    <result column="CertificateDate" property="certificateDate" jdbcType="DATE" />
+    <result column="PlanUtilization" property="planUtilization" jdbcType="NVARCHAR" />
+    <result column="PlanUtilizationText" property="planUtilizationText" jdbcType="NVARCHAR" />
+    <result column="HouseProperty" property="houseProperty" jdbcType="NVARCHAR" />
+    <result column="HousePropertyText" property="housePropertyText" jdbcType="NVARCHAR" />
+    <result column="HouseSituation" property="houseSituation" jdbcType="NVARCHAR" />
+    <result column="HouseSituationText" property="houseSituationText" jdbcType="NVARCHAR" />
+    <result column="LandSource" property="landSource" jdbcType="NVARCHAR" />
+    <result column="LandSourceText" property="landSourceText" jdbcType="NVARCHAR" />
+    <result column="LandUse" property="landUse" jdbcType="NVARCHAR" />
+    <result column="LandUseText" property="landUseText" jdbcType="NVARCHAR" />
+    <result column="CompletionTime" property="completionTime" jdbcType="INTEGER" />
+    <result column="IsTransaction" property="isTransaction" jdbcType="BIT" />
+    <result column="IsTransactionText" property="isTransactionText" jdbcType="NVARCHAR" />
+    <result column="IsFreeze" property="isFreeze" jdbcType="BIT" />
+    <result column="IsFreezeText" property="isFreezeText" jdbcType="NVARCHAR" />
+    <result column="IsOnlyHousing" property="isOnlyHousing" jdbcType="BIT" />
+    <result column="IsOnlyHousingText" property="isOnlyHousingText" jdbcType="NVARCHAR" />
+    <result column="IsDispute" property="isDispute" jdbcType="BIT" />
+    <result column="IsDisputeText" property="isDisputeText" jdbcType="NVARCHAR" />
+    <result column="IsThrough" property="isThrough" jdbcType="BIT" />
+    <result column="IsThroughText" property="isThroughText" jdbcType="NVARCHAR" />
+    <result column="IsDisposition" property="isDisposition" jdbcType="BIT" />
+    <result column="IsDispositionText" property="isDispositionText" jdbcType="NVARCHAR" />
+    <result column="RoomNumber" property="roomNumber" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, LoanNo, ProjectNo, HouseNo, HouseRegisterCity, HouseRegisterCityText, HouseRegisterDistinct, 
+    HouseRegisterDistinctText, BuildingName, BuildingArea, HouseType, HouseTypeText, 
+    CollertalModel, CollertalModelText, HouseAddress, PropertyOwner, PropertyOwnerICertificateType, 
+    PropertyOwnerICertificateTypeText, PropertyOwnerCertificateNo, MortgagedLoanBalanceAmount, 
+    ValuationPrice, UnitPrice, HouseAge, RoomType, RoomTypeText, HouseMortgageRate, IsOnlyHouseForFamily, 
+    IsOnlyHouseForFamilyText, MortgageType, MortgageTypeText, IsDebtor, IsDebtorText, 
+    OneMortgageType, OneMortgageTypeText, OneMortgageAmount, OneMortgageTerm, NotaryFinishInfo, 
+    NotaryFinishInfoText, MortgageFinishInfo, MortgageFinishInfoText, HouseFloor, BuildingFloor, 
+    BuildingStates, BuildingStatesText, HouseEstimateAgency, GuarantorAndBorrowerRelationship, 
+    GuarantorAndBorrowerRelationshipText, GuarantorType, GuarantorTypeText, GuarantorName, 
+    GuarantorIDNumber, CreationTime, ModifyTime, Remark, CreatedUser, Provence, ProvenceText, 
+    YearOfPropertyRights, BuildingNo, Orientation, OrientationText, CertificateDate, 
+    PlanUtilization, PlanUtilizationText, HouseProperty, HousePropertyText, HouseSituation, 
+    HouseSituationText, LandSource, LandSourceText, LandUse, LandUseText, CompletionTime, 
+    IsTransaction, IsTransactionText, IsFreeze, IsFreezeText, IsOnlyHousing, IsOnlyHousingText, 
+    IsDispute, IsDisputeText, IsThrough, IsThroughText, IsDisposition, IsDispositionText, 
+    RoomNumber
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from CollateralHouse
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CollateralHouse
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CollateralHouse
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.CollateralHouse" >
+    insert into CollateralHouse (Id, LoanNo, ProjectNo, 
+      HouseNo, HouseRegisterCity, HouseRegisterCityText, 
+      HouseRegisterDistinct, HouseRegisterDistinctText, 
+      BuildingName, BuildingArea, HouseType, 
+      HouseTypeText, CollertalModel, CollertalModelText, 
+      HouseAddress, PropertyOwner, PropertyOwnerICertificateType, 
+      PropertyOwnerICertificateTypeText, PropertyOwnerCertificateNo, 
+      MortgagedLoanBalanceAmount, ValuationPrice, 
+      UnitPrice, HouseAge, RoomType, 
+      RoomTypeText, HouseMortgageRate, IsOnlyHouseForFamily, 
+      IsOnlyHouseForFamilyText, MortgageType, 
+      MortgageTypeText, IsDebtor, IsDebtorText, 
+      OneMortgageType, OneMortgageTypeText, 
+      OneMortgageAmount, OneMortgageTerm, NotaryFinishInfo, 
+      NotaryFinishInfoText, MortgageFinishInfo, 
+      MortgageFinishInfoText, HouseFloor, BuildingFloor, 
+      BuildingStates, BuildingStatesText, HouseEstimateAgency, 
+      GuarantorAndBorrowerRelationship, GuarantorAndBorrowerRelationshipText, 
+      GuarantorType, GuarantorTypeText, GuarantorName, 
+      GuarantorIDNumber, CreationTime, ModifyTime, 
+      Remark, CreatedUser, Provence, 
+      ProvenceText, YearOfPropertyRights, BuildingNo, 
+      Orientation, OrientationText, CertificateDate, 
+      PlanUtilization, PlanUtilizationText, 
+      HouseProperty, HousePropertyText, HouseSituation, 
+      HouseSituationText, LandSource, LandSourceText, 
+      LandUse, LandUseText, CompletionTime, 
+      IsTransaction, IsTransactionText, IsFreeze, 
+      IsFreezeText, IsOnlyHousing, IsOnlyHousingText, 
+      IsDispute, IsDisputeText, IsThrough, 
+      IsThroughText, IsDisposition, IsDispositionText, 
+      RoomNumber)
+    values (#{id,jdbcType=CHAR}, #{loanNo,jdbcType=NVARCHAR}, #{projectNo,jdbcType=NVARCHAR}, 
+      #{houseNo,jdbcType=NVARCHAR}, #{houseRegisterCity,jdbcType=NVARCHAR}, #{houseRegisterCityText,jdbcType=NVARCHAR}, 
+      #{houseRegisterDistinct,jdbcType=NVARCHAR}, #{houseRegisterDistinctText,jdbcType=NVARCHAR}, 
+      #{buildingName,jdbcType=NVARCHAR}, #{buildingArea,jdbcType=DECIMAL}, #{houseType,jdbcType=NVARCHAR}, 
+      #{houseTypeText,jdbcType=NVARCHAR}, #{collertalModel,jdbcType=NVARCHAR}, #{collertalModelText,jdbcType=NVARCHAR}, 
+      #{houseAddress,jdbcType=NVARCHAR}, #{propertyOwner,jdbcType=NVARCHAR}, #{propertyOwnerICertificateType,jdbcType=NVARCHAR}, 
+      #{propertyOwnerICertificateTypeText,jdbcType=NVARCHAR}, #{propertyOwnerCertificateNo,jdbcType=NVARCHAR}, 
+      #{mortgagedLoanBalanceAmount,jdbcType=DECIMAL}, #{valuationPrice,jdbcType=DECIMAL}, 
+      #{unitPrice,jdbcType=DECIMAL}, #{houseAge,jdbcType=INTEGER}, #{roomType,jdbcType=NVARCHAR}, 
+      #{roomTypeText,jdbcType=NVARCHAR}, #{houseMortgageRate,jdbcType=DECIMAL}, #{isOnlyHouseForFamily,jdbcType=BIT}, 
+      #{isOnlyHouseForFamilyText,jdbcType=NVARCHAR}, #{mortgageType,jdbcType=INTEGER}, 
+      #{mortgageTypeText,jdbcType=NVARCHAR}, #{isDebtor,jdbcType=BIT}, #{isDebtorText,jdbcType=NVARCHAR}, 
+      #{oneMortgageType,jdbcType=NVARCHAR}, #{oneMortgageTypeText,jdbcType=NVARCHAR}, 
+      #{oneMortgageAmount,jdbcType=DECIMAL}, #{oneMortgageTerm,jdbcType=NVARCHAR}, #{notaryFinishInfo,jdbcType=NVARCHAR}, 
+      #{notaryFinishInfoText,jdbcType=NVARCHAR}, #{mortgageFinishInfo,jdbcType=NVARCHAR}, 
+      #{mortgageFinishInfoText,jdbcType=NVARCHAR}, #{houseFloor,jdbcType=INTEGER}, #{buildingFloor,jdbcType=INTEGER}, 
+      #{buildingStates,jdbcType=NVARCHAR}, #{buildingStatesText,jdbcType=NVARCHAR}, #{houseEstimateAgency,jdbcType=NVARCHAR}, 
+      #{guarantorAndBorrowerRelationship,jdbcType=NVARCHAR}, #{guarantorAndBorrowerRelationshipText,jdbcType=NVARCHAR}, 
+      #{guarantorType,jdbcType=NVARCHAR}, #{guarantorTypeText,jdbcType=NVARCHAR}, #{guarantorName,jdbcType=NVARCHAR}, 
+      #{guarantorIDNumber,jdbcType=NVARCHAR}, #{creationTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=NVARCHAR}, #{createdUser,jdbcType=NVARCHAR}, #{provence,jdbcType=NVARCHAR}, 
+      #{provenceText,jdbcType=NVARCHAR}, #{yearOfPropertyRights,jdbcType=INTEGER}, #{buildingNo,jdbcType=NVARCHAR}, 
+      #{orientation,jdbcType=NVARCHAR}, #{orientationText,jdbcType=NVARCHAR}, #{certificateDate,jdbcType=DATE}, 
+      #{planUtilization,jdbcType=NVARCHAR}, #{planUtilizationText,jdbcType=NVARCHAR}, 
+      #{houseProperty,jdbcType=NVARCHAR}, #{housePropertyText,jdbcType=NVARCHAR}, #{houseSituation,jdbcType=NVARCHAR}, 
+      #{houseSituationText,jdbcType=NVARCHAR}, #{landSource,jdbcType=NVARCHAR}, #{landSourceText,jdbcType=NVARCHAR}, 
+      #{landUse,jdbcType=NVARCHAR}, #{landUseText,jdbcType=NVARCHAR}, #{completionTime,jdbcType=INTEGER}, 
+      #{isTransaction,jdbcType=BIT}, #{isTransactionText,jdbcType=NVARCHAR}, #{isFreeze,jdbcType=BIT}, 
+      #{isFreezeText,jdbcType=NVARCHAR}, #{isOnlyHousing,jdbcType=BIT}, #{isOnlyHousingText,jdbcType=NVARCHAR}, 
+      #{isDispute,jdbcType=BIT}, #{isDisputeText,jdbcType=NVARCHAR}, #{isThrough,jdbcType=BIT}, 
+      #{isThroughText,jdbcType=NVARCHAR}, #{isDisposition,jdbcType=BIT}, #{isDispositionText,jdbcType=NVARCHAR}, 
+      #{roomNumber,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.CollateralHouse" >
+    insert into CollateralHouse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="houseNo != null" >
+        HouseNo,
+      </if>
+      <if test="houseRegisterCity != null" >
+        HouseRegisterCity,
+      </if>
+      <if test="houseRegisterCityText != null" >
+        HouseRegisterCityText,
+      </if>
+      <if test="houseRegisterDistinct != null" >
+        HouseRegisterDistinct,
+      </if>
+      <if test="houseRegisterDistinctText != null" >
+        HouseRegisterDistinctText,
+      </if>
+      <if test="buildingName != null" >
+        BuildingName,
+      </if>
+      <if test="buildingArea != null" >
+        BuildingArea,
+      </if>
+      <if test="houseType != null" >
+        HouseType,
+      </if>
+      <if test="houseTypeText != null" >
+        HouseTypeText,
+      </if>
+      <if test="collertalModel != null" >
+        CollertalModel,
+      </if>
+      <if test="collertalModelText != null" >
+        CollertalModelText,
+      </if>
+      <if test="houseAddress != null" >
+        HouseAddress,
+      </if>
+      <if test="propertyOwner != null" >
+        PropertyOwner,
+      </if>
+      <if test="propertyOwnerICertificateType != null" >
+        PropertyOwnerICertificateType,
+      </if>
+      <if test="propertyOwnerICertificateTypeText != null" >
+        PropertyOwnerICertificateTypeText,
+      </if>
+      <if test="propertyOwnerCertificateNo != null" >
+        PropertyOwnerCertificateNo,
+      </if>
+      <if test="mortgagedLoanBalanceAmount != null" >
+        MortgagedLoanBalanceAmount,
+      </if>
+      <if test="valuationPrice != null" >
+        ValuationPrice,
+      </if>
+      <if test="unitPrice != null" >
+        UnitPrice,
+      </if>
+      <if test="houseAge != null" >
+        HouseAge,
+      </if>
+      <if test="roomType != null" >
+        RoomType,
+      </if>
+      <if test="roomTypeText != null" >
+        RoomTypeText,
+      </if>
+      <if test="houseMortgageRate != null" >
+        HouseMortgageRate,
+      </if>
+      <if test="isOnlyHouseForFamily != null" >
+        IsOnlyHouseForFamily,
+      </if>
+      <if test="isOnlyHouseForFamilyText != null" >
+        IsOnlyHouseForFamilyText,
+      </if>
+      <if test="mortgageType != null" >
+        MortgageType,
+      </if>
+      <if test="mortgageTypeText != null" >
+        MortgageTypeText,
+      </if>
+      <if test="isDebtor != null" >
+        IsDebtor,
+      </if>
+      <if test="isDebtorText != null" >
+        IsDebtorText,
+      </if>
+      <if test="oneMortgageType != null" >
+        OneMortgageType,
+      </if>
+      <if test="oneMortgageTypeText != null" >
+        OneMortgageTypeText,
+      </if>
+      <if test="oneMortgageAmount != null" >
+        OneMortgageAmount,
+      </if>
+      <if test="oneMortgageTerm != null" >
+        OneMortgageTerm,
+      </if>
+      <if test="notaryFinishInfo != null" >
+        NotaryFinishInfo,
+      </if>
+      <if test="notaryFinishInfoText != null" >
+        NotaryFinishInfoText,
+      </if>
+      <if test="mortgageFinishInfo != null" >
+        MortgageFinishInfo,
+      </if>
+      <if test="mortgageFinishInfoText != null" >
+        MortgageFinishInfoText,
+      </if>
+      <if test="houseFloor != null" >
+        HouseFloor,
+      </if>
+      <if test="buildingFloor != null" >
+        BuildingFloor,
+      </if>
+      <if test="buildingStates != null" >
+        BuildingStates,
+      </if>
+      <if test="buildingStatesText != null" >
+        BuildingStatesText,
+      </if>
+      <if test="houseEstimateAgency != null" >
+        HouseEstimateAgency,
+      </if>
+      <if test="guarantorAndBorrowerRelationship != null" >
+        GuarantorAndBorrowerRelationship,
+      </if>
+      <if test="guarantorAndBorrowerRelationshipText != null" >
+        GuarantorAndBorrowerRelationshipText,
+      </if>
+      <if test="guarantorType != null" >
+        GuarantorType,
+      </if>
+      <if test="guarantorTypeText != null" >
+        GuarantorTypeText,
+      </if>
+      <if test="guarantorName != null" >
+        GuarantorName,
+      </if>
+      <if test="guarantorIDNumber != null" >
+        GuarantorIDNumber,
+      </if>
+      <if test="creationTime != null" >
+        CreationTime,
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="provence != null" >
+        Provence,
+      </if>
+      <if test="provenceText != null" >
+        ProvenceText,
+      </if>
+      <if test="yearOfPropertyRights != null" >
+        YearOfPropertyRights,
+      </if>
+      <if test="buildingNo != null" >
+        BuildingNo,
+      </if>
+      <if test="orientation != null" >
+        Orientation,
+      </if>
+      <if test="orientationText != null" >
+        OrientationText,
+      </if>
+      <if test="certificateDate != null" >
+        CertificateDate,
+      </if>
+      <if test="planUtilization != null" >
+        PlanUtilization,
+      </if>
+      <if test="planUtilizationText != null" >
+        PlanUtilizationText,
+      </if>
+      <if test="houseProperty != null" >
+        HouseProperty,
+      </if>
+      <if test="housePropertyText != null" >
+        HousePropertyText,
+      </if>
+      <if test="houseSituation != null" >
+        HouseSituation,
+      </if>
+      <if test="houseSituationText != null" >
+        HouseSituationText,
+      </if>
+      <if test="landSource != null" >
+        LandSource,
+      </if>
+      <if test="landSourceText != null" >
+        LandSourceText,
+      </if>
+      <if test="landUse != null" >
+        LandUse,
+      </if>
+      <if test="landUseText != null" >
+        LandUseText,
+      </if>
+      <if test="completionTime != null" >
+        CompletionTime,
+      </if>
+      <if test="isTransaction != null" >
+        IsTransaction,
+      </if>
+      <if test="isTransactionText != null" >
+        IsTransactionText,
+      </if>
+      <if test="isFreeze != null" >
+        IsFreeze,
+      </if>
+      <if test="isFreezeText != null" >
+        IsFreezeText,
+      </if>
+      <if test="isOnlyHousing != null" >
+        IsOnlyHousing,
+      </if>
+      <if test="isOnlyHousingText != null" >
+        IsOnlyHousingText,
+      </if>
+      <if test="isDispute != null" >
+        IsDispute,
+      </if>
+      <if test="isDisputeText != null" >
+        IsDisputeText,
+      </if>
+      <if test="isThrough != null" >
+        IsThrough,
+      </if>
+      <if test="isThroughText != null" >
+        IsThroughText,
+      </if>
+      <if test="isDisposition != null" >
+        IsDisposition,
+      </if>
+      <if test="isDispositionText != null" >
+        IsDispositionText,
+      </if>
+      <if test="roomNumber != null" >
+        RoomNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseNo != null" >
+        #{houseNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseRegisterCity != null" >
+        #{houseRegisterCity,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseRegisterCityText != null" >
+        #{houseRegisterCityText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseRegisterDistinct != null" >
+        #{houseRegisterDistinct,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseRegisterDistinctText != null" >
+        #{houseRegisterDistinctText,jdbcType=NVARCHAR},
+      </if>
+      <if test="buildingName != null" >
+        #{buildingName,jdbcType=NVARCHAR},
+      </if>
+      <if test="buildingArea != null" >
+        #{buildingArea,jdbcType=DECIMAL},
+      </if>
+      <if test="houseType != null" >
+        #{houseType,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseTypeText != null" >
+        #{houseTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModel != null" >
+        #{collertalModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModelText != null" >
+        #{collertalModelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseAddress != null" >
+        #{houseAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="propertyOwner != null" >
+        #{propertyOwner,jdbcType=NVARCHAR},
+      </if>
+      <if test="propertyOwnerICertificateType != null" >
+        #{propertyOwnerICertificateType,jdbcType=NVARCHAR},
+      </if>
+      <if test="propertyOwnerICertificateTypeText != null" >
+        #{propertyOwnerICertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="propertyOwnerCertificateNo != null" >
+        #{propertyOwnerCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgagedLoanBalanceAmount != null" >
+        #{mortgagedLoanBalanceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="valuationPrice != null" >
+        #{valuationPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="houseAge != null" >
+        #{houseAge,jdbcType=INTEGER},
+      </if>
+      <if test="roomType != null" >
+        #{roomType,jdbcType=NVARCHAR},
+      </if>
+      <if test="roomTypeText != null" >
+        #{roomTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseMortgageRate != null" >
+        #{houseMortgageRate,jdbcType=DECIMAL},
+      </if>
+      <if test="isOnlyHouseForFamily != null" >
+        #{isOnlyHouseForFamily,jdbcType=BIT},
+      </if>
+      <if test="isOnlyHouseForFamilyText != null" >
+        #{isOnlyHouseForFamilyText,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgageType != null" >
+        #{mortgageType,jdbcType=INTEGER},
+      </if>
+      <if test="mortgageTypeText != null" >
+        #{mortgageTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isDebtor != null" >
+        #{isDebtor,jdbcType=BIT},
+      </if>
+      <if test="isDebtorText != null" >
+        #{isDebtorText,jdbcType=NVARCHAR},
+      </if>
+      <if test="oneMortgageType != null" >
+        #{oneMortgageType,jdbcType=NVARCHAR},
+      </if>
+      <if test="oneMortgageTypeText != null" >
+        #{oneMortgageTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="oneMortgageAmount != null" >
+        #{oneMortgageAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="oneMortgageTerm != null" >
+        #{oneMortgageTerm,jdbcType=NVARCHAR},
+      </if>
+      <if test="notaryFinishInfo != null" >
+        #{notaryFinishInfo,jdbcType=NVARCHAR},
+      </if>
+      <if test="notaryFinishInfoText != null" >
+        #{notaryFinishInfoText,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgageFinishInfo != null" >
+        #{mortgageFinishInfo,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgageFinishInfoText != null" >
+        #{mortgageFinishInfoText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseFloor != null" >
+        #{houseFloor,jdbcType=INTEGER},
+      </if>
+      <if test="buildingFloor != null" >
+        #{buildingFloor,jdbcType=INTEGER},
+      </if>
+      <if test="buildingStates != null" >
+        #{buildingStates,jdbcType=NVARCHAR},
+      </if>
+      <if test="buildingStatesText != null" >
+        #{buildingStatesText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseEstimateAgency != null" >
+        #{houseEstimateAgency,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorAndBorrowerRelationship != null" >
+        #{guarantorAndBorrowerRelationship,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorAndBorrowerRelationshipText != null" >
+        #{guarantorAndBorrowerRelationshipText,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorType != null" >
+        #{guarantorType,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorTypeText != null" >
+        #{guarantorTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorName != null" >
+        #{guarantorName,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorIDNumber != null" >
+        #{guarantorIDNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="provence != null" >
+        #{provence,jdbcType=NVARCHAR},
+      </if>
+      <if test="provenceText != null" >
+        #{provenceText,jdbcType=NVARCHAR},
+      </if>
+      <if test="yearOfPropertyRights != null" >
+        #{yearOfPropertyRights,jdbcType=INTEGER},
+      </if>
+      <if test="buildingNo != null" >
+        #{buildingNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="orientation != null" >
+        #{orientation,jdbcType=NVARCHAR},
+      </if>
+      <if test="orientationText != null" >
+        #{orientationText,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateDate != null" >
+        #{certificateDate,jdbcType=DATE},
+      </if>
+      <if test="planUtilization != null" >
+        #{planUtilization,jdbcType=NVARCHAR},
+      </if>
+      <if test="planUtilizationText != null" >
+        #{planUtilizationText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseProperty != null" >
+        #{houseProperty,jdbcType=NVARCHAR},
+      </if>
+      <if test="housePropertyText != null" >
+        #{housePropertyText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseSituation != null" >
+        #{houseSituation,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseSituationText != null" >
+        #{houseSituationText,jdbcType=NVARCHAR},
+      </if>
+      <if test="landSource != null" >
+        #{landSource,jdbcType=NVARCHAR},
+      </if>
+      <if test="landSourceText != null" >
+        #{landSourceText,jdbcType=NVARCHAR},
+      </if>
+      <if test="landUse != null" >
+        #{landUse,jdbcType=NVARCHAR},
+      </if>
+      <if test="landUseText != null" >
+        #{landUseText,jdbcType=NVARCHAR},
+      </if>
+      <if test="completionTime != null" >
+        #{completionTime,jdbcType=INTEGER},
+      </if>
+      <if test="isTransaction != null" >
+        #{isTransaction,jdbcType=BIT},
+      </if>
+      <if test="isTransactionText != null" >
+        #{isTransactionText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isFreeze != null" >
+        #{isFreeze,jdbcType=BIT},
+      </if>
+      <if test="isFreezeText != null" >
+        #{isFreezeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isOnlyHousing != null" >
+        #{isOnlyHousing,jdbcType=BIT},
+      </if>
+      <if test="isOnlyHousingText != null" >
+        #{isOnlyHousingText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isDispute != null" >
+        #{isDispute,jdbcType=BIT},
+      </if>
+      <if test="isDisputeText != null" >
+        #{isDisputeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isThrough != null" >
+        #{isThrough,jdbcType=BIT},
+      </if>
+      <if test="isThroughText != null" >
+        #{isThroughText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isDisposition != null" >
+        #{isDisposition,jdbcType=BIT},
+      </if>
+      <if test="isDispositionText != null" >
+        #{isDispositionText,jdbcType=NVARCHAR},
+      </if>
+      <if test="roomNumber != null" >
+        #{roomNumber,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.CollateralHouse" >
+    update CollateralHouse
+    <set >
+      <if test="loanNo != null" >
+        LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseNo != null" >
+        HouseNo = #{houseNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseRegisterCity != null" >
+        HouseRegisterCity = #{houseRegisterCity,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseRegisterCityText != null" >
+        HouseRegisterCityText = #{houseRegisterCityText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseRegisterDistinct != null" >
+        HouseRegisterDistinct = #{houseRegisterDistinct,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseRegisterDistinctText != null" >
+        HouseRegisterDistinctText = #{houseRegisterDistinctText,jdbcType=NVARCHAR},
+      </if>
+      <if test="buildingName != null" >
+        BuildingName = #{buildingName,jdbcType=NVARCHAR},
+      </if>
+      <if test="buildingArea != null" >
+        BuildingArea = #{buildingArea,jdbcType=DECIMAL},
+      </if>
+      <if test="houseType != null" >
+        HouseType = #{houseType,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseTypeText != null" >
+        HouseTypeText = #{houseTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModel != null" >
+        CollertalModel = #{collertalModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModelText != null" >
+        CollertalModelText = #{collertalModelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseAddress != null" >
+        HouseAddress = #{houseAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="propertyOwner != null" >
+        PropertyOwner = #{propertyOwner,jdbcType=NVARCHAR},
+      </if>
+      <if test="propertyOwnerICertificateType != null" >
+        PropertyOwnerICertificateType = #{propertyOwnerICertificateType,jdbcType=NVARCHAR},
+      </if>
+      <if test="propertyOwnerICertificateTypeText != null" >
+        PropertyOwnerICertificateTypeText = #{propertyOwnerICertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="propertyOwnerCertificateNo != null" >
+        PropertyOwnerCertificateNo = #{propertyOwnerCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgagedLoanBalanceAmount != null" >
+        MortgagedLoanBalanceAmount = #{mortgagedLoanBalanceAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="valuationPrice != null" >
+        ValuationPrice = #{valuationPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="unitPrice != null" >
+        UnitPrice = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="houseAge != null" >
+        HouseAge = #{houseAge,jdbcType=INTEGER},
+      </if>
+      <if test="roomType != null" >
+        RoomType = #{roomType,jdbcType=NVARCHAR},
+      </if>
+      <if test="roomTypeText != null" >
+        RoomTypeText = #{roomTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseMortgageRate != null" >
+        HouseMortgageRate = #{houseMortgageRate,jdbcType=DECIMAL},
+      </if>
+      <if test="isOnlyHouseForFamily != null" >
+        IsOnlyHouseForFamily = #{isOnlyHouseForFamily,jdbcType=BIT},
+      </if>
+      <if test="isOnlyHouseForFamilyText != null" >
+        IsOnlyHouseForFamilyText = #{isOnlyHouseForFamilyText,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgageType != null" >
+        MortgageType = #{mortgageType,jdbcType=INTEGER},
+      </if>
+      <if test="mortgageTypeText != null" >
+        MortgageTypeText = #{mortgageTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isDebtor != null" >
+        IsDebtor = #{isDebtor,jdbcType=BIT},
+      </if>
+      <if test="isDebtorText != null" >
+        IsDebtorText = #{isDebtorText,jdbcType=NVARCHAR},
+      </if>
+      <if test="oneMortgageType != null" >
+        OneMortgageType = #{oneMortgageType,jdbcType=NVARCHAR},
+      </if>
+      <if test="oneMortgageTypeText != null" >
+        OneMortgageTypeText = #{oneMortgageTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="oneMortgageAmount != null" >
+        OneMortgageAmount = #{oneMortgageAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="oneMortgageTerm != null" >
+        OneMortgageTerm = #{oneMortgageTerm,jdbcType=NVARCHAR},
+      </if>
+      <if test="notaryFinishInfo != null" >
+        NotaryFinishInfo = #{notaryFinishInfo,jdbcType=NVARCHAR},
+      </if>
+      <if test="notaryFinishInfoText != null" >
+        NotaryFinishInfoText = #{notaryFinishInfoText,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgageFinishInfo != null" >
+        MortgageFinishInfo = #{mortgageFinishInfo,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgageFinishInfoText != null" >
+        MortgageFinishInfoText = #{mortgageFinishInfoText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseFloor != null" >
+        HouseFloor = #{houseFloor,jdbcType=INTEGER},
+      </if>
+      <if test="buildingFloor != null" >
+        BuildingFloor = #{buildingFloor,jdbcType=INTEGER},
+      </if>
+      <if test="buildingStates != null" >
+        BuildingStates = #{buildingStates,jdbcType=NVARCHAR},
+      </if>
+      <if test="buildingStatesText != null" >
+        BuildingStatesText = #{buildingStatesText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseEstimateAgency != null" >
+        HouseEstimateAgency = #{houseEstimateAgency,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorAndBorrowerRelationship != null" >
+        GuarantorAndBorrowerRelationship = #{guarantorAndBorrowerRelationship,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorAndBorrowerRelationshipText != null" >
+        GuarantorAndBorrowerRelationshipText = #{guarantorAndBorrowerRelationshipText,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorType != null" >
+        GuarantorType = #{guarantorType,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorTypeText != null" >
+        GuarantorTypeText = #{guarantorTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorName != null" >
+        GuarantorName = #{guarantorName,jdbcType=NVARCHAR},
+      </if>
+      <if test="guarantorIDNumber != null" >
+        GuarantorIDNumber = #{guarantorIDNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="provence != null" >
+        Provence = #{provence,jdbcType=NVARCHAR},
+      </if>
+      <if test="provenceText != null" >
+        ProvenceText = #{provenceText,jdbcType=NVARCHAR},
+      </if>
+      <if test="yearOfPropertyRights != null" >
+        YearOfPropertyRights = #{yearOfPropertyRights,jdbcType=INTEGER},
+      </if>
+      <if test="buildingNo != null" >
+        BuildingNo = #{buildingNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="orientation != null" >
+        Orientation = #{orientation,jdbcType=NVARCHAR},
+      </if>
+      <if test="orientationText != null" >
+        OrientationText = #{orientationText,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateDate != null" >
+        CertificateDate = #{certificateDate,jdbcType=DATE},
+      </if>
+      <if test="planUtilization != null" >
+        PlanUtilization = #{planUtilization,jdbcType=NVARCHAR},
+      </if>
+      <if test="planUtilizationText != null" >
+        PlanUtilizationText = #{planUtilizationText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseProperty != null" >
+        HouseProperty = #{houseProperty,jdbcType=NVARCHAR},
+      </if>
+      <if test="housePropertyText != null" >
+        HousePropertyText = #{housePropertyText,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseSituation != null" >
+        HouseSituation = #{houseSituation,jdbcType=NVARCHAR},
+      </if>
+      <if test="houseSituationText != null" >
+        HouseSituationText = #{houseSituationText,jdbcType=NVARCHAR},
+      </if>
+      <if test="landSource != null" >
+        LandSource = #{landSource,jdbcType=NVARCHAR},
+      </if>
+      <if test="landSourceText != null" >
+        LandSourceText = #{landSourceText,jdbcType=NVARCHAR},
+      </if>
+      <if test="landUse != null" >
+        LandUse = #{landUse,jdbcType=NVARCHAR},
+      </if>
+      <if test="landUseText != null" >
+        LandUseText = #{landUseText,jdbcType=NVARCHAR},
+      </if>
+      <if test="completionTime != null" >
+        CompletionTime = #{completionTime,jdbcType=INTEGER},
+      </if>
+      <if test="isTransaction != null" >
+        IsTransaction = #{isTransaction,jdbcType=BIT},
+      </if>
+      <if test="isTransactionText != null" >
+        IsTransactionText = #{isTransactionText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isFreeze != null" >
+        IsFreeze = #{isFreeze,jdbcType=BIT},
+      </if>
+      <if test="isFreezeText != null" >
+        IsFreezeText = #{isFreezeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isOnlyHousing != null" >
+        IsOnlyHousing = #{isOnlyHousing,jdbcType=BIT},
+      </if>
+      <if test="isOnlyHousingText != null" >
+        IsOnlyHousingText = #{isOnlyHousingText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isDispute != null" >
+        IsDispute = #{isDispute,jdbcType=BIT},
+      </if>
+      <if test="isDisputeText != null" >
+        IsDisputeText = #{isDisputeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isThrough != null" >
+        IsThrough = #{isThrough,jdbcType=BIT},
+      </if>
+      <if test="isThroughText != null" >
+        IsThroughText = #{isThroughText,jdbcType=NVARCHAR},
+      </if>
+      <if test="isDisposition != null" >
+        IsDisposition = #{isDisposition,jdbcType=BIT},
+      </if>
+      <if test="isDispositionText != null" >
+        IsDispositionText = #{isDispositionText,jdbcType=NVARCHAR},
+      </if>
+      <if test="roomNumber != null" >
+        RoomNumber = #{roomNumber,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.CollateralHouse" >
+    update CollateralHouse
+    set LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      HouseNo = #{houseNo,jdbcType=NVARCHAR},
+      HouseRegisterCity = #{houseRegisterCity,jdbcType=NVARCHAR},
+      HouseRegisterCityText = #{houseRegisterCityText,jdbcType=NVARCHAR},
+      HouseRegisterDistinct = #{houseRegisterDistinct,jdbcType=NVARCHAR},
+      HouseRegisterDistinctText = #{houseRegisterDistinctText,jdbcType=NVARCHAR},
+      BuildingName = #{buildingName,jdbcType=NVARCHAR},
+      BuildingArea = #{buildingArea,jdbcType=DECIMAL},
+      HouseType = #{houseType,jdbcType=NVARCHAR},
+      HouseTypeText = #{houseTypeText,jdbcType=NVARCHAR},
+      CollertalModel = #{collertalModel,jdbcType=NVARCHAR},
+      CollertalModelText = #{collertalModelText,jdbcType=NVARCHAR},
+      HouseAddress = #{houseAddress,jdbcType=NVARCHAR},
+      PropertyOwner = #{propertyOwner,jdbcType=NVARCHAR},
+      PropertyOwnerICertificateType = #{propertyOwnerICertificateType,jdbcType=NVARCHAR},
+      PropertyOwnerICertificateTypeText = #{propertyOwnerICertificateTypeText,jdbcType=NVARCHAR},
+      PropertyOwnerCertificateNo = #{propertyOwnerCertificateNo,jdbcType=NVARCHAR},
+      MortgagedLoanBalanceAmount = #{mortgagedLoanBalanceAmount,jdbcType=DECIMAL},
+      ValuationPrice = #{valuationPrice,jdbcType=DECIMAL},
+      UnitPrice = #{unitPrice,jdbcType=DECIMAL},
+      HouseAge = #{houseAge,jdbcType=INTEGER},
+      RoomType = #{roomType,jdbcType=NVARCHAR},
+      RoomTypeText = #{roomTypeText,jdbcType=NVARCHAR},
+      HouseMortgageRate = #{houseMortgageRate,jdbcType=DECIMAL},
+      IsOnlyHouseForFamily = #{isOnlyHouseForFamily,jdbcType=BIT},
+      IsOnlyHouseForFamilyText = #{isOnlyHouseForFamilyText,jdbcType=NVARCHAR},
+      MortgageType = #{mortgageType,jdbcType=INTEGER},
+      MortgageTypeText = #{mortgageTypeText,jdbcType=NVARCHAR},
+      IsDebtor = #{isDebtor,jdbcType=BIT},
+      IsDebtorText = #{isDebtorText,jdbcType=NVARCHAR},
+      OneMortgageType = #{oneMortgageType,jdbcType=NVARCHAR},
+      OneMortgageTypeText = #{oneMortgageTypeText,jdbcType=NVARCHAR},
+      OneMortgageAmount = #{oneMortgageAmount,jdbcType=DECIMAL},
+      OneMortgageTerm = #{oneMortgageTerm,jdbcType=NVARCHAR},
+      NotaryFinishInfo = #{notaryFinishInfo,jdbcType=NVARCHAR},
+      NotaryFinishInfoText = #{notaryFinishInfoText,jdbcType=NVARCHAR},
+      MortgageFinishInfo = #{mortgageFinishInfo,jdbcType=NVARCHAR},
+      MortgageFinishInfoText = #{mortgageFinishInfoText,jdbcType=NVARCHAR},
+      HouseFloor = #{houseFloor,jdbcType=INTEGER},
+      BuildingFloor = #{buildingFloor,jdbcType=INTEGER},
+      BuildingStates = #{buildingStates,jdbcType=NVARCHAR},
+      BuildingStatesText = #{buildingStatesText,jdbcType=NVARCHAR},
+      HouseEstimateAgency = #{houseEstimateAgency,jdbcType=NVARCHAR},
+      GuarantorAndBorrowerRelationship = #{guarantorAndBorrowerRelationship,jdbcType=NVARCHAR},
+      GuarantorAndBorrowerRelationshipText = #{guarantorAndBorrowerRelationshipText,jdbcType=NVARCHAR},
+      GuarantorType = #{guarantorType,jdbcType=NVARCHAR},
+      GuarantorTypeText = #{guarantorTypeText,jdbcType=NVARCHAR},
+      GuarantorName = #{guarantorName,jdbcType=NVARCHAR},
+      GuarantorIDNumber = #{guarantorIDNumber,jdbcType=NVARCHAR},
+      CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      Remark = #{remark,jdbcType=NVARCHAR},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      Provence = #{provence,jdbcType=NVARCHAR},
+      ProvenceText = #{provenceText,jdbcType=NVARCHAR},
+      YearOfPropertyRights = #{yearOfPropertyRights,jdbcType=INTEGER},
+      BuildingNo = #{buildingNo,jdbcType=NVARCHAR},
+      Orientation = #{orientation,jdbcType=NVARCHAR},
+      OrientationText = #{orientationText,jdbcType=NVARCHAR},
+      CertificateDate = #{certificateDate,jdbcType=DATE},
+      PlanUtilization = #{planUtilization,jdbcType=NVARCHAR},
+      PlanUtilizationText = #{planUtilizationText,jdbcType=NVARCHAR},
+      HouseProperty = #{houseProperty,jdbcType=NVARCHAR},
+      HousePropertyText = #{housePropertyText,jdbcType=NVARCHAR},
+      HouseSituation = #{houseSituation,jdbcType=NVARCHAR},
+      HouseSituationText = #{houseSituationText,jdbcType=NVARCHAR},
+      LandSource = #{landSource,jdbcType=NVARCHAR},
+      LandSourceText = #{landSourceText,jdbcType=NVARCHAR},
+      LandUse = #{landUse,jdbcType=NVARCHAR},
+      LandUseText = #{landUseText,jdbcType=NVARCHAR},
+      CompletionTime = #{completionTime,jdbcType=INTEGER},
+      IsTransaction = #{isTransaction,jdbcType=BIT},
+      IsTransactionText = #{isTransactionText,jdbcType=NVARCHAR},
+      IsFreeze = #{isFreeze,jdbcType=BIT},
+      IsFreezeText = #{isFreezeText,jdbcType=NVARCHAR},
+      IsOnlyHousing = #{isOnlyHousing,jdbcType=BIT},
+      IsOnlyHousingText = #{isOnlyHousingText,jdbcType=NVARCHAR},
+      IsDispute = #{isDispute,jdbcType=BIT},
+      IsDisputeText = #{isDisputeText,jdbcType=NVARCHAR},
+      IsThrough = #{isThrough,jdbcType=BIT},
+      IsThroughText = #{isThroughText,jdbcType=NVARCHAR},
+      IsDisposition = #{isDisposition,jdbcType=BIT},
+      IsDispositionText = #{isDispositionText,jdbcType=NVARCHAR},
+      RoomNumber = #{roomNumber,jdbcType=NVARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

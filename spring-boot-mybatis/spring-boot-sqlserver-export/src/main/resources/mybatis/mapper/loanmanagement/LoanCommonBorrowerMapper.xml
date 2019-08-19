@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.LoanCommonBorrowerMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.LoanCommonBorrower" >
+    <id column="CommonBorrowerId" property="commonBorrowerId" jdbcType="INTEGER" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <result column="LoanName" property="loanName" jdbcType="NVARCHAR" />
+    <result column="CommonBorrowerName" property="commonBorrowerName" jdbcType="NVARCHAR" />
+    <result column="RelationsWithBorrowersText" property="relationsWithBorrowersText" jdbcType="NVARCHAR" />
+    <result column="CertificateType" property="certificateType" jdbcType="INTEGER" />
+    <result column="CertificateTypeText" property="certificateTypeText" jdbcType="NVARCHAR" />
+    <result column="CertificateNo" property="certificateNo" jdbcType="NVARCHAR" />
+    <result column="BirthDate" property="birthDate" jdbcType="DATE" />
+    <result column="MaritalStatus" property="maritalStatus" jdbcType="INTEGER" />
+    <result column="MaritalStatusText" property="maritalStatusText" jdbcType="NVARCHAR" />
+    <result column="PhoneNo" property="phoneNo" jdbcType="NVARCHAR" />
+    <result column="Share" property="share" jdbcType="DECIMAL" />
+    <result column="CreditRecordIsNull" property="creditRecordIsNull" jdbcType="BIT" />
+    <result column="SpouseName" property="spouseName" jdbcType="NVARCHAR" />
+    <result column="SpouseBorrowerRelationsText" property="spouseBorrowerRelationsText" jdbcType="NVARCHAR" />
+    <result column="SpouseCertificateType" property="spouseCertificateType" jdbcType="INTEGER" />
+    <result column="SpouseCertificateTypeText" property="spouseCertificateTypeText" jdbcType="NVARCHAR" />
+    <result column="SpouseCertificateNo" property="spouseCertificateNo" jdbcType="NVARCHAR" />
+    <result column="SpouseBirthDate" property="spouseBirthDate" jdbcType="DATE" />
+    <result column="SpousePhoneNo" property="spousePhoneNo" jdbcType="NVARCHAR" />
+    <result column="SpouseShare" property="spouseShare" jdbcType="DECIMAL" />
+    <result column="SpouseCreditRecordIsNull" property="spouseCreditRecordIsNull" jdbcType="BIT" />
+    <result column="CreatedTime" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="UpdateTime" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="Remarks" property="remarks" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CommonBorrowerId, ProjectNo, LoanNo, LoanName, CommonBorrowerName, RelationsWithBorrowersText, 
+    CertificateType, CertificateTypeText, CertificateNo, BirthDate, MaritalStatus, MaritalStatusText, 
+    PhoneNo, Share, CreditRecordIsNull, SpouseName, SpouseBorrowerRelationsText, SpouseCertificateType, 
+    SpouseCertificateTypeText, SpouseCertificateNo, SpouseBirthDate, SpousePhoneNo, SpouseShare, 
+    SpouseCreditRecordIsNull, CreatedTime, CreatedUser, UpdateTime, Remarks
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from LoanCommonBorrower
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from LoanCommonBorrower
+    where CommonBorrowerId = #{commonBorrowerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LoanCommonBorrower
+    where CommonBorrowerId = #{commonBorrowerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.LoanCommonBorrower" >
+    insert into LoanCommonBorrower (CommonBorrowerId, ProjectNo, LoanNo, 
+      LoanName, CommonBorrowerName, RelationsWithBorrowersText, 
+      CertificateType, CertificateTypeText, 
+      CertificateNo, BirthDate, MaritalStatus, 
+      MaritalStatusText, PhoneNo, Share, 
+      CreditRecordIsNull, SpouseName, SpouseBorrowerRelationsText, 
+      SpouseCertificateType, SpouseCertificateTypeText, 
+      SpouseCertificateNo, SpouseBirthDate, SpousePhoneNo, 
+      SpouseShare, SpouseCreditRecordIsNull, CreatedTime, 
+      CreatedUser, UpdateTime, Remarks
+      )
+    values (#{commonBorrowerId,jdbcType=INTEGER}, #{projectNo,jdbcType=NVARCHAR}, #{loanNo,jdbcType=NVARCHAR}, 
+      #{loanName,jdbcType=NVARCHAR}, #{commonBorrowerName,jdbcType=NVARCHAR}, #{relationsWithBorrowersText,jdbcType=NVARCHAR}, 
+      #{certificateType,jdbcType=INTEGER}, #{certificateTypeText,jdbcType=NVARCHAR}, 
+      #{certificateNo,jdbcType=NVARCHAR}, #{birthDate,jdbcType=DATE}, #{maritalStatus,jdbcType=INTEGER}, 
+      #{maritalStatusText,jdbcType=NVARCHAR}, #{phoneNo,jdbcType=NVARCHAR}, #{share,jdbcType=DECIMAL}, 
+      #{creditRecordIsNull,jdbcType=BIT}, #{spouseName,jdbcType=NVARCHAR}, #{spouseBorrowerRelationsText,jdbcType=NVARCHAR}, 
+      #{spouseCertificateType,jdbcType=INTEGER}, #{spouseCertificateTypeText,jdbcType=NVARCHAR}, 
+      #{spouseCertificateNo,jdbcType=NVARCHAR}, #{spouseBirthDate,jdbcType=DATE}, #{spousePhoneNo,jdbcType=NVARCHAR}, 
+      #{spouseShare,jdbcType=DECIMAL}, #{spouseCreditRecordIsNull,jdbcType=BIT}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{createdUser,jdbcType=NVARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{remarks,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.LoanCommonBorrower" >
+    insert into LoanCommonBorrower
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commonBorrowerId != null" >
+        CommonBorrowerId,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="loanName != null" >
+        LoanName,
+      </if>
+      <if test="commonBorrowerName != null" >
+        CommonBorrowerName,
+      </if>
+      <if test="relationsWithBorrowersText != null" >
+        RelationsWithBorrowersText,
+      </if>
+      <if test="certificateType != null" >
+        CertificateType,
+      </if>
+      <if test="certificateTypeText != null" >
+        CertificateTypeText,
+      </if>
+      <if test="certificateNo != null" >
+        CertificateNo,
+      </if>
+      <if test="birthDate != null" >
+        BirthDate,
+      </if>
+      <if test="maritalStatus != null" >
+        MaritalStatus,
+      </if>
+      <if test="maritalStatusText != null" >
+        MaritalStatusText,
+      </if>
+      <if test="phoneNo != null" >
+        PhoneNo,
+      </if>
+      <if test="share != null" >
+        Share,
+      </if>
+      <if test="creditRecordIsNull != null" >
+        CreditRecordIsNull,
+      </if>
+      <if test="spouseName != null" >
+        SpouseName,
+      </if>
+      <if test="spouseBorrowerRelationsText != null" >
+        SpouseBorrowerRelationsText,
+      </if>
+      <if test="spouseCertificateType != null" >
+        SpouseCertificateType,
+      </if>
+      <if test="spouseCertificateTypeText != null" >
+        SpouseCertificateTypeText,
+      </if>
+      <if test="spouseCertificateNo != null" >
+        SpouseCertificateNo,
+      </if>
+      <if test="spouseBirthDate != null" >
+        SpouseBirthDate,
+      </if>
+      <if test="spousePhoneNo != null" >
+        SpousePhoneNo,
+      </if>
+      <if test="spouseShare != null" >
+        SpouseShare,
+      </if>
+      <if test="spouseCreditRecordIsNull != null" >
+        SpouseCreditRecordIsNull,
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="updateTime != null" >
+        UpdateTime,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commonBorrowerId != null" >
+        #{commonBorrowerId,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanName != null" >
+        #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="commonBorrowerName != null" >
+        #{commonBorrowerName,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationsWithBorrowersText != null" >
+        #{relationsWithBorrowersText,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        #{certificateType,jdbcType=INTEGER},
+      </if>
+      <if test="certificateTypeText != null" >
+        #{certificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateNo != null" >
+        #{certificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        #{birthDate,jdbcType=DATE},
+      </if>
+      <if test="maritalStatus != null" >
+        #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="maritalStatusText != null" >
+        #{maritalStatusText,jdbcType=NVARCHAR},
+      </if>
+      <if test="phoneNo != null" >
+        #{phoneNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="share != null" >
+        #{share,jdbcType=DECIMAL},
+      </if>
+      <if test="creditRecordIsNull != null" >
+        #{creditRecordIsNull,jdbcType=BIT},
+      </if>
+      <if test="spouseName != null" >
+        #{spouseName,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseBorrowerRelationsText != null" >
+        #{spouseBorrowerRelationsText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseCertificateType != null" >
+        #{spouseCertificateType,jdbcType=INTEGER},
+      </if>
+      <if test="spouseCertificateTypeText != null" >
+        #{spouseCertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseCertificateNo != null" >
+        #{spouseCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseBirthDate != null" >
+        #{spouseBirthDate,jdbcType=DATE},
+      </if>
+      <if test="spousePhoneNo != null" >
+        #{spousePhoneNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseShare != null" >
+        #{spouseShare,jdbcType=DECIMAL},
+      </if>
+      <if test="spouseCreditRecordIsNull != null" >
+        #{spouseCreditRecordIsNull,jdbcType=BIT},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.LoanCommonBorrower" >
+    update LoanCommonBorrower
+    <set >
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanNo != null" >
+        LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanName != null" >
+        LoanName = #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="commonBorrowerName != null" >
+        CommonBorrowerName = #{commonBorrowerName,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationsWithBorrowersText != null" >
+        RelationsWithBorrowersText = #{relationsWithBorrowersText,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        CertificateType = #{certificateType,jdbcType=INTEGER},
+      </if>
+      <if test="certificateTypeText != null" >
+        CertificateTypeText = #{certificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateNo != null" >
+        CertificateNo = #{certificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="birthDate != null" >
+        BirthDate = #{birthDate,jdbcType=DATE},
+      </if>
+      <if test="maritalStatus != null" >
+        MaritalStatus = #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="maritalStatusText != null" >
+        MaritalStatusText = #{maritalStatusText,jdbcType=NVARCHAR},
+      </if>
+      <if test="phoneNo != null" >
+        PhoneNo = #{phoneNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="share != null" >
+        Share = #{share,jdbcType=DECIMAL},
+      </if>
+      <if test="creditRecordIsNull != null" >
+        CreditRecordIsNull = #{creditRecordIsNull,jdbcType=BIT},
+      </if>
+      <if test="spouseName != null" >
+        SpouseName = #{spouseName,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseBorrowerRelationsText != null" >
+        SpouseBorrowerRelationsText = #{spouseBorrowerRelationsText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseCertificateType != null" >
+        SpouseCertificateType = #{spouseCertificateType,jdbcType=INTEGER},
+      </if>
+      <if test="spouseCertificateTypeText != null" >
+        SpouseCertificateTypeText = #{spouseCertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseCertificateNo != null" >
+        SpouseCertificateNo = #{spouseCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseBirthDate != null" >
+        SpouseBirthDate = #{spouseBirthDate,jdbcType=DATE},
+      </if>
+      <if test="spousePhoneNo != null" >
+        SpousePhoneNo = #{spousePhoneNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="spouseShare != null" >
+        SpouseShare = #{spouseShare,jdbcType=DECIMAL},
+      </if>
+      <if test="spouseCreditRecordIsNull != null" >
+        SpouseCreditRecordIsNull = #{spouseCreditRecordIsNull,jdbcType=BIT},
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UpdateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where CommonBorrowerId = #{commonBorrowerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.LoanCommonBorrower" >
+    update LoanCommonBorrower
+    set ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      LoanName = #{loanName,jdbcType=NVARCHAR},
+      CommonBorrowerName = #{commonBorrowerName,jdbcType=NVARCHAR},
+      RelationsWithBorrowersText = #{relationsWithBorrowersText,jdbcType=NVARCHAR},
+      CertificateType = #{certificateType,jdbcType=INTEGER},
+      CertificateTypeText = #{certificateTypeText,jdbcType=NVARCHAR},
+      CertificateNo = #{certificateNo,jdbcType=NVARCHAR},
+      BirthDate = #{birthDate,jdbcType=DATE},
+      MaritalStatus = #{maritalStatus,jdbcType=INTEGER},
+      MaritalStatusText = #{maritalStatusText,jdbcType=NVARCHAR},
+      PhoneNo = #{phoneNo,jdbcType=NVARCHAR},
+      Share = #{share,jdbcType=DECIMAL},
+      CreditRecordIsNull = #{creditRecordIsNull,jdbcType=BIT},
+      SpouseName = #{spouseName,jdbcType=NVARCHAR},
+      SpouseBorrowerRelationsText = #{spouseBorrowerRelationsText,jdbcType=NVARCHAR},
+      SpouseCertificateType = #{spouseCertificateType,jdbcType=INTEGER},
+      SpouseCertificateTypeText = #{spouseCertificateTypeText,jdbcType=NVARCHAR},
+      SpouseCertificateNo = #{spouseCertificateNo,jdbcType=NVARCHAR},
+      SpouseBirthDate = #{spouseBirthDate,jdbcType=DATE},
+      SpousePhoneNo = #{spousePhoneNo,jdbcType=NVARCHAR},
+      SpouseShare = #{spouseShare,jdbcType=DECIMAL},
+      SpouseCreditRecordIsNull = #{spouseCreditRecordIsNull,jdbcType=BIT},
+      CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      UpdateTime = #{updateTime,jdbcType=TIMESTAMP},
+      Remarks = #{remarks,jdbcType=NVARCHAR}
+    where CommonBorrowerId = #{commonBorrowerId,jdbcType=INTEGER}
+  </update>
+</mapper>

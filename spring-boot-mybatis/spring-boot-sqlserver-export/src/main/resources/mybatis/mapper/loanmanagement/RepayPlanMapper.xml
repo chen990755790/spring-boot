@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.RepayPlanMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.RepayPlan" >
+    <id column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <id column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <id column="Issue" property="issue" jdbcType="INTEGER" />
+    <result column="LoanName" property="loanName" jdbcType="NVARCHAR" />
+    <result column="DueDate" property="dueDate" jdbcType="DATE" />
+    <result column="PrincipalDue" property="principalDue" jdbcType="DECIMAL" />
+    <result column="InterestDue" property="interestDue" jdbcType="DECIMAL" />
+    <result column="SecurityChargeDue" property="securityChargeDue" jdbcType="DECIMAL" />
+    <result column="ServiceChargeDue" property="serviceChargeDue" jdbcType="DECIMAL" />
+    <result column="ChargeMoneyDue" property="chargeMoneyDue" jdbcType="DECIMAL" />
+    <result column="OtherPaymentDue" property="otherPaymentDue" jdbcType="DECIMAL" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="CreatedTime" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="ModifedTime" property="modifedTime" jdbcType="TIMESTAMP" />
+    <result column="Remark" property="remark" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ProjectNo, LoanNo, Issue, LoanName, DueDate, PrincipalDue, InterestDue, SecurityChargeDue, 
+    ServiceChargeDue, ChargeMoneyDue, OtherPaymentDue, CreatedUser, CreatedTime, ModifedTime, 
+    Remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from RepayPlan
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.example.model.RepayPlanKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from RepayPlan
+    where ProjectNo = #{projectNo,jdbcType=NVARCHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and Issue = #{issue,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.example.model.RepayPlanKey" >
+    delete from RepayPlan
+    where ProjectNo = #{projectNo,jdbcType=NVARCHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and Issue = #{issue,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.RepayPlan" >
+    insert into RepayPlan (ProjectNo, LoanNo, Issue, 
+      LoanName, DueDate, PrincipalDue, 
+      InterestDue, SecurityChargeDue, ServiceChargeDue, 
+      ChargeMoneyDue, OtherPaymentDue, CreatedUser, 
+      CreatedTime, ModifedTime, Remark
+      )
+    values (#{projectNo,jdbcType=NVARCHAR}, #{loanNo,jdbcType=NVARCHAR}, #{issue,jdbcType=INTEGER}, 
+      #{loanName,jdbcType=NVARCHAR}, #{dueDate,jdbcType=DATE}, #{principalDue,jdbcType=DECIMAL}, 
+      #{interestDue,jdbcType=DECIMAL}, #{securityChargeDue,jdbcType=DECIMAL}, #{serviceChargeDue,jdbcType=DECIMAL}, 
+      #{chargeMoneyDue,jdbcType=DECIMAL}, #{otherPaymentDue,jdbcType=DECIMAL}, #{createdUser,jdbcType=NVARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{modifedTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.RepayPlan" >
+    insert into RepayPlan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="issue != null" >
+        Issue,
+      </if>
+      <if test="loanName != null" >
+        LoanName,
+      </if>
+      <if test="dueDate != null" >
+        DueDate,
+      </if>
+      <if test="principalDue != null" >
+        PrincipalDue,
+      </if>
+      <if test="interestDue != null" >
+        InterestDue,
+      </if>
+      <if test="securityChargeDue != null" >
+        SecurityChargeDue,
+      </if>
+      <if test="serviceChargeDue != null" >
+        ServiceChargeDue,
+      </if>
+      <if test="chargeMoneyDue != null" >
+        ChargeMoneyDue,
+      </if>
+      <if test="otherPaymentDue != null" >
+        OtherPaymentDue,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime,
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="issue != null" >
+        #{issue,jdbcType=INTEGER},
+      </if>
+      <if test="loanName != null" >
+        #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="dueDate != null" >
+        #{dueDate,jdbcType=DATE},
+      </if>
+      <if test="principalDue != null" >
+        #{principalDue,jdbcType=DECIMAL},
+      </if>
+      <if test="interestDue != null" >
+        #{interestDue,jdbcType=DECIMAL},
+      </if>
+      <if test="securityChargeDue != null" >
+        #{securityChargeDue,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceChargeDue != null" >
+        #{serviceChargeDue,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeMoneyDue != null" >
+        #{chargeMoneyDue,jdbcType=DECIMAL},
+      </if>
+      <if test="otherPaymentDue != null" >
+        #{otherPaymentDue,jdbcType=DECIMAL},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null" >
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.RepayPlan" >
+    update RepayPlan
+    <set >
+      <if test="loanName != null" >
+        LoanName = #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="dueDate != null" >
+        DueDate = #{dueDate,jdbcType=DATE},
+      </if>
+      <if test="principalDue != null" >
+        PrincipalDue = #{principalDue,jdbcType=DECIMAL},
+      </if>
+      <if test="interestDue != null" >
+        InterestDue = #{interestDue,jdbcType=DECIMAL},
+      </if>
+      <if test="securityChargeDue != null" >
+        SecurityChargeDue = #{securityChargeDue,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceChargeDue != null" >
+        ServiceChargeDue = #{serviceChargeDue,jdbcType=DECIMAL},
+      </if>
+      <if test="chargeMoneyDue != null" >
+        ChargeMoneyDue = #{chargeMoneyDue,jdbcType=DECIMAL},
+      </if>
+      <if test="otherPaymentDue != null" >
+        OtherPaymentDue = #{otherPaymentDue,jdbcType=DECIMAL},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where ProjectNo = #{projectNo,jdbcType=NVARCHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and Issue = #{issue,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.RepayPlan" >
+    update RepayPlan
+    set LoanName = #{loanName,jdbcType=NVARCHAR},
+      DueDate = #{dueDate,jdbcType=DATE},
+      PrincipalDue = #{principalDue,jdbcType=DECIMAL},
+      InterestDue = #{interestDue,jdbcType=DECIMAL},
+      SecurityChargeDue = #{securityChargeDue,jdbcType=DECIMAL},
+      ServiceChargeDue = #{serviceChargeDue,jdbcType=DECIMAL},
+      ChargeMoneyDue = #{chargeMoneyDue,jdbcType=DECIMAL},
+      OtherPaymentDue = #{otherPaymentDue,jdbcType=DECIMAL},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      Remark = #{remark,jdbcType=NVARCHAR}
+    where ProjectNo = #{projectNo,jdbcType=NVARCHAR}
+      and LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and Issue = #{issue,jdbcType=INTEGER}
+  </update>
+</mapper>

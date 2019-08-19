@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.CollateralInsuranceMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.CollateralInsurance" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <result column="PolicyNumber" property="policyNumber" jdbcType="NVARCHAR" />
+    <result column="PolicyType" property="policyType" jdbcType="NVARCHAR" />
+    <result column="PolicyTypeText" property="policyTypeText" jdbcType="NVARCHAR" />
+    <result column="CollertalModel" property="collertalModel" jdbcType="NVARCHAR" />
+    <result column="CollertalModelText" property="collertalModelText" jdbcType="NVARCHAR" />
+    <result column="ApplicantName" property="applicantName" jdbcType="NVARCHAR" />
+    <result column="ApplicantCertificateType" property="applicantCertificateType" jdbcType="NVARCHAR" />
+    <result column="ApplicantCertificateTypeText" property="applicantCertificateTypeText" jdbcType="NVARCHAR" />
+    <result column="ApplicantCertificateNo" property="applicantCertificateNo" jdbcType="NVARCHAR" />
+    <result column="ApplicantCertificatePhone" property="applicantCertificatePhone" jdbcType="NVARCHAR" />
+    <result column="InsuredName" property="insuredName" jdbcType="NVARCHAR" />
+    <result column="InsuredCertificateType" property="insuredCertificateType" jdbcType="NVARCHAR" />
+    <result column="InsuredCertificateTypeText" property="insuredCertificateTypeText" jdbcType="NVARCHAR" />
+    <result column="InsuredCertificateNo" property="insuredCertificateNo" jdbcType="NVARCHAR" />
+    <result column="InsuranceType" property="insuranceType" jdbcType="NVARCHAR" />
+    <result column="InsuranceTypeText" property="insuranceTypeText" jdbcType="NVARCHAR" />
+    <result column="PremiumAmount" property="premiumAmount" jdbcType="DECIMAL" />
+    <result column="InsuranceBeginDate" property="insuranceBeginDate" jdbcType="DATE" />
+    <result column="InsuranceEndDate" property="insuranceEndDate" jdbcType="DATE" />
+    <result column="PremiumCompanyName" property="premiumCompanyName" jdbcType="NVARCHAR" />
+    <result column="PremiumIntermediaryName" property="premiumIntermediaryName" jdbcType="NVARCHAR" />
+    <result column="SpecialAgreementContent" property="specialAgreementContent" jdbcType="NVARCHAR" />
+    <result column="Remarks" property="remarks" jdbcType="NVARCHAR" />
+    <result column="CreationTime" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="ModifyTime" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, ProjectNo, LoanNo, PolicyNumber, PolicyType, PolicyTypeText, CollertalModel, 
+    CollertalModelText, ApplicantName, ApplicantCertificateType, ApplicantCertificateTypeText, 
+    ApplicantCertificateNo, ApplicantCertificatePhone, InsuredName, InsuredCertificateType, 
+    InsuredCertificateTypeText, InsuredCertificateNo, InsuranceType, InsuranceTypeText, 
+    PremiumAmount, InsuranceBeginDate, InsuranceEndDate, PremiumCompanyName, PremiumIntermediaryName, 
+    SpecialAgreementContent, Remarks, CreationTime, ModifyTime, CreatedUser
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from CollateralInsurance
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CollateralInsurance
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CollateralInsurance
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.CollateralInsurance" >
+    insert into CollateralInsurance (Id, ProjectNo, LoanNo, 
+      PolicyNumber, PolicyType, PolicyTypeText, 
+      CollertalModel, CollertalModelText, ApplicantName, 
+      ApplicantCertificateType, ApplicantCertificateTypeText, 
+      ApplicantCertificateNo, ApplicantCertificatePhone, 
+      InsuredName, InsuredCertificateType, 
+      InsuredCertificateTypeText, InsuredCertificateNo, 
+      InsuranceType, InsuranceTypeText, PremiumAmount, 
+      InsuranceBeginDate, InsuranceEndDate, PremiumCompanyName, 
+      PremiumIntermediaryName, SpecialAgreementContent, 
+      Remarks, CreationTime, ModifyTime, 
+      CreatedUser)
+    values (#{id,jdbcType=CHAR}, #{projectNo,jdbcType=NVARCHAR}, #{loanNo,jdbcType=NVARCHAR}, 
+      #{policyNumber,jdbcType=NVARCHAR}, #{policyType,jdbcType=NVARCHAR}, #{policyTypeText,jdbcType=NVARCHAR}, 
+      #{collertalModel,jdbcType=NVARCHAR}, #{collertalModelText,jdbcType=NVARCHAR}, #{applicantName,jdbcType=NVARCHAR}, 
+      #{applicantCertificateType,jdbcType=NVARCHAR}, #{applicantCertificateTypeText,jdbcType=NVARCHAR}, 
+      #{applicantCertificateNo,jdbcType=NVARCHAR}, #{applicantCertificatePhone,jdbcType=NVARCHAR}, 
+      #{insuredName,jdbcType=NVARCHAR}, #{insuredCertificateType,jdbcType=NVARCHAR}, 
+      #{insuredCertificateTypeText,jdbcType=NVARCHAR}, #{insuredCertificateNo,jdbcType=NVARCHAR}, 
+      #{insuranceType,jdbcType=NVARCHAR}, #{insuranceTypeText,jdbcType=NVARCHAR}, #{premiumAmount,jdbcType=DECIMAL}, 
+      #{insuranceBeginDate,jdbcType=DATE}, #{insuranceEndDate,jdbcType=DATE}, #{premiumCompanyName,jdbcType=NVARCHAR}, 
+      #{premiumIntermediaryName,jdbcType=NVARCHAR}, #{specialAgreementContent,jdbcType=NVARCHAR}, 
+      #{remarks,jdbcType=NVARCHAR}, #{creationTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{createdUser,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.CollateralInsurance" >
+    insert into CollateralInsurance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="policyNumber != null" >
+        PolicyNumber,
+      </if>
+      <if test="policyType != null" >
+        PolicyType,
+      </if>
+      <if test="policyTypeText != null" >
+        PolicyTypeText,
+      </if>
+      <if test="collertalModel != null" >
+        CollertalModel,
+      </if>
+      <if test="collertalModelText != null" >
+        CollertalModelText,
+      </if>
+      <if test="applicantName != null" >
+        ApplicantName,
+      </if>
+      <if test="applicantCertificateType != null" >
+        ApplicantCertificateType,
+      </if>
+      <if test="applicantCertificateTypeText != null" >
+        ApplicantCertificateTypeText,
+      </if>
+      <if test="applicantCertificateNo != null" >
+        ApplicantCertificateNo,
+      </if>
+      <if test="applicantCertificatePhone != null" >
+        ApplicantCertificatePhone,
+      </if>
+      <if test="insuredName != null" >
+        InsuredName,
+      </if>
+      <if test="insuredCertificateType != null" >
+        InsuredCertificateType,
+      </if>
+      <if test="insuredCertificateTypeText != null" >
+        InsuredCertificateTypeText,
+      </if>
+      <if test="insuredCertificateNo != null" >
+        InsuredCertificateNo,
+      </if>
+      <if test="insuranceType != null" >
+        InsuranceType,
+      </if>
+      <if test="insuranceTypeText != null" >
+        InsuranceTypeText,
+      </if>
+      <if test="premiumAmount != null" >
+        PremiumAmount,
+      </if>
+      <if test="insuranceBeginDate != null" >
+        InsuranceBeginDate,
+      </if>
+      <if test="insuranceEndDate != null" >
+        InsuranceEndDate,
+      </if>
+      <if test="premiumCompanyName != null" >
+        PremiumCompanyName,
+      </if>
+      <if test="premiumIntermediaryName != null" >
+        PremiumIntermediaryName,
+      </if>
+      <if test="specialAgreementContent != null" >
+        SpecialAgreementContent,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="creationTime != null" >
+        CreationTime,
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="policyNumber != null" >
+        #{policyNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="policyType != null" >
+        #{policyType,jdbcType=NVARCHAR},
+      </if>
+      <if test="policyTypeText != null" >
+        #{policyTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModel != null" >
+        #{collertalModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModelText != null" >
+        #{collertalModelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="applicantName != null" >
+        #{applicantName,jdbcType=NVARCHAR},
+      </if>
+      <if test="applicantCertificateType != null" >
+        #{applicantCertificateType,jdbcType=NVARCHAR},
+      </if>
+      <if test="applicantCertificateTypeText != null" >
+        #{applicantCertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="applicantCertificateNo != null" >
+        #{applicantCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="applicantCertificatePhone != null" >
+        #{applicantCertificatePhone,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuredName != null" >
+        #{insuredName,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuredCertificateType != null" >
+        #{insuredCertificateType,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuredCertificateTypeText != null" >
+        #{insuredCertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuredCertificateNo != null" >
+        #{insuredCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuranceType != null" >
+        #{insuranceType,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuranceTypeText != null" >
+        #{insuranceTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="premiumAmount != null" >
+        #{premiumAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="insuranceBeginDate != null" >
+        #{insuranceBeginDate,jdbcType=DATE},
+      </if>
+      <if test="insuranceEndDate != null" >
+        #{insuranceEndDate,jdbcType=DATE},
+      </if>
+      <if test="premiumCompanyName != null" >
+        #{premiumCompanyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="premiumIntermediaryName != null" >
+        #{premiumIntermediaryName,jdbcType=NVARCHAR},
+      </if>
+      <if test="specialAgreementContent != null" >
+        #{specialAgreementContent,jdbcType=NVARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.CollateralInsurance" >
+    update CollateralInsurance
+    <set >
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanNo != null" >
+        LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="policyNumber != null" >
+        PolicyNumber = #{policyNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="policyType != null" >
+        PolicyType = #{policyType,jdbcType=NVARCHAR},
+      </if>
+      <if test="policyTypeText != null" >
+        PolicyTypeText = #{policyTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModel != null" >
+        CollertalModel = #{collertalModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModelText != null" >
+        CollertalModelText = #{collertalModelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="applicantName != null" >
+        ApplicantName = #{applicantName,jdbcType=NVARCHAR},
+      </if>
+      <if test="applicantCertificateType != null" >
+        ApplicantCertificateType = #{applicantCertificateType,jdbcType=NVARCHAR},
+      </if>
+      <if test="applicantCertificateTypeText != null" >
+        ApplicantCertificateTypeText = #{applicantCertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="applicantCertificateNo != null" >
+        ApplicantCertificateNo = #{applicantCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="applicantCertificatePhone != null" >
+        ApplicantCertificatePhone = #{applicantCertificatePhone,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuredName != null" >
+        InsuredName = #{insuredName,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuredCertificateType != null" >
+        InsuredCertificateType = #{insuredCertificateType,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuredCertificateTypeText != null" >
+        InsuredCertificateTypeText = #{insuredCertificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuredCertificateNo != null" >
+        InsuredCertificateNo = #{insuredCertificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuranceType != null" >
+        InsuranceType = #{insuranceType,jdbcType=NVARCHAR},
+      </if>
+      <if test="insuranceTypeText != null" >
+        InsuranceTypeText = #{insuranceTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="premiumAmount != null" >
+        PremiumAmount = #{premiumAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="insuranceBeginDate != null" >
+        InsuranceBeginDate = #{insuranceBeginDate,jdbcType=DATE},
+      </if>
+      <if test="insuranceEndDate != null" >
+        InsuranceEndDate = #{insuranceEndDate,jdbcType=DATE},
+      </if>
+      <if test="premiumCompanyName != null" >
+        PremiumCompanyName = #{premiumCompanyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="premiumIntermediaryName != null" >
+        PremiumIntermediaryName = #{premiumIntermediaryName,jdbcType=NVARCHAR},
+      </if>
+      <if test="specialAgreementContent != null" >
+        SpecialAgreementContent = #{specialAgreementContent,jdbcType=NVARCHAR},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.CollateralInsurance" >
+    update CollateralInsurance
+    set ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      PolicyNumber = #{policyNumber,jdbcType=NVARCHAR},
+      PolicyType = #{policyType,jdbcType=NVARCHAR},
+      PolicyTypeText = #{policyTypeText,jdbcType=NVARCHAR},
+      CollertalModel = #{collertalModel,jdbcType=NVARCHAR},
+      CollertalModelText = #{collertalModelText,jdbcType=NVARCHAR},
+      ApplicantName = #{applicantName,jdbcType=NVARCHAR},
+      ApplicantCertificateType = #{applicantCertificateType,jdbcType=NVARCHAR},
+      ApplicantCertificateTypeText = #{applicantCertificateTypeText,jdbcType=NVARCHAR},
+      ApplicantCertificateNo = #{applicantCertificateNo,jdbcType=NVARCHAR},
+      ApplicantCertificatePhone = #{applicantCertificatePhone,jdbcType=NVARCHAR},
+      InsuredName = #{insuredName,jdbcType=NVARCHAR},
+      InsuredCertificateType = #{insuredCertificateType,jdbcType=NVARCHAR},
+      InsuredCertificateTypeText = #{insuredCertificateTypeText,jdbcType=NVARCHAR},
+      InsuredCertificateNo = #{insuredCertificateNo,jdbcType=NVARCHAR},
+      InsuranceType = #{insuranceType,jdbcType=NVARCHAR},
+      InsuranceTypeText = #{insuranceTypeText,jdbcType=NVARCHAR},
+      PremiumAmount = #{premiumAmount,jdbcType=DECIMAL},
+      InsuranceBeginDate = #{insuranceBeginDate,jdbcType=DATE},
+      InsuranceEndDate = #{insuranceEndDate,jdbcType=DATE},
+      PremiumCompanyName = #{premiumCompanyName,jdbcType=NVARCHAR},
+      PremiumIntermediaryName = #{premiumIntermediaryName,jdbcType=NVARCHAR},
+      SpecialAgreementContent = #{specialAgreementContent,jdbcType=NVARCHAR},
+      Remarks = #{remarks,jdbcType=NVARCHAR},
+      CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

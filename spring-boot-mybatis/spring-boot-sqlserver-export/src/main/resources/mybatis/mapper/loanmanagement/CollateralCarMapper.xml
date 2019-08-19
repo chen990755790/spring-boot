@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.CollateralCarMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.CollateralCar" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="VehicleIdentify" property="vehicleIdentify" jdbcType="NVARCHAR" />
+    <result column="UseCharacter" property="useCharacter" jdbcType="NVARCHAR" />
+    <result column="UseCharacterText" property="useCharacterText" jdbcType="NVARCHAR" />
+    <result column="VehicleLevel" property="vehicleLevel" jdbcType="NVARCHAR" />
+    <result column="VehicleLevelText" property="vehicleLevelText" jdbcType="NVARCHAR" />
+    <result column="MortagageDate" property="mortagageDate" jdbcType="DATE" />
+    <result column="DateOfProduction" property="dateOfProduction" jdbcType="DATE" />
+    <result column="ValuationPrice" property="valuationPrice" jdbcType="DECIMAL" />
+    <result column="VehicleCategory" property="vehicleCategory" jdbcType="NVARCHAR" />
+    <result column="VehicleCategoryText" property="vehicleCategoryText" jdbcType="NVARCHAR" />
+    <result column="VehicleBrand" property="vehicleBrand" jdbcType="NVARCHAR" />
+    <result column="VehiclePlateNumber" property="vehiclePlateNumber" jdbcType="NVARCHAR" />
+    <result column="VehicleType" property="vehicleType" jdbcType="NVARCHAR" />
+    <result column="VehicleTypeText" property="vehicleTypeText" jdbcType="NVARCHAR" />
+    <result column="VehicleModel" property="vehicleModel" jdbcType="NVARCHAR" />
+    <result column="HasMortgageContract" property="hasMortgageContract" jdbcType="BIT" />
+    <result column="HasMortgageContractText" property="hasMortgageContractText" jdbcType="NVARCHAR" />
+    <result column="PurchaseDate" property="purchaseDate" jdbcType="DATE" />
+    <result column="EngineNo" property="engineNo" jdbcType="NVARCHAR" />
+    <result column="MortgageRates" property="mortgageRates" jdbcType="DECIMAL" />
+    <result column="MortgageAuthorizer" property="mortgageAuthorizer" jdbcType="NVARCHAR" />
+    <result column="PurchasePrice" property="purchasePrice" jdbcType="DECIMAL" />
+    <result column="SweptVolume" property="sweptVolume" jdbcType="NVARCHAR" />
+    <result column="Kilometers" property="kilometers" jdbcType="DECIMAL" />
+    <result column="DownPaymentRatio" property="downPaymentRatio" jdbcType="DECIMAL" />
+    <result column="IdNo" property="idNo" jdbcType="NVARCHAR" />
+    <result column="VehicleColor" property="vehicleColor" jdbcType="NVARCHAR" />
+    <result column="RentType" property="rentType" jdbcType="NVARCHAR" />
+    <result column="MortagageModel" property="mortagageModel" jdbcType="NVARCHAR" />
+    <result column="ThirdpartyEvaluationPrice" property="thirdpartyEvaluationPrice" jdbcType="DECIMAL" />
+    <result column="IsExtension" property="isExtension" jdbcType="BIT" />
+    <result column="IsExtensionText" property="isExtensionText" jdbcType="NVARCHAR" />
+    <result column="InscuranceName" property="inscuranceName" jdbcType="NVARCHAR" />
+    <result column="SALIExpireDate" property="SALIExpireDate" jdbcType="DATE" />
+    <result column="IssueDate" property="issueDate" jdbcType="DATE" />
+    <result column="TransferCount" property="transferCount" jdbcType="INTEGER" />
+    <result column="HisWarrantsUploadingTime" property="hisWarrantsUploadingTime" jdbcType="DATE" />
+    <result column="VaiEndDate" property="vaiEndDate" jdbcType="DATE" />
+    <result column="UsedDays" property="usedDays" jdbcType="INTEGER" />
+    <result column="StorageDate" property="storageDate" jdbcType="DATE" />
+    <result column="OutStorageDate" property="outStorageDate" jdbcType="DATE" />
+    <result column="VehiclePurchasePrice" property="vehiclePurchasePrice" jdbcType="DECIMAL" />
+    <result column="CollertalModel" property="collertalModel" jdbcType="NVARCHAR" />
+    <result column="CollertalModelText" property="collertalModelText" jdbcType="NVARCHAR" />
+    <result column="InteriorColor" property="interiorColor" jdbcType="NVARCHAR" />
+    <result column="VehicleDetails" property="vehicleDetails" jdbcType="NVARCHAR" />
+    <result column="StorePlace" property="storePlace" jdbcType="NVARCHAR" />
+    <result column="CreationTime" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="ModifyTime" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="DeclarationNo" property="declarationNo" jdbcType="NVARCHAR" />
+    <result column="MarginRatio" property="marginRatio" jdbcType="DECIMAL" />
+    <result column="CarInsurance" property="carInsurance" jdbcType="NVARCHAR" />
+    <result column="CarInsuranceText" property="carInsuranceText" jdbcType="NVARCHAR" />
+    <result column="Remark" property="remark" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, LoanNo, ProjectNo, VehicleIdentify, UseCharacter, UseCharacterText, VehicleLevel, 
+    VehicleLevelText, MortagageDate, DateOfProduction, ValuationPrice, VehicleCategory, 
+    VehicleCategoryText, VehicleBrand, VehiclePlateNumber, VehicleType, VehicleTypeText, 
+    VehicleModel, HasMortgageContract, HasMortgageContractText, PurchaseDate, EngineNo, 
+    MortgageRates, MortgageAuthorizer, PurchasePrice, SweptVolume, Kilometers, DownPaymentRatio, 
+    IdNo, VehicleColor, RentType, MortagageModel, ThirdpartyEvaluationPrice, IsExtension, 
+    IsExtensionText, InscuranceName, SALIExpireDate, IssueDate, TransferCount, HisWarrantsUploadingTime, 
+    VaiEndDate, UsedDays, StorageDate, OutStorageDate, VehiclePurchasePrice, CollertalModel, 
+    CollertalModelText, InteriorColor, VehicleDetails, StorePlace, CreationTime, ModifyTime, 
+    CreatedUser, DeclarationNo, MarginRatio, CarInsurance, CarInsuranceText, Remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from CollateralCar
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CollateralCar
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CollateralCar
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.CollateralCar" >
+    insert into CollateralCar (Id, LoanNo, ProjectNo, 
+      VehicleIdentify, UseCharacter, UseCharacterText, 
+      VehicleLevel, VehicleLevelText, MortagageDate, 
+      DateOfProduction, ValuationPrice, VehicleCategory, 
+      VehicleCategoryText, VehicleBrand, VehiclePlateNumber, 
+      VehicleType, VehicleTypeText, VehicleModel, 
+      HasMortgageContract, HasMortgageContractText, 
+      PurchaseDate, EngineNo, MortgageRates, 
+      MortgageAuthorizer, PurchasePrice, SweptVolume, 
+      Kilometers, DownPaymentRatio, IdNo, 
+      VehicleColor, RentType, MortagageModel, 
+      ThirdpartyEvaluationPrice, IsExtension, IsExtensionText, 
+      InscuranceName, SALIExpireDate, IssueDate, 
+      TransferCount, HisWarrantsUploadingTime, VaiEndDate, 
+      UsedDays, StorageDate, OutStorageDate, 
+      VehiclePurchasePrice, CollertalModel, 
+      CollertalModelText, InteriorColor, VehicleDetails, 
+      StorePlace, CreationTime, ModifyTime, 
+      CreatedUser, DeclarationNo, MarginRatio, 
+      CarInsurance, CarInsuranceText, Remark
+      )
+    values (#{id,jdbcType=CHAR}, #{loanNo,jdbcType=NVARCHAR}, #{projectNo,jdbcType=NVARCHAR}, 
+      #{vehicleIdentify,jdbcType=NVARCHAR}, #{useCharacter,jdbcType=NVARCHAR}, #{useCharacterText,jdbcType=NVARCHAR}, 
+      #{vehicleLevel,jdbcType=NVARCHAR}, #{vehicleLevelText,jdbcType=NVARCHAR}, #{mortagageDate,jdbcType=DATE}, 
+      #{dateOfProduction,jdbcType=DATE}, #{valuationPrice,jdbcType=DECIMAL}, #{vehicleCategory,jdbcType=NVARCHAR}, 
+      #{vehicleCategoryText,jdbcType=NVARCHAR}, #{vehicleBrand,jdbcType=NVARCHAR}, #{vehiclePlateNumber,jdbcType=NVARCHAR}, 
+      #{vehicleType,jdbcType=NVARCHAR}, #{vehicleTypeText,jdbcType=NVARCHAR}, #{vehicleModel,jdbcType=NVARCHAR}, 
+      #{hasMortgageContract,jdbcType=BIT}, #{hasMortgageContractText,jdbcType=NVARCHAR}, 
+      #{purchaseDate,jdbcType=DATE}, #{engineNo,jdbcType=NVARCHAR}, #{mortgageRates,jdbcType=DECIMAL}, 
+      #{mortgageAuthorizer,jdbcType=NVARCHAR}, #{purchasePrice,jdbcType=DECIMAL}, #{sweptVolume,jdbcType=NVARCHAR}, 
+      #{kilometers,jdbcType=DECIMAL}, #{downPaymentRatio,jdbcType=DECIMAL}, #{idNo,jdbcType=NVARCHAR}, 
+      #{vehicleColor,jdbcType=NVARCHAR}, #{rentType,jdbcType=NVARCHAR}, #{mortagageModel,jdbcType=NVARCHAR}, 
+      #{thirdpartyEvaluationPrice,jdbcType=DECIMAL}, #{isExtension,jdbcType=BIT}, #{isExtensionText,jdbcType=NVARCHAR}, 
+      #{inscuranceName,jdbcType=NVARCHAR}, #{SALIExpireDate,jdbcType=DATE}, #{issueDate,jdbcType=DATE}, 
+      #{transferCount,jdbcType=INTEGER}, #{hisWarrantsUploadingTime,jdbcType=DATE}, #{vaiEndDate,jdbcType=DATE}, 
+      #{usedDays,jdbcType=INTEGER}, #{storageDate,jdbcType=DATE}, #{outStorageDate,jdbcType=DATE}, 
+      #{vehiclePurchasePrice,jdbcType=DECIMAL}, #{collertalModel,jdbcType=NVARCHAR}, 
+      #{collertalModelText,jdbcType=NVARCHAR}, #{interiorColor,jdbcType=NVARCHAR}, #{vehicleDetails,jdbcType=NVARCHAR}, 
+      #{storePlace,jdbcType=NVARCHAR}, #{creationTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{createdUser,jdbcType=NVARCHAR}, #{declarationNo,jdbcType=NVARCHAR}, #{marginRatio,jdbcType=DECIMAL}, 
+      #{carInsurance,jdbcType=NVARCHAR}, #{carInsuranceText,jdbcType=NVARCHAR}, #{remark,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.CollateralCar" >
+    insert into CollateralCar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="vehicleIdentify != null" >
+        VehicleIdentify,
+      </if>
+      <if test="useCharacter != null" >
+        UseCharacter,
+      </if>
+      <if test="useCharacterText != null" >
+        UseCharacterText,
+      </if>
+      <if test="vehicleLevel != null" >
+        VehicleLevel,
+      </if>
+      <if test="vehicleLevelText != null" >
+        VehicleLevelText,
+      </if>
+      <if test="mortagageDate != null" >
+        MortagageDate,
+      </if>
+      <if test="dateOfProduction != null" >
+        DateOfProduction,
+      </if>
+      <if test="valuationPrice != null" >
+        ValuationPrice,
+      </if>
+      <if test="vehicleCategory != null" >
+        VehicleCategory,
+      </if>
+      <if test="vehicleCategoryText != null" >
+        VehicleCategoryText,
+      </if>
+      <if test="vehicleBrand != null" >
+        VehicleBrand,
+      </if>
+      <if test="vehiclePlateNumber != null" >
+        VehiclePlateNumber,
+      </if>
+      <if test="vehicleType != null" >
+        VehicleType,
+      </if>
+      <if test="vehicleTypeText != null" >
+        VehicleTypeText,
+      </if>
+      <if test="vehicleModel != null" >
+        VehicleModel,
+      </if>
+      <if test="hasMortgageContract != null" >
+        HasMortgageContract,
+      </if>
+      <if test="hasMortgageContractText != null" >
+        HasMortgageContractText,
+      </if>
+      <if test="purchaseDate != null" >
+        PurchaseDate,
+      </if>
+      <if test="engineNo != null" >
+        EngineNo,
+      </if>
+      <if test="mortgageRates != null" >
+        MortgageRates,
+      </if>
+      <if test="mortgageAuthorizer != null" >
+        MortgageAuthorizer,
+      </if>
+      <if test="purchasePrice != null" >
+        PurchasePrice,
+      </if>
+      <if test="sweptVolume != null" >
+        SweptVolume,
+      </if>
+      <if test="kilometers != null" >
+        Kilometers,
+      </if>
+      <if test="downPaymentRatio != null" >
+        DownPaymentRatio,
+      </if>
+      <if test="idNo != null" >
+        IdNo,
+      </if>
+      <if test="vehicleColor != null" >
+        VehicleColor,
+      </if>
+      <if test="rentType != null" >
+        RentType,
+      </if>
+      <if test="mortagageModel != null" >
+        MortagageModel,
+      </if>
+      <if test="thirdpartyEvaluationPrice != null" >
+        ThirdpartyEvaluationPrice,
+      </if>
+      <if test="isExtension != null" >
+        IsExtension,
+      </if>
+      <if test="isExtensionText != null" >
+        IsExtensionText,
+      </if>
+      <if test="inscuranceName != null" >
+        InscuranceName,
+      </if>
+      <if test="SALIExpireDate != null" >
+        SALIExpireDate,
+      </if>
+      <if test="issueDate != null" >
+        IssueDate,
+      </if>
+      <if test="transferCount != null" >
+        TransferCount,
+      </if>
+      <if test="hisWarrantsUploadingTime != null" >
+        HisWarrantsUploadingTime,
+      </if>
+      <if test="vaiEndDate != null" >
+        VaiEndDate,
+      </if>
+      <if test="usedDays != null" >
+        UsedDays,
+      </if>
+      <if test="storageDate != null" >
+        StorageDate,
+      </if>
+      <if test="outStorageDate != null" >
+        OutStorageDate,
+      </if>
+      <if test="vehiclePurchasePrice != null" >
+        VehiclePurchasePrice,
+      </if>
+      <if test="collertalModel != null" >
+        CollertalModel,
+      </if>
+      <if test="collertalModelText != null" >
+        CollertalModelText,
+      </if>
+      <if test="interiorColor != null" >
+        InteriorColor,
+      </if>
+      <if test="vehicleDetails != null" >
+        VehicleDetails,
+      </if>
+      <if test="storePlace != null" >
+        StorePlace,
+      </if>
+      <if test="creationTime != null" >
+        CreationTime,
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="declarationNo != null" >
+        DeclarationNo,
+      </if>
+      <if test="marginRatio != null" >
+        MarginRatio,
+      </if>
+      <if test="carInsurance != null" >
+        CarInsurance,
+      </if>
+      <if test="carInsuranceText != null" >
+        CarInsuranceText,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleIdentify != null" >
+        #{vehicleIdentify,jdbcType=NVARCHAR},
+      </if>
+      <if test="useCharacter != null" >
+        #{useCharacter,jdbcType=NVARCHAR},
+      </if>
+      <if test="useCharacterText != null" >
+        #{useCharacterText,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleLevel != null" >
+        #{vehicleLevel,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleLevelText != null" >
+        #{vehicleLevelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortagageDate != null" >
+        #{mortagageDate,jdbcType=DATE},
+      </if>
+      <if test="dateOfProduction != null" >
+        #{dateOfProduction,jdbcType=DATE},
+      </if>
+      <if test="valuationPrice != null" >
+        #{valuationPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="vehicleCategory != null" >
+        #{vehicleCategory,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleCategoryText != null" >
+        #{vehicleCategoryText,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleBrand != null" >
+        #{vehicleBrand,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehiclePlateNumber != null" >
+        #{vehiclePlateNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        #{vehicleType,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleTypeText != null" >
+        #{vehicleTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleModel != null" >
+        #{vehicleModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="hasMortgageContract != null" >
+        #{hasMortgageContract,jdbcType=BIT},
+      </if>
+      <if test="hasMortgageContractText != null" >
+        #{hasMortgageContractText,jdbcType=NVARCHAR},
+      </if>
+      <if test="purchaseDate != null" >
+        #{purchaseDate,jdbcType=DATE},
+      </if>
+      <if test="engineNo != null" >
+        #{engineNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgageRates != null" >
+        #{mortgageRates,jdbcType=DECIMAL},
+      </if>
+      <if test="mortgageAuthorizer != null" >
+        #{mortgageAuthorizer,jdbcType=NVARCHAR},
+      </if>
+      <if test="purchasePrice != null" >
+        #{purchasePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sweptVolume != null" >
+        #{sweptVolume,jdbcType=NVARCHAR},
+      </if>
+      <if test="kilometers != null" >
+        #{kilometers,jdbcType=DECIMAL},
+      </if>
+      <if test="downPaymentRatio != null" >
+        #{downPaymentRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="idNo != null" >
+        #{idNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleColor != null" >
+        #{vehicleColor,jdbcType=NVARCHAR},
+      </if>
+      <if test="rentType != null" >
+        #{rentType,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortagageModel != null" >
+        #{mortagageModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="thirdpartyEvaluationPrice != null" >
+        #{thirdpartyEvaluationPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isExtension != null" >
+        #{isExtension,jdbcType=BIT},
+      </if>
+      <if test="isExtensionText != null" >
+        #{isExtensionText,jdbcType=NVARCHAR},
+      </if>
+      <if test="inscuranceName != null" >
+        #{inscuranceName,jdbcType=NVARCHAR},
+      </if>
+      <if test="SALIExpireDate != null" >
+        #{SALIExpireDate,jdbcType=DATE},
+      </if>
+      <if test="issueDate != null" >
+        #{issueDate,jdbcType=DATE},
+      </if>
+      <if test="transferCount != null" >
+        #{transferCount,jdbcType=INTEGER},
+      </if>
+      <if test="hisWarrantsUploadingTime != null" >
+        #{hisWarrantsUploadingTime,jdbcType=DATE},
+      </if>
+      <if test="vaiEndDate != null" >
+        #{vaiEndDate,jdbcType=DATE},
+      </if>
+      <if test="usedDays != null" >
+        #{usedDays,jdbcType=INTEGER},
+      </if>
+      <if test="storageDate != null" >
+        #{storageDate,jdbcType=DATE},
+      </if>
+      <if test="outStorageDate != null" >
+        #{outStorageDate,jdbcType=DATE},
+      </if>
+      <if test="vehiclePurchasePrice != null" >
+        #{vehiclePurchasePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="collertalModel != null" >
+        #{collertalModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModelText != null" >
+        #{collertalModelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="interiorColor != null" >
+        #{interiorColor,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleDetails != null" >
+        #{vehicleDetails,jdbcType=NVARCHAR},
+      </if>
+      <if test="storePlace != null" >
+        #{storePlace,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="declarationNo != null" >
+        #{declarationNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="marginRatio != null" >
+        #{marginRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="carInsurance != null" >
+        #{carInsurance,jdbcType=NVARCHAR},
+      </if>
+      <if test="carInsuranceText != null" >
+        #{carInsuranceText,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.CollateralCar" >
+    update CollateralCar
+    <set >
+      <if test="loanNo != null" >
+        LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleIdentify != null" >
+        VehicleIdentify = #{vehicleIdentify,jdbcType=NVARCHAR},
+      </if>
+      <if test="useCharacter != null" >
+        UseCharacter = #{useCharacter,jdbcType=NVARCHAR},
+      </if>
+      <if test="useCharacterText != null" >
+        UseCharacterText = #{useCharacterText,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleLevel != null" >
+        VehicleLevel = #{vehicleLevel,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleLevelText != null" >
+        VehicleLevelText = #{vehicleLevelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortagageDate != null" >
+        MortagageDate = #{mortagageDate,jdbcType=DATE},
+      </if>
+      <if test="dateOfProduction != null" >
+        DateOfProduction = #{dateOfProduction,jdbcType=DATE},
+      </if>
+      <if test="valuationPrice != null" >
+        ValuationPrice = #{valuationPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="vehicleCategory != null" >
+        VehicleCategory = #{vehicleCategory,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleCategoryText != null" >
+        VehicleCategoryText = #{vehicleCategoryText,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleBrand != null" >
+        VehicleBrand = #{vehicleBrand,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehiclePlateNumber != null" >
+        VehiclePlateNumber = #{vehiclePlateNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleType != null" >
+        VehicleType = #{vehicleType,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleTypeText != null" >
+        VehicleTypeText = #{vehicleTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleModel != null" >
+        VehicleModel = #{vehicleModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="hasMortgageContract != null" >
+        HasMortgageContract = #{hasMortgageContract,jdbcType=BIT},
+      </if>
+      <if test="hasMortgageContractText != null" >
+        HasMortgageContractText = #{hasMortgageContractText,jdbcType=NVARCHAR},
+      </if>
+      <if test="purchaseDate != null" >
+        PurchaseDate = #{purchaseDate,jdbcType=DATE},
+      </if>
+      <if test="engineNo != null" >
+        EngineNo = #{engineNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgageRates != null" >
+        MortgageRates = #{mortgageRates,jdbcType=DECIMAL},
+      </if>
+      <if test="mortgageAuthorizer != null" >
+        MortgageAuthorizer = #{mortgageAuthorizer,jdbcType=NVARCHAR},
+      </if>
+      <if test="purchasePrice != null" >
+        PurchasePrice = #{purchasePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sweptVolume != null" >
+        SweptVolume = #{sweptVolume,jdbcType=NVARCHAR},
+      </if>
+      <if test="kilometers != null" >
+        Kilometers = #{kilometers,jdbcType=DECIMAL},
+      </if>
+      <if test="downPaymentRatio != null" >
+        DownPaymentRatio = #{downPaymentRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="idNo != null" >
+        IdNo = #{idNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleColor != null" >
+        VehicleColor = #{vehicleColor,jdbcType=NVARCHAR},
+      </if>
+      <if test="rentType != null" >
+        RentType = #{rentType,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortagageModel != null" >
+        MortagageModel = #{mortagageModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="thirdpartyEvaluationPrice != null" >
+        ThirdpartyEvaluationPrice = #{thirdpartyEvaluationPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="isExtension != null" >
+        IsExtension = #{isExtension,jdbcType=BIT},
+      </if>
+      <if test="isExtensionText != null" >
+        IsExtensionText = #{isExtensionText,jdbcType=NVARCHAR},
+      </if>
+      <if test="inscuranceName != null" >
+        InscuranceName = #{inscuranceName,jdbcType=NVARCHAR},
+      </if>
+      <if test="SALIExpireDate != null" >
+        SALIExpireDate = #{SALIExpireDate,jdbcType=DATE},
+      </if>
+      <if test="issueDate != null" >
+        IssueDate = #{issueDate,jdbcType=DATE},
+      </if>
+      <if test="transferCount != null" >
+        TransferCount = #{transferCount,jdbcType=INTEGER},
+      </if>
+      <if test="hisWarrantsUploadingTime != null" >
+        HisWarrantsUploadingTime = #{hisWarrantsUploadingTime,jdbcType=DATE},
+      </if>
+      <if test="vaiEndDate != null" >
+        VaiEndDate = #{vaiEndDate,jdbcType=DATE},
+      </if>
+      <if test="usedDays != null" >
+        UsedDays = #{usedDays,jdbcType=INTEGER},
+      </if>
+      <if test="storageDate != null" >
+        StorageDate = #{storageDate,jdbcType=DATE},
+      </if>
+      <if test="outStorageDate != null" >
+        OutStorageDate = #{outStorageDate,jdbcType=DATE},
+      </if>
+      <if test="vehiclePurchasePrice != null" >
+        VehiclePurchasePrice = #{vehiclePurchasePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="collertalModel != null" >
+        CollertalModel = #{collertalModel,jdbcType=NVARCHAR},
+      </if>
+      <if test="collertalModelText != null" >
+        CollertalModelText = #{collertalModelText,jdbcType=NVARCHAR},
+      </if>
+      <if test="interiorColor != null" >
+        InteriorColor = #{interiorColor,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleDetails != null" >
+        VehicleDetails = #{vehicleDetails,jdbcType=NVARCHAR},
+      </if>
+      <if test="storePlace != null" >
+        StorePlace = #{storePlace,jdbcType=NVARCHAR},
+      </if>
+      <if test="creationTime != null" >
+        CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="declarationNo != null" >
+        DeclarationNo = #{declarationNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="marginRatio != null" >
+        MarginRatio = #{marginRatio,jdbcType=DECIMAL},
+      </if>
+      <if test="carInsurance != null" >
+        CarInsurance = #{carInsurance,jdbcType=NVARCHAR},
+      </if>
+      <if test="carInsuranceText != null" >
+        CarInsuranceText = #{carInsuranceText,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.CollateralCar" >
+    update CollateralCar
+    set LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      VehicleIdentify = #{vehicleIdentify,jdbcType=NVARCHAR},
+      UseCharacter = #{useCharacter,jdbcType=NVARCHAR},
+      UseCharacterText = #{useCharacterText,jdbcType=NVARCHAR},
+      VehicleLevel = #{vehicleLevel,jdbcType=NVARCHAR},
+      VehicleLevelText = #{vehicleLevelText,jdbcType=NVARCHAR},
+      MortagageDate = #{mortagageDate,jdbcType=DATE},
+      DateOfProduction = #{dateOfProduction,jdbcType=DATE},
+      ValuationPrice = #{valuationPrice,jdbcType=DECIMAL},
+      VehicleCategory = #{vehicleCategory,jdbcType=NVARCHAR},
+      VehicleCategoryText = #{vehicleCategoryText,jdbcType=NVARCHAR},
+      VehicleBrand = #{vehicleBrand,jdbcType=NVARCHAR},
+      VehiclePlateNumber = #{vehiclePlateNumber,jdbcType=NVARCHAR},
+      VehicleType = #{vehicleType,jdbcType=NVARCHAR},
+      VehicleTypeText = #{vehicleTypeText,jdbcType=NVARCHAR},
+      VehicleModel = #{vehicleModel,jdbcType=NVARCHAR},
+      HasMortgageContract = #{hasMortgageContract,jdbcType=BIT},
+      HasMortgageContractText = #{hasMortgageContractText,jdbcType=NVARCHAR},
+      PurchaseDate = #{purchaseDate,jdbcType=DATE},
+      EngineNo = #{engineNo,jdbcType=NVARCHAR},
+      MortgageRates = #{mortgageRates,jdbcType=DECIMAL},
+      MortgageAuthorizer = #{mortgageAuthorizer,jdbcType=NVARCHAR},
+      PurchasePrice = #{purchasePrice,jdbcType=DECIMAL},
+      SweptVolume = #{sweptVolume,jdbcType=NVARCHAR},
+      Kilometers = #{kilometers,jdbcType=DECIMAL},
+      DownPaymentRatio = #{downPaymentRatio,jdbcType=DECIMAL},
+      IdNo = #{idNo,jdbcType=NVARCHAR},
+      VehicleColor = #{vehicleColor,jdbcType=NVARCHAR},
+      RentType = #{rentType,jdbcType=NVARCHAR},
+      MortagageModel = #{mortagageModel,jdbcType=NVARCHAR},
+      ThirdpartyEvaluationPrice = #{thirdpartyEvaluationPrice,jdbcType=DECIMAL},
+      IsExtension = #{isExtension,jdbcType=BIT},
+      IsExtensionText = #{isExtensionText,jdbcType=NVARCHAR},
+      InscuranceName = #{inscuranceName,jdbcType=NVARCHAR},
+      SALIExpireDate = #{SALIExpireDate,jdbcType=DATE},
+      IssueDate = #{issueDate,jdbcType=DATE},
+      TransferCount = #{transferCount,jdbcType=INTEGER},
+      HisWarrantsUploadingTime = #{hisWarrantsUploadingTime,jdbcType=DATE},
+      VaiEndDate = #{vaiEndDate,jdbcType=DATE},
+      UsedDays = #{usedDays,jdbcType=INTEGER},
+      StorageDate = #{storageDate,jdbcType=DATE},
+      OutStorageDate = #{outStorageDate,jdbcType=DATE},
+      VehiclePurchasePrice = #{vehiclePurchasePrice,jdbcType=DECIMAL},
+      CollertalModel = #{collertalModel,jdbcType=NVARCHAR},
+      CollertalModelText = #{collertalModelText,jdbcType=NVARCHAR},
+      InteriorColor = #{interiorColor,jdbcType=NVARCHAR},
+      VehicleDetails = #{vehicleDetails,jdbcType=NVARCHAR},
+      StorePlace = #{storePlace,jdbcType=NVARCHAR},
+      CreationTime = #{creationTime,jdbcType=TIMESTAMP},
+      ModifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      DeclarationNo = #{declarationNo,jdbcType=NVARCHAR},
+      MarginRatio = #{marginRatio,jdbcType=DECIMAL},
+      CarInsurance = #{carInsurance,jdbcType=NVARCHAR},
+      CarInsuranceText = #{carInsuranceText,jdbcType=NVARCHAR},
+      Remark = #{remark,jdbcType=NVARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

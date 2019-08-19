@@ -1,0 +1,1079 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.LoanExtensionMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.LoanExtension" >
+    <id column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <id column="ProjectId" property="projectId" jdbcType="INTEGER" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="CompanyName" property="companyName" jdbcType="NVARCHAR" />
+    <result column="CustomerName" property="customerName" jdbcType="NVARCHAR" />
+    <result column="CertificateType" property="certificateType" jdbcType="INTEGER" />
+    <result column="CertificateTypeText" property="certificateTypeText" jdbcType="NVARCHAR" />
+    <result column="CertificateNo" property="certificateNo" jdbcType="NVARCHAR" />
+    <result column="BusinessType" property="businessType" jdbcType="INTEGER" />
+    <result column="BusinessTypeText" property="businessTypeText" jdbcType="NVARCHAR" />
+    <result column="FeeRate" property="feeRate" jdbcType="DECIMAL" />
+    <result column="CollateralType" property="collateralType" jdbcType="INTEGER" />
+    <result column="CollateralTypeText" property="collateralTypeText" jdbcType="NVARCHAR" />
+    <result column="LoanApplication" property="loanApplication" jdbcType="NVARCHAR" />
+    <result column="UnderlyingTransactionContractName" property="underlyingTransactionContractName" jdbcType="NVARCHAR" />
+    <result column="UnderlyingTransactionContractNo" property="underlyingTransactionContractNo" jdbcType="NVARCHAR" />
+    <result column="UnderlyingTransactionContractDebtor" property="underlyingTransactionContractDebtor" jdbcType="NVARCHAR" />
+    <result column="UnderlyingTransactionContractCreditor" property="underlyingTransactionContractCreditor" jdbcType="NVARCHAR" />
+    <result column="InvoiceNo" property="invoiceNo" jdbcType="NVARCHAR" />
+    <result column="InvoiceAmount" property="invoiceAmount" jdbcType="NVARCHAR" />
+    <result column="ReceivablesDueDate" property="receivablesDueDate" jdbcType="DATE" />
+    <result column="FinancingApplyNo" property="financingApplyNo" jdbcType="NVARCHAR" />
+    <result column="SubmitApplyDate" property="submitApplyDate" jdbcType="DATE" />
+    <result column="ExpectTaxAmount" property="expectTaxAmount" jdbcType="DECIMAL" />
+    <result column="TaxPayDate" property="taxPayDate" jdbcType="DATE" />
+    <result column="SelfPayAmount" property="selfPayAmount" jdbcType="DECIMAL" />
+    <result column="FinancingContactName" property="financingContactName" jdbcType="NVARCHAR" />
+    <result column="FinancingContactPhone" property="financingContactPhone" jdbcType="NVARCHAR" />
+    <result column="AgencyAgreementNo" property="agencyAgreementNo" jdbcType="NVARCHAR" />
+    <result column="FinancingContactEmail" property="financingContactEmail" jdbcType="NVARCHAR" />
+    <result column="PickUpNo" property="pickUpNo" jdbcType="NVARCHAR" />
+    <result column="PickUpBillNo" property="pickUpBillNo" jdbcType="NVARCHAR" />
+    <result column="FinancingAmount" property="financingAmount" jdbcType="DECIMAL" />
+    <result column="FinancingStartDate" property="financingStartDate" jdbcType="DATE" />
+    <result column="FinancingEndDate" property="financingEndDate" jdbcType="DATE" />
+    <result column="IsFirstFincancing" property="isFirstFincancing" jdbcType="BIT" />
+    <result column="IsFirstFincancingText" property="isFirstFincancingText" jdbcType="NVARCHAR" />
+    <result column="CarInsuranceMode" property="carInsuranceMode" jdbcType="NVARCHAR" />
+    <result column="BillNo" property="billNo" jdbcType="NVARCHAR" />
+    <result column="BillAmount" property="billAmount" jdbcType="NVARCHAR" />
+    <result column="BillPayBank" property="billPayBank" jdbcType="NVARCHAR" />
+    <result column="BillTerm" property="billTerm" jdbcType="INTEGER" />
+    <result column="BillStartDate" property="billStartDate" jdbcType="DATE" />
+    <result column="BilEndDate" property="bilEndDate" jdbcType="DATE" />
+    <result column="BillDrawer" property="billDrawer" jdbcType="NVARCHAR" />
+    <result column="BillTaker" property="billTaker" jdbcType="NVARCHAR" />
+    <result column="BillNumber" property="billNumber" jdbcType="NVARCHAR" />
+    <result column="BillRemarks" property="billRemarks" jdbcType="NVARCHAR" />
+    <result column="FinancingPlanAmount" property="financingPlanAmount" jdbcType="DECIMAL" />
+    <result column="FinancingActualAmount" property="financingActualAmount" jdbcType="DECIMAL" />
+    <result column="UseOfFunds" property="useOfFunds" jdbcType="NVARCHAR" />
+    <result column="FundsSource" property="fundsSource" jdbcType="NVARCHAR" />
+    <result column="RiskLevel" property="riskLevel" jdbcType="NVARCHAR" />
+    <result column="BondCategory" property="bondCategory" jdbcType="NVARCHAR" />
+    <result column="FinancingCustomerName" property="financingCustomerName" jdbcType="NVARCHAR" />
+    <result column="FinancingCustomerNo" property="financingCustomerNo" jdbcType="NVARCHAR" />
+    <result column="BusinessScope" property="businessScope" jdbcType="NVARCHAR" />
+    <result column="ActualOwner" property="actualOwner" jdbcType="NVARCHAR" />
+    <result column="MainBusiness" property="mainBusiness" jdbcType="NVARCHAR" />
+    <result column="RegisteredCapital" property="registeredCapital" jdbcType="DECIMAL" />
+    <result column="FinancingCustomerIndustry" property="financingCustomerIndustry" jdbcType="NVARCHAR" />
+    <result column="FinancingCustomerCharacter" property="financingCustomerCharacter" jdbcType="NVARCHAR" />
+    <result column="FinancingCustomerBankAccountName" property="financingCustomerBankAccountName" jdbcType="NVARCHAR" />
+    <result column="FinancingCustomerBankName" property="financingCustomerBankName" jdbcType="NVARCHAR" />
+    <result column="FinancingCustomerBankAccountNo" property="financingCustomerBankAccountNo" jdbcType="NVARCHAR" />
+    <result column="PurchaseDate" property="purchaseDate" jdbcType="DATE" />
+    <result column="IsFixedTerm" property="isFixedTerm" jdbcType="BIT" />
+    <result column="IsFixedTermText" property="isFixedTermText" jdbcType="NVARCHAR" />
+    <result column="LoanApplyNo" property="loanApplyNo" jdbcType="NVARCHAR" />
+    <result column="VehicleCategory" property="vehicleCategory" jdbcType="INTEGER" />
+    <result column="VehicleCategoryText" property="vehicleCategoryText" jdbcType="NVARCHAR" />
+    <result column="ShadowRating" property="shadowRating" jdbcType="NVARCHAR" />
+    <result column="ReceivablesAmount" property="receivablesAmount" jdbcType="DECIMAL" />
+    <result column="LoanName" property="loanName" jdbcType="NVARCHAR" />
+    <result column="CreatedTime" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="ModifedTime" property="modifedTime" jdbcType="TIMESTAMP" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="Remarks" property="remarks" jdbcType="NVARCHAR" />
+    <result column="ShadowRatingText" property="shadowRatingText" jdbcType="NVARCHAR" />
+    <result column="ExtendField1" property="extendField1" jdbcType="LONGNVARCHAR" />
+    <result column="UnderlyingTransactionContractDebtorId" property="underlyingTransactionContractDebtorId" jdbcType="INTEGER" />
+    <result column="ContractDebtorContactId" property="contractDebtorContactId" jdbcType="INTEGER" />
+    <result column="UnderlyingTransactionContractCreditorId" property="underlyingTransactionContractCreditorId" jdbcType="INTEGER" />
+    <result column="ContractCreditorContactId" property="contractCreditorContactId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    LoanNo, ProjectId, ProjectNo, CompanyName, CustomerName, CertificateType, CertificateTypeText, 
+    CertificateNo, BusinessType, BusinessTypeText, FeeRate, CollateralType, CollateralTypeText, 
+    LoanApplication, UnderlyingTransactionContractName, UnderlyingTransactionContractNo, 
+    UnderlyingTransactionContractDebtor, UnderlyingTransactionContractCreditor, InvoiceNo, 
+    InvoiceAmount, ReceivablesDueDate, FinancingApplyNo, SubmitApplyDate, ExpectTaxAmount, 
+    TaxPayDate, SelfPayAmount, FinancingContactName, FinancingContactPhone, AgencyAgreementNo, 
+    FinancingContactEmail, PickUpNo, PickUpBillNo, FinancingAmount, FinancingStartDate, 
+    FinancingEndDate, IsFirstFincancing, IsFirstFincancingText, CarInsuranceMode, BillNo, 
+    BillAmount, BillPayBank, BillTerm, BillStartDate, BilEndDate, BillDrawer, BillTaker, 
+    BillNumber, BillRemarks, FinancingPlanAmount, FinancingActualAmount, UseOfFunds, 
+    FundsSource, RiskLevel, BondCategory, FinancingCustomerName, FinancingCustomerNo, 
+    BusinessScope, ActualOwner, MainBusiness, RegisteredCapital, FinancingCustomerIndustry, 
+    FinancingCustomerCharacter, FinancingCustomerBankAccountName, FinancingCustomerBankName, 
+    FinancingCustomerBankAccountNo, PurchaseDate, IsFixedTerm, IsFixedTermText, LoanApplyNo, 
+    VehicleCategory, VehicleCategoryText, ShadowRating, ReceivablesAmount, LoanName, 
+    CreatedTime, ModifedTime, CreatedUser, Remarks, ShadowRatingText, ExtendField1, UnderlyingTransactionContractDebtorId, 
+    ContractDebtorContactId, UnderlyingTransactionContractCreditorId, ContractCreditorContactId
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from LoanExtension
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.example.model.LoanExtensionKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from LoanExtension
+    where LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and ProjectId = #{projectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.example.model.LoanExtensionKey" >
+    delete from LoanExtension
+    where LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and ProjectId = #{projectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.LoanExtension" >
+    insert into LoanExtension (LoanNo, ProjectId, ProjectNo, 
+      CompanyName, CustomerName, CertificateType, 
+      CertificateTypeText, CertificateNo, BusinessType, 
+      BusinessTypeText, FeeRate, CollateralType, 
+      CollateralTypeText, LoanApplication, 
+      UnderlyingTransactionContractName, UnderlyingTransactionContractNo, 
+      UnderlyingTransactionContractDebtor, UnderlyingTransactionContractCreditor, 
+      InvoiceNo, InvoiceAmount, ReceivablesDueDate, 
+      FinancingApplyNo, SubmitApplyDate, ExpectTaxAmount, 
+      TaxPayDate, SelfPayAmount, FinancingContactName, 
+      FinancingContactPhone, AgencyAgreementNo, 
+      FinancingContactEmail, PickUpNo, PickUpBillNo, 
+      FinancingAmount, FinancingStartDate, FinancingEndDate, 
+      IsFirstFincancing, IsFirstFincancingText, 
+      CarInsuranceMode, BillNo, BillAmount, 
+      BillPayBank, BillTerm, BillStartDate, 
+      BilEndDate, BillDrawer, BillTaker, 
+      BillNumber, BillRemarks, FinancingPlanAmount, 
+      FinancingActualAmount, UseOfFunds, FundsSource, 
+      RiskLevel, BondCategory, FinancingCustomerName, 
+      FinancingCustomerNo, BusinessScope, ActualOwner, 
+      MainBusiness, RegisteredCapital, FinancingCustomerIndustry, 
+      FinancingCustomerCharacter, FinancingCustomerBankAccountName, 
+      FinancingCustomerBankName, FinancingCustomerBankAccountNo, 
+      PurchaseDate, IsFixedTerm, IsFixedTermText, 
+      LoanApplyNo, VehicleCategory, VehicleCategoryText, 
+      ShadowRating, ReceivablesAmount, LoanName, 
+      CreatedTime, ModifedTime, CreatedUser, 
+      Remarks, ShadowRatingText, ExtendField1, 
+      UnderlyingTransactionContractDebtorId, ContractDebtorContactId, 
+      UnderlyingTransactionContractCreditorId, ContractCreditorContactId
+      )
+    values (#{loanNo,jdbcType=NVARCHAR}, #{projectId,jdbcType=INTEGER}, #{projectNo,jdbcType=NVARCHAR}, 
+      #{companyName,jdbcType=NVARCHAR}, #{customerName,jdbcType=NVARCHAR}, #{certificateType,jdbcType=INTEGER}, 
+      #{certificateTypeText,jdbcType=NVARCHAR}, #{certificateNo,jdbcType=NVARCHAR}, #{businessType,jdbcType=INTEGER}, 
+      #{businessTypeText,jdbcType=NVARCHAR}, #{feeRate,jdbcType=DECIMAL}, #{collateralType,jdbcType=INTEGER}, 
+      #{collateralTypeText,jdbcType=NVARCHAR}, #{loanApplication,jdbcType=NVARCHAR}, 
+      #{underlyingTransactionContractName,jdbcType=NVARCHAR}, #{underlyingTransactionContractNo,jdbcType=NVARCHAR}, 
+      #{underlyingTransactionContractDebtor,jdbcType=NVARCHAR}, #{underlyingTransactionContractCreditor,jdbcType=NVARCHAR}, 
+      #{invoiceNo,jdbcType=NVARCHAR}, #{invoiceAmount,jdbcType=NVARCHAR}, #{receivablesDueDate,jdbcType=DATE}, 
+      #{financingApplyNo,jdbcType=NVARCHAR}, #{submitApplyDate,jdbcType=DATE}, #{expectTaxAmount,jdbcType=DECIMAL}, 
+      #{taxPayDate,jdbcType=DATE}, #{selfPayAmount,jdbcType=DECIMAL}, #{financingContactName,jdbcType=NVARCHAR}, 
+      #{financingContactPhone,jdbcType=NVARCHAR}, #{agencyAgreementNo,jdbcType=NVARCHAR}, 
+      #{financingContactEmail,jdbcType=NVARCHAR}, #{pickUpNo,jdbcType=NVARCHAR}, #{pickUpBillNo,jdbcType=NVARCHAR}, 
+      #{financingAmount,jdbcType=DECIMAL}, #{financingStartDate,jdbcType=DATE}, #{financingEndDate,jdbcType=DATE}, 
+      #{isFirstFincancing,jdbcType=BIT}, #{isFirstFincancingText,jdbcType=NVARCHAR}, 
+      #{carInsuranceMode,jdbcType=NVARCHAR}, #{billNo,jdbcType=NVARCHAR}, #{billAmount,jdbcType=NVARCHAR}, 
+      #{billPayBank,jdbcType=NVARCHAR}, #{billTerm,jdbcType=INTEGER}, #{billStartDate,jdbcType=DATE}, 
+      #{bilEndDate,jdbcType=DATE}, #{billDrawer,jdbcType=NVARCHAR}, #{billTaker,jdbcType=NVARCHAR}, 
+      #{billNumber,jdbcType=NVARCHAR}, #{billRemarks,jdbcType=NVARCHAR}, #{financingPlanAmount,jdbcType=DECIMAL}, 
+      #{financingActualAmount,jdbcType=DECIMAL}, #{useOfFunds,jdbcType=NVARCHAR}, #{fundsSource,jdbcType=NVARCHAR}, 
+      #{riskLevel,jdbcType=NVARCHAR}, #{bondCategory,jdbcType=NVARCHAR}, #{financingCustomerName,jdbcType=NVARCHAR}, 
+      #{financingCustomerNo,jdbcType=NVARCHAR}, #{businessScope,jdbcType=NVARCHAR}, #{actualOwner,jdbcType=NVARCHAR}, 
+      #{mainBusiness,jdbcType=NVARCHAR}, #{registeredCapital,jdbcType=DECIMAL}, #{financingCustomerIndustry,jdbcType=NVARCHAR}, 
+      #{financingCustomerCharacter,jdbcType=NVARCHAR}, #{financingCustomerBankAccountName,jdbcType=NVARCHAR}, 
+      #{financingCustomerBankName,jdbcType=NVARCHAR}, #{financingCustomerBankAccountNo,jdbcType=NVARCHAR}, 
+      #{purchaseDate,jdbcType=DATE}, #{isFixedTerm,jdbcType=BIT}, #{isFixedTermText,jdbcType=NVARCHAR}, 
+      #{loanApplyNo,jdbcType=NVARCHAR}, #{vehicleCategory,jdbcType=INTEGER}, #{vehicleCategoryText,jdbcType=NVARCHAR}, 
+      #{shadowRating,jdbcType=NVARCHAR}, #{receivablesAmount,jdbcType=DECIMAL}, #{loanName,jdbcType=NVARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{modifedTime,jdbcType=TIMESTAMP}, #{createdUser,jdbcType=NVARCHAR}, 
+      #{remarks,jdbcType=NVARCHAR}, #{shadowRatingText,jdbcType=NVARCHAR}, #{extendField1,jdbcType=LONGNVARCHAR}, 
+      #{underlyingTransactionContractDebtorId,jdbcType=INTEGER}, #{contractDebtorContactId,jdbcType=INTEGER}, 
+      #{underlyingTransactionContractCreditorId,jdbcType=INTEGER}, #{contractCreditorContactId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.LoanExtension" >
+    insert into LoanExtension
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="projectId != null" >
+        ProjectId,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="companyName != null" >
+        CompanyName,
+      </if>
+      <if test="customerName != null" >
+        CustomerName,
+      </if>
+      <if test="certificateType != null" >
+        CertificateType,
+      </if>
+      <if test="certificateTypeText != null" >
+        CertificateTypeText,
+      </if>
+      <if test="certificateNo != null" >
+        CertificateNo,
+      </if>
+      <if test="businessType != null" >
+        BusinessType,
+      </if>
+      <if test="businessTypeText != null" >
+        BusinessTypeText,
+      </if>
+      <if test="feeRate != null" >
+        FeeRate,
+      </if>
+      <if test="collateralType != null" >
+        CollateralType,
+      </if>
+      <if test="collateralTypeText != null" >
+        CollateralTypeText,
+      </if>
+      <if test="loanApplication != null" >
+        LoanApplication,
+      </if>
+      <if test="underlyingTransactionContractName != null" >
+        UnderlyingTransactionContractName,
+      </if>
+      <if test="underlyingTransactionContractNo != null" >
+        UnderlyingTransactionContractNo,
+      </if>
+      <if test="underlyingTransactionContractDebtor != null" >
+        UnderlyingTransactionContractDebtor,
+      </if>
+      <if test="underlyingTransactionContractCreditor != null" >
+        UnderlyingTransactionContractCreditor,
+      </if>
+      <if test="invoiceNo != null" >
+        InvoiceNo,
+      </if>
+      <if test="invoiceAmount != null" >
+        InvoiceAmount,
+      </if>
+      <if test="receivablesDueDate != null" >
+        ReceivablesDueDate,
+      </if>
+      <if test="financingApplyNo != null" >
+        FinancingApplyNo,
+      </if>
+      <if test="submitApplyDate != null" >
+        SubmitApplyDate,
+      </if>
+      <if test="expectTaxAmount != null" >
+        ExpectTaxAmount,
+      </if>
+      <if test="taxPayDate != null" >
+        TaxPayDate,
+      </if>
+      <if test="selfPayAmount != null" >
+        SelfPayAmount,
+      </if>
+      <if test="financingContactName != null" >
+        FinancingContactName,
+      </if>
+      <if test="financingContactPhone != null" >
+        FinancingContactPhone,
+      </if>
+      <if test="agencyAgreementNo != null" >
+        AgencyAgreementNo,
+      </if>
+      <if test="financingContactEmail != null" >
+        FinancingContactEmail,
+      </if>
+      <if test="pickUpNo != null" >
+        PickUpNo,
+      </if>
+      <if test="pickUpBillNo != null" >
+        PickUpBillNo,
+      </if>
+      <if test="financingAmount != null" >
+        FinancingAmount,
+      </if>
+      <if test="financingStartDate != null" >
+        FinancingStartDate,
+      </if>
+      <if test="financingEndDate != null" >
+        FinancingEndDate,
+      </if>
+      <if test="isFirstFincancing != null" >
+        IsFirstFincancing,
+      </if>
+      <if test="isFirstFincancingText != null" >
+        IsFirstFincancingText,
+      </if>
+      <if test="carInsuranceMode != null" >
+        CarInsuranceMode,
+      </if>
+      <if test="billNo != null" >
+        BillNo,
+      </if>
+      <if test="billAmount != null" >
+        BillAmount,
+      </if>
+      <if test="billPayBank != null" >
+        BillPayBank,
+      </if>
+      <if test="billTerm != null" >
+        BillTerm,
+      </if>
+      <if test="billStartDate != null" >
+        BillStartDate,
+      </if>
+      <if test="bilEndDate != null" >
+        BilEndDate,
+      </if>
+      <if test="billDrawer != null" >
+        BillDrawer,
+      </if>
+      <if test="billTaker != null" >
+        BillTaker,
+      </if>
+      <if test="billNumber != null" >
+        BillNumber,
+      </if>
+      <if test="billRemarks != null" >
+        BillRemarks,
+      </if>
+      <if test="financingPlanAmount != null" >
+        FinancingPlanAmount,
+      </if>
+      <if test="financingActualAmount != null" >
+        FinancingActualAmount,
+      </if>
+      <if test="useOfFunds != null" >
+        UseOfFunds,
+      </if>
+      <if test="fundsSource != null" >
+        FundsSource,
+      </if>
+      <if test="riskLevel != null" >
+        RiskLevel,
+      </if>
+      <if test="bondCategory != null" >
+        BondCategory,
+      </if>
+      <if test="financingCustomerName != null" >
+        FinancingCustomerName,
+      </if>
+      <if test="financingCustomerNo != null" >
+        FinancingCustomerNo,
+      </if>
+      <if test="businessScope != null" >
+        BusinessScope,
+      </if>
+      <if test="actualOwner != null" >
+        ActualOwner,
+      </if>
+      <if test="mainBusiness != null" >
+        MainBusiness,
+      </if>
+      <if test="registeredCapital != null" >
+        RegisteredCapital,
+      </if>
+      <if test="financingCustomerIndustry != null" >
+        FinancingCustomerIndustry,
+      </if>
+      <if test="financingCustomerCharacter != null" >
+        FinancingCustomerCharacter,
+      </if>
+      <if test="financingCustomerBankAccountName != null" >
+        FinancingCustomerBankAccountName,
+      </if>
+      <if test="financingCustomerBankName != null" >
+        FinancingCustomerBankName,
+      </if>
+      <if test="financingCustomerBankAccountNo != null" >
+        FinancingCustomerBankAccountNo,
+      </if>
+      <if test="purchaseDate != null" >
+        PurchaseDate,
+      </if>
+      <if test="isFixedTerm != null" >
+        IsFixedTerm,
+      </if>
+      <if test="isFixedTermText != null" >
+        IsFixedTermText,
+      </if>
+      <if test="loanApplyNo != null" >
+        LoanApplyNo,
+      </if>
+      <if test="vehicleCategory != null" >
+        VehicleCategory,
+      </if>
+      <if test="vehicleCategoryText != null" >
+        VehicleCategoryText,
+      </if>
+      <if test="shadowRating != null" >
+        ShadowRating,
+      </if>
+      <if test="receivablesAmount != null" >
+        ReceivablesAmount,
+      </if>
+      <if test="loanName != null" >
+        LoanName,
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime,
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="shadowRatingText != null" >
+        ShadowRatingText,
+      </if>
+      <if test="extendField1 != null" >
+        ExtendField1,
+      </if>
+      <if test="underlyingTransactionContractDebtorId != null" >
+        UnderlyingTransactionContractDebtorId,
+      </if>
+      <if test="contractDebtorContactId != null" >
+        ContractDebtorContactId,
+      </if>
+      <if test="underlyingTransactionContractCreditorId != null" >
+        UnderlyingTransactionContractCreditorId,
+      </if>
+      <if test="contractCreditorContactId != null" >
+        ContractCreditorContactId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        #{certificateType,jdbcType=INTEGER},
+      </if>
+      <if test="certificateTypeText != null" >
+        #{certificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateNo != null" >
+        #{certificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessType != null" >
+        #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeText != null" >
+        #{businessTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="feeRate != null" >
+        #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="collateralType != null" >
+        #{collateralType,jdbcType=INTEGER},
+      </if>
+      <if test="collateralTypeText != null" >
+        #{collateralTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanApplication != null" >
+        #{loanApplication,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractName != null" >
+        #{underlyingTransactionContractName,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractNo != null" >
+        #{underlyingTransactionContractNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractDebtor != null" >
+        #{underlyingTransactionContractDebtor,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractCreditor != null" >
+        #{underlyingTransactionContractCreditor,jdbcType=NVARCHAR},
+      </if>
+      <if test="invoiceNo != null" >
+        #{invoiceNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="invoiceAmount != null" >
+        #{invoiceAmount,jdbcType=NVARCHAR},
+      </if>
+      <if test="receivablesDueDate != null" >
+        #{receivablesDueDate,jdbcType=DATE},
+      </if>
+      <if test="financingApplyNo != null" >
+        #{financingApplyNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="submitApplyDate != null" >
+        #{submitApplyDate,jdbcType=DATE},
+      </if>
+      <if test="expectTaxAmount != null" >
+        #{expectTaxAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="taxPayDate != null" >
+        #{taxPayDate,jdbcType=DATE},
+      </if>
+      <if test="selfPayAmount != null" >
+        #{selfPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="financingContactName != null" >
+        #{financingContactName,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingContactPhone != null" >
+        #{financingContactPhone,jdbcType=NVARCHAR},
+      </if>
+      <if test="agencyAgreementNo != null" >
+        #{agencyAgreementNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingContactEmail != null" >
+        #{financingContactEmail,jdbcType=NVARCHAR},
+      </if>
+      <if test="pickUpNo != null" >
+        #{pickUpNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="pickUpBillNo != null" >
+        #{pickUpBillNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingAmount != null" >
+        #{financingAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="financingStartDate != null" >
+        #{financingStartDate,jdbcType=DATE},
+      </if>
+      <if test="financingEndDate != null" >
+        #{financingEndDate,jdbcType=DATE},
+      </if>
+      <if test="isFirstFincancing != null" >
+        #{isFirstFincancing,jdbcType=BIT},
+      </if>
+      <if test="isFirstFincancingText != null" >
+        #{isFirstFincancingText,jdbcType=NVARCHAR},
+      </if>
+      <if test="carInsuranceMode != null" >
+        #{carInsuranceMode,jdbcType=NVARCHAR},
+      </if>
+      <if test="billNo != null" >
+        #{billNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="billAmount != null" >
+        #{billAmount,jdbcType=NVARCHAR},
+      </if>
+      <if test="billPayBank != null" >
+        #{billPayBank,jdbcType=NVARCHAR},
+      </if>
+      <if test="billTerm != null" >
+        #{billTerm,jdbcType=INTEGER},
+      </if>
+      <if test="billStartDate != null" >
+        #{billStartDate,jdbcType=DATE},
+      </if>
+      <if test="bilEndDate != null" >
+        #{bilEndDate,jdbcType=DATE},
+      </if>
+      <if test="billDrawer != null" >
+        #{billDrawer,jdbcType=NVARCHAR},
+      </if>
+      <if test="billTaker != null" >
+        #{billTaker,jdbcType=NVARCHAR},
+      </if>
+      <if test="billNumber != null" >
+        #{billNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="billRemarks != null" >
+        #{billRemarks,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingPlanAmount != null" >
+        #{financingPlanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="financingActualAmount != null" >
+        #{financingActualAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="useOfFunds != null" >
+        #{useOfFunds,jdbcType=NVARCHAR},
+      </if>
+      <if test="fundsSource != null" >
+        #{fundsSource,jdbcType=NVARCHAR},
+      </if>
+      <if test="riskLevel != null" >
+        #{riskLevel,jdbcType=NVARCHAR},
+      </if>
+      <if test="bondCategory != null" >
+        #{bondCategory,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerName != null" >
+        #{financingCustomerName,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerNo != null" >
+        #{financingCustomerNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        #{businessScope,jdbcType=NVARCHAR},
+      </if>
+      <if test="actualOwner != null" >
+        #{actualOwner,jdbcType=NVARCHAR},
+      </if>
+      <if test="mainBusiness != null" >
+        #{mainBusiness,jdbcType=NVARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        #{registeredCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="financingCustomerIndustry != null" >
+        #{financingCustomerIndustry,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerCharacter != null" >
+        #{financingCustomerCharacter,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerBankAccountName != null" >
+        #{financingCustomerBankAccountName,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerBankName != null" >
+        #{financingCustomerBankName,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerBankAccountNo != null" >
+        #{financingCustomerBankAccountNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="purchaseDate != null" >
+        #{purchaseDate,jdbcType=DATE},
+      </if>
+      <if test="isFixedTerm != null" >
+        #{isFixedTerm,jdbcType=BIT},
+      </if>
+      <if test="isFixedTermText != null" >
+        #{isFixedTermText,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanApplyNo != null" >
+        #{loanApplyNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleCategory != null" >
+        #{vehicleCategory,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleCategoryText != null" >
+        #{vehicleCategoryText,jdbcType=NVARCHAR},
+      </if>
+      <if test="shadowRating != null" >
+        #{shadowRating,jdbcType=NVARCHAR},
+      </if>
+      <if test="receivablesAmount != null" >
+        #{receivablesAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="loanName != null" >
+        #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null" >
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=NVARCHAR},
+      </if>
+      <if test="shadowRatingText != null" >
+        #{shadowRatingText,jdbcType=NVARCHAR},
+      </if>
+      <if test="extendField1 != null" >
+        #{extendField1,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractDebtorId != null" >
+        #{underlyingTransactionContractDebtorId,jdbcType=INTEGER},
+      </if>
+      <if test="contractDebtorContactId != null" >
+        #{contractDebtorContactId,jdbcType=INTEGER},
+      </if>
+      <if test="underlyingTransactionContractCreditorId != null" >
+        #{underlyingTransactionContractCreditorId,jdbcType=INTEGER},
+      </if>
+      <if test="contractCreditorContactId != null" >
+        #{contractCreditorContactId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.LoanExtension" >
+    update LoanExtension
+    <set >
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyName != null" >
+        CompanyName = #{companyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="customerName != null" >
+        CustomerName = #{customerName,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        CertificateType = #{certificateType,jdbcType=INTEGER},
+      </if>
+      <if test="certificateTypeText != null" >
+        CertificateTypeText = #{certificateTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="certificateNo != null" >
+        CertificateNo = #{certificateNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessType != null" >
+        BusinessType = #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeText != null" >
+        BusinessTypeText = #{businessTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="feeRate != null" >
+        FeeRate = #{feeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="collateralType != null" >
+        CollateralType = #{collateralType,jdbcType=INTEGER},
+      </if>
+      <if test="collateralTypeText != null" >
+        CollateralTypeText = #{collateralTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanApplication != null" >
+        LoanApplication = #{loanApplication,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractName != null" >
+        UnderlyingTransactionContractName = #{underlyingTransactionContractName,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractNo != null" >
+        UnderlyingTransactionContractNo = #{underlyingTransactionContractNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractDebtor != null" >
+        UnderlyingTransactionContractDebtor = #{underlyingTransactionContractDebtor,jdbcType=NVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractCreditor != null" >
+        UnderlyingTransactionContractCreditor = #{underlyingTransactionContractCreditor,jdbcType=NVARCHAR},
+      </if>
+      <if test="invoiceNo != null" >
+        InvoiceNo = #{invoiceNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="invoiceAmount != null" >
+        InvoiceAmount = #{invoiceAmount,jdbcType=NVARCHAR},
+      </if>
+      <if test="receivablesDueDate != null" >
+        ReceivablesDueDate = #{receivablesDueDate,jdbcType=DATE},
+      </if>
+      <if test="financingApplyNo != null" >
+        FinancingApplyNo = #{financingApplyNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="submitApplyDate != null" >
+        SubmitApplyDate = #{submitApplyDate,jdbcType=DATE},
+      </if>
+      <if test="expectTaxAmount != null" >
+        ExpectTaxAmount = #{expectTaxAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="taxPayDate != null" >
+        TaxPayDate = #{taxPayDate,jdbcType=DATE},
+      </if>
+      <if test="selfPayAmount != null" >
+        SelfPayAmount = #{selfPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="financingContactName != null" >
+        FinancingContactName = #{financingContactName,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingContactPhone != null" >
+        FinancingContactPhone = #{financingContactPhone,jdbcType=NVARCHAR},
+      </if>
+      <if test="agencyAgreementNo != null" >
+        AgencyAgreementNo = #{agencyAgreementNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingContactEmail != null" >
+        FinancingContactEmail = #{financingContactEmail,jdbcType=NVARCHAR},
+      </if>
+      <if test="pickUpNo != null" >
+        PickUpNo = #{pickUpNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="pickUpBillNo != null" >
+        PickUpBillNo = #{pickUpBillNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingAmount != null" >
+        FinancingAmount = #{financingAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="financingStartDate != null" >
+        FinancingStartDate = #{financingStartDate,jdbcType=DATE},
+      </if>
+      <if test="financingEndDate != null" >
+        FinancingEndDate = #{financingEndDate,jdbcType=DATE},
+      </if>
+      <if test="isFirstFincancing != null" >
+        IsFirstFincancing = #{isFirstFincancing,jdbcType=BIT},
+      </if>
+      <if test="isFirstFincancingText != null" >
+        IsFirstFincancingText = #{isFirstFincancingText,jdbcType=NVARCHAR},
+      </if>
+      <if test="carInsuranceMode != null" >
+        CarInsuranceMode = #{carInsuranceMode,jdbcType=NVARCHAR},
+      </if>
+      <if test="billNo != null" >
+        BillNo = #{billNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="billAmount != null" >
+        BillAmount = #{billAmount,jdbcType=NVARCHAR},
+      </if>
+      <if test="billPayBank != null" >
+        BillPayBank = #{billPayBank,jdbcType=NVARCHAR},
+      </if>
+      <if test="billTerm != null" >
+        BillTerm = #{billTerm,jdbcType=INTEGER},
+      </if>
+      <if test="billStartDate != null" >
+        BillStartDate = #{billStartDate,jdbcType=DATE},
+      </if>
+      <if test="bilEndDate != null" >
+        BilEndDate = #{bilEndDate,jdbcType=DATE},
+      </if>
+      <if test="billDrawer != null" >
+        BillDrawer = #{billDrawer,jdbcType=NVARCHAR},
+      </if>
+      <if test="billTaker != null" >
+        BillTaker = #{billTaker,jdbcType=NVARCHAR},
+      </if>
+      <if test="billNumber != null" >
+        BillNumber = #{billNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="billRemarks != null" >
+        BillRemarks = #{billRemarks,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingPlanAmount != null" >
+        FinancingPlanAmount = #{financingPlanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="financingActualAmount != null" >
+        FinancingActualAmount = #{financingActualAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="useOfFunds != null" >
+        UseOfFunds = #{useOfFunds,jdbcType=NVARCHAR},
+      </if>
+      <if test="fundsSource != null" >
+        FundsSource = #{fundsSource,jdbcType=NVARCHAR},
+      </if>
+      <if test="riskLevel != null" >
+        RiskLevel = #{riskLevel,jdbcType=NVARCHAR},
+      </if>
+      <if test="bondCategory != null" >
+        BondCategory = #{bondCategory,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerName != null" >
+        FinancingCustomerName = #{financingCustomerName,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerNo != null" >
+        FinancingCustomerNo = #{financingCustomerNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        BusinessScope = #{businessScope,jdbcType=NVARCHAR},
+      </if>
+      <if test="actualOwner != null" >
+        ActualOwner = #{actualOwner,jdbcType=NVARCHAR},
+      </if>
+      <if test="mainBusiness != null" >
+        MainBusiness = #{mainBusiness,jdbcType=NVARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        RegisteredCapital = #{registeredCapital,jdbcType=DECIMAL},
+      </if>
+      <if test="financingCustomerIndustry != null" >
+        FinancingCustomerIndustry = #{financingCustomerIndustry,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerCharacter != null" >
+        FinancingCustomerCharacter = #{financingCustomerCharacter,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerBankAccountName != null" >
+        FinancingCustomerBankAccountName = #{financingCustomerBankAccountName,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerBankName != null" >
+        FinancingCustomerBankName = #{financingCustomerBankName,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCustomerBankAccountNo != null" >
+        FinancingCustomerBankAccountNo = #{financingCustomerBankAccountNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="purchaseDate != null" >
+        PurchaseDate = #{purchaseDate,jdbcType=DATE},
+      </if>
+      <if test="isFixedTerm != null" >
+        IsFixedTerm = #{isFixedTerm,jdbcType=BIT},
+      </if>
+      <if test="isFixedTermText != null" >
+        IsFixedTermText = #{isFixedTermText,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanApplyNo != null" >
+        LoanApplyNo = #{loanApplyNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="vehicleCategory != null" >
+        VehicleCategory = #{vehicleCategory,jdbcType=INTEGER},
+      </if>
+      <if test="vehicleCategoryText != null" >
+        VehicleCategoryText = #{vehicleCategoryText,jdbcType=NVARCHAR},
+      </if>
+      <if test="shadowRating != null" >
+        ShadowRating = #{shadowRating,jdbcType=NVARCHAR},
+      </if>
+      <if test="receivablesAmount != null" >
+        ReceivablesAmount = #{receivablesAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="loanName != null" >
+        LoanName = #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=NVARCHAR},
+      </if>
+      <if test="shadowRatingText != null" >
+        ShadowRatingText = #{shadowRatingText,jdbcType=NVARCHAR},
+      </if>
+      <if test="extendField1 != null" >
+        ExtendField1 = #{extendField1,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="underlyingTransactionContractDebtorId != null" >
+        UnderlyingTransactionContractDebtorId = #{underlyingTransactionContractDebtorId,jdbcType=INTEGER},
+      </if>
+      <if test="contractDebtorContactId != null" >
+        ContractDebtorContactId = #{contractDebtorContactId,jdbcType=INTEGER},
+      </if>
+      <if test="underlyingTransactionContractCreditorId != null" >
+        UnderlyingTransactionContractCreditorId = #{underlyingTransactionContractCreditorId,jdbcType=INTEGER},
+      </if>
+      <if test="contractCreditorContactId != null" >
+        ContractCreditorContactId = #{contractCreditorContactId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and ProjectId = #{projectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.LoanExtension" >
+    update LoanExtension
+    set ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      CompanyName = #{companyName,jdbcType=NVARCHAR},
+      CustomerName = #{customerName,jdbcType=NVARCHAR},
+      CertificateType = #{certificateType,jdbcType=INTEGER},
+      CertificateTypeText = #{certificateTypeText,jdbcType=NVARCHAR},
+      CertificateNo = #{certificateNo,jdbcType=NVARCHAR},
+      BusinessType = #{businessType,jdbcType=INTEGER},
+      BusinessTypeText = #{businessTypeText,jdbcType=NVARCHAR},
+      FeeRate = #{feeRate,jdbcType=DECIMAL},
+      CollateralType = #{collateralType,jdbcType=INTEGER},
+      CollateralTypeText = #{collateralTypeText,jdbcType=NVARCHAR},
+      LoanApplication = #{loanApplication,jdbcType=NVARCHAR},
+      UnderlyingTransactionContractName = #{underlyingTransactionContractName,jdbcType=NVARCHAR},
+      UnderlyingTransactionContractNo = #{underlyingTransactionContractNo,jdbcType=NVARCHAR},
+      UnderlyingTransactionContractDebtor = #{underlyingTransactionContractDebtor,jdbcType=NVARCHAR},
+      UnderlyingTransactionContractCreditor = #{underlyingTransactionContractCreditor,jdbcType=NVARCHAR},
+      InvoiceNo = #{invoiceNo,jdbcType=NVARCHAR},
+      InvoiceAmount = #{invoiceAmount,jdbcType=NVARCHAR},
+      ReceivablesDueDate = #{receivablesDueDate,jdbcType=DATE},
+      FinancingApplyNo = #{financingApplyNo,jdbcType=NVARCHAR},
+      SubmitApplyDate = #{submitApplyDate,jdbcType=DATE},
+      ExpectTaxAmount = #{expectTaxAmount,jdbcType=DECIMAL},
+      TaxPayDate = #{taxPayDate,jdbcType=DATE},
+      SelfPayAmount = #{selfPayAmount,jdbcType=DECIMAL},
+      FinancingContactName = #{financingContactName,jdbcType=NVARCHAR},
+      FinancingContactPhone = #{financingContactPhone,jdbcType=NVARCHAR},
+      AgencyAgreementNo = #{agencyAgreementNo,jdbcType=NVARCHAR},
+      FinancingContactEmail = #{financingContactEmail,jdbcType=NVARCHAR},
+      PickUpNo = #{pickUpNo,jdbcType=NVARCHAR},
+      PickUpBillNo = #{pickUpBillNo,jdbcType=NVARCHAR},
+      FinancingAmount = #{financingAmount,jdbcType=DECIMAL},
+      FinancingStartDate = #{financingStartDate,jdbcType=DATE},
+      FinancingEndDate = #{financingEndDate,jdbcType=DATE},
+      IsFirstFincancing = #{isFirstFincancing,jdbcType=BIT},
+      IsFirstFincancingText = #{isFirstFincancingText,jdbcType=NVARCHAR},
+      CarInsuranceMode = #{carInsuranceMode,jdbcType=NVARCHAR},
+      BillNo = #{billNo,jdbcType=NVARCHAR},
+      BillAmount = #{billAmount,jdbcType=NVARCHAR},
+      BillPayBank = #{billPayBank,jdbcType=NVARCHAR},
+      BillTerm = #{billTerm,jdbcType=INTEGER},
+      BillStartDate = #{billStartDate,jdbcType=DATE},
+      BilEndDate = #{bilEndDate,jdbcType=DATE},
+      BillDrawer = #{billDrawer,jdbcType=NVARCHAR},
+      BillTaker = #{billTaker,jdbcType=NVARCHAR},
+      BillNumber = #{billNumber,jdbcType=NVARCHAR},
+      BillRemarks = #{billRemarks,jdbcType=NVARCHAR},
+      FinancingPlanAmount = #{financingPlanAmount,jdbcType=DECIMAL},
+      FinancingActualAmount = #{financingActualAmount,jdbcType=DECIMAL},
+      UseOfFunds = #{useOfFunds,jdbcType=NVARCHAR},
+      FundsSource = #{fundsSource,jdbcType=NVARCHAR},
+      RiskLevel = #{riskLevel,jdbcType=NVARCHAR},
+      BondCategory = #{bondCategory,jdbcType=NVARCHAR},
+      FinancingCustomerName = #{financingCustomerName,jdbcType=NVARCHAR},
+      FinancingCustomerNo = #{financingCustomerNo,jdbcType=NVARCHAR},
+      BusinessScope = #{businessScope,jdbcType=NVARCHAR},
+      ActualOwner = #{actualOwner,jdbcType=NVARCHAR},
+      MainBusiness = #{mainBusiness,jdbcType=NVARCHAR},
+      RegisteredCapital = #{registeredCapital,jdbcType=DECIMAL},
+      FinancingCustomerIndustry = #{financingCustomerIndustry,jdbcType=NVARCHAR},
+      FinancingCustomerCharacter = #{financingCustomerCharacter,jdbcType=NVARCHAR},
+      FinancingCustomerBankAccountName = #{financingCustomerBankAccountName,jdbcType=NVARCHAR},
+      FinancingCustomerBankName = #{financingCustomerBankName,jdbcType=NVARCHAR},
+      FinancingCustomerBankAccountNo = #{financingCustomerBankAccountNo,jdbcType=NVARCHAR},
+      PurchaseDate = #{purchaseDate,jdbcType=DATE},
+      IsFixedTerm = #{isFixedTerm,jdbcType=BIT},
+      IsFixedTermText = #{isFixedTermText,jdbcType=NVARCHAR},
+      LoanApplyNo = #{loanApplyNo,jdbcType=NVARCHAR},
+      VehicleCategory = #{vehicleCategory,jdbcType=INTEGER},
+      VehicleCategoryText = #{vehicleCategoryText,jdbcType=NVARCHAR},
+      ShadowRating = #{shadowRating,jdbcType=NVARCHAR},
+      ReceivablesAmount = #{receivablesAmount,jdbcType=DECIMAL},
+      LoanName = #{loanName,jdbcType=NVARCHAR},
+      CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      Remarks = #{remarks,jdbcType=NVARCHAR},
+      ShadowRatingText = #{shadowRatingText,jdbcType=NVARCHAR},
+      ExtendField1 = #{extendField1,jdbcType=LONGNVARCHAR},
+      UnderlyingTransactionContractDebtorId = #{underlyingTransactionContractDebtorId,jdbcType=INTEGER},
+      ContractDebtorContactId = #{contractDebtorContactId,jdbcType=INTEGER},
+      UnderlyingTransactionContractCreditorId = #{underlyingTransactionContractCreditorId,jdbcType=INTEGER},
+      ContractCreditorContactId = #{contractCreditorContactId,jdbcType=INTEGER}
+    where LoanNo = #{loanNo,jdbcType=NVARCHAR}
+      and ProjectId = #{projectId,jdbcType=INTEGER}
+  </update>
+</mapper>

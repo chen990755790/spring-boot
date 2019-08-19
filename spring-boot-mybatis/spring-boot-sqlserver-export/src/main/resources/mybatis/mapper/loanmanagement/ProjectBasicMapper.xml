@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.ProjectBasicMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.ProjectBasic" >
+    <id column="ProjectId" property="projectId" jdbcType="INTEGER" />
+    <result column="ProjectName" property="projectName" jdbcType="NVARCHAR" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="ProjectType" property="projectType" jdbcType="INTEGER" />
+    <result column="ProjectTypeText" property="projectTypeText" jdbcType="NVARCHAR" />
+    <result column="ProjectBackground" property="projectBackground" jdbcType="NVARCHAR" />
+    <result column="ExchangeStructrue" property="exchangeStructrue" jdbcType="NVARCHAR" />
+    <result column="InvestmentAmount" property="investmentAmount" jdbcType="DECIMAL" />
+    <result column="InvestmentTerm" property="investmentTerm" jdbcType="INTEGER" />
+    <result column="ExpectIncomeRate" property="expectIncomeRate" jdbcType="DECIMAL" />
+    <result column="LoanType" property="loanType" jdbcType="INTEGER" />
+    <result column="LoanTypeText" property="loanTypeText" jdbcType="NVARCHAR" />
+    <result column="FirstRepaymentSource" property="firstRepaymentSource" jdbcType="NVARCHAR" />
+    <result column="UseOfFunds" property="useOfFunds" jdbcType="NVARCHAR" />
+    <result column="CollateralType" property="collateralType" jdbcType="INTEGER" />
+    <result column="CollateralTypeText" property="collateralTypeText" jdbcType="NVARCHAR" />
+    <result column="MortgageRate" property="mortgageRate" jdbcType="DECIMAL" />
+    <result column="PledgeType" property="pledgeType" jdbcType="INTEGER" />
+    <result column="PledgeTypeText" property="pledgeTypeText" jdbcType="NVARCHAR" />
+    <result column="PledgeRate" property="pledgeRate" jdbcType="DECIMAL" />
+    <result column="FundsSource" property="fundsSource" jdbcType="INTEGER" />
+    <result column="FundsSourceText" property="fundsSourceText" jdbcType="NVARCHAR" />
+    <result column="ProjectStage" property="projectStage" jdbcType="INTEGER" />
+    <result column="ProjectStageText" property="projectStageText" jdbcType="NVARCHAR" />
+    <result column="BusinessManger" property="businessManger" jdbcType="NVARCHAR" />
+    <result column="BusinessTeam" property="businessTeam" jdbcType="NVARCHAR" />
+    <result column="InputUser" property="inputUser" jdbcType="NVARCHAR" />
+    <result column="BusinessTeamUser" property="businessTeamUser" jdbcType="NVARCHAR" />
+    <result column="InstitutionalDirector" property="institutionalDirector" jdbcType="NVARCHAR" />
+    <result column="DueDiligenceUser" property="dueDiligenceUser" jdbcType="NVARCHAR" />
+    <result column="FinancingCompany" property="financingCompany" jdbcType="NVARCHAR" />
+    <result column="CreatedTime" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="ModifedTime" property="modifedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ProjectId, ProjectName, ProjectNo, ProjectType, ProjectTypeText, ProjectBackground, 
+    ExchangeStructrue, InvestmentAmount, InvestmentTerm, ExpectIncomeRate, LoanType, 
+    LoanTypeText, FirstRepaymentSource, UseOfFunds, CollateralType, CollateralTypeText, 
+    MortgageRate, PledgeType, PledgeTypeText, PledgeRate, FundsSource, FundsSourceText, 
+    ProjectStage, ProjectStageText, BusinessManger, BusinessTeam, InputUser, BusinessTeamUser, 
+    InstitutionalDirector, DueDiligenceUser, FinancingCompany, CreatedTime, CreatedUser, 
+    ModifedTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ProjectBasic
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ProjectBasic
+    where ProjectId = #{projectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ProjectBasic
+    where ProjectId = #{projectId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.ProjectBasic" >
+    insert into ProjectBasic (ProjectId, ProjectName, ProjectNo, 
+      ProjectType, ProjectTypeText, ProjectBackground, 
+      ExchangeStructrue, InvestmentAmount, InvestmentTerm, 
+      ExpectIncomeRate, LoanType, LoanTypeText, 
+      FirstRepaymentSource, UseOfFunds, CollateralType, 
+      CollateralTypeText, MortgageRate, PledgeType, 
+      PledgeTypeText, PledgeRate, FundsSource, 
+      FundsSourceText, ProjectStage, ProjectStageText, 
+      BusinessManger, BusinessTeam, InputUser, 
+      BusinessTeamUser, InstitutionalDirector, 
+      DueDiligenceUser, FinancingCompany, CreatedTime, 
+      CreatedUser, ModifedTime)
+    values (#{projectId,jdbcType=INTEGER}, #{projectName,jdbcType=NVARCHAR}, #{projectNo,jdbcType=NVARCHAR}, 
+      #{projectType,jdbcType=INTEGER}, #{projectTypeText,jdbcType=NVARCHAR}, #{projectBackground,jdbcType=NVARCHAR}, 
+      #{exchangeStructrue,jdbcType=NVARCHAR}, #{investmentAmount,jdbcType=DECIMAL}, #{investmentTerm,jdbcType=INTEGER}, 
+      #{expectIncomeRate,jdbcType=DECIMAL}, #{loanType,jdbcType=INTEGER}, #{loanTypeText,jdbcType=NVARCHAR}, 
+      #{firstRepaymentSource,jdbcType=NVARCHAR}, #{useOfFunds,jdbcType=NVARCHAR}, #{collateralType,jdbcType=INTEGER}, 
+      #{collateralTypeText,jdbcType=NVARCHAR}, #{mortgageRate,jdbcType=DECIMAL}, #{pledgeType,jdbcType=INTEGER}, 
+      #{pledgeTypeText,jdbcType=NVARCHAR}, #{pledgeRate,jdbcType=DECIMAL}, #{fundsSource,jdbcType=INTEGER}, 
+      #{fundsSourceText,jdbcType=NVARCHAR}, #{projectStage,jdbcType=INTEGER}, #{projectStageText,jdbcType=NVARCHAR}, 
+      #{businessManger,jdbcType=NVARCHAR}, #{businessTeam,jdbcType=NVARCHAR}, #{inputUser,jdbcType=NVARCHAR}, 
+      #{businessTeamUser,jdbcType=NVARCHAR}, #{institutionalDirector,jdbcType=NVARCHAR}, 
+      #{dueDiligenceUser,jdbcType=NVARCHAR}, #{financingCompany,jdbcType=NVARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{createdUser,jdbcType=NVARCHAR}, #{modifedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.ProjectBasic" >
+    insert into ProjectBasic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        ProjectId,
+      </if>
+      <if test="projectName != null" >
+        ProjectName,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="projectType != null" >
+        ProjectType,
+      </if>
+      <if test="projectTypeText != null" >
+        ProjectTypeText,
+      </if>
+      <if test="projectBackground != null" >
+        ProjectBackground,
+      </if>
+      <if test="exchangeStructrue != null" >
+        ExchangeStructrue,
+      </if>
+      <if test="investmentAmount != null" >
+        InvestmentAmount,
+      </if>
+      <if test="investmentTerm != null" >
+        InvestmentTerm,
+      </if>
+      <if test="expectIncomeRate != null" >
+        ExpectIncomeRate,
+      </if>
+      <if test="loanType != null" >
+        LoanType,
+      </if>
+      <if test="loanTypeText != null" >
+        LoanTypeText,
+      </if>
+      <if test="firstRepaymentSource != null" >
+        FirstRepaymentSource,
+      </if>
+      <if test="useOfFunds != null" >
+        UseOfFunds,
+      </if>
+      <if test="collateralType != null" >
+        CollateralType,
+      </if>
+      <if test="collateralTypeText != null" >
+        CollateralTypeText,
+      </if>
+      <if test="mortgageRate != null" >
+        MortgageRate,
+      </if>
+      <if test="pledgeType != null" >
+        PledgeType,
+      </if>
+      <if test="pledgeTypeText != null" >
+        PledgeTypeText,
+      </if>
+      <if test="pledgeRate != null" >
+        PledgeRate,
+      </if>
+      <if test="fundsSource != null" >
+        FundsSource,
+      </if>
+      <if test="fundsSourceText != null" >
+        FundsSourceText,
+      </if>
+      <if test="projectStage != null" >
+        ProjectStage,
+      </if>
+      <if test="projectStageText != null" >
+        ProjectStageText,
+      </if>
+      <if test="businessManger != null" >
+        BusinessManger,
+      </if>
+      <if test="businessTeam != null" >
+        BusinessTeam,
+      </if>
+      <if test="inputUser != null" >
+        InputUser,
+      </if>
+      <if test="businessTeamUser != null" >
+        BusinessTeamUser,
+      </if>
+      <if test="institutionalDirector != null" >
+        InstitutionalDirector,
+      </if>
+      <if test="dueDiligenceUser != null" >
+        DueDiligenceUser,
+      </if>
+      <if test="financingCompany != null" >
+        FinancingCompany,
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectType != null" >
+        #{projectType,jdbcType=INTEGER},
+      </if>
+      <if test="projectTypeText != null" >
+        #{projectTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectBackground != null" >
+        #{projectBackground,jdbcType=NVARCHAR},
+      </if>
+      <if test="exchangeStructrue != null" >
+        #{exchangeStructrue,jdbcType=NVARCHAR},
+      </if>
+      <if test="investmentAmount != null" >
+        #{investmentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="investmentTerm != null" >
+        #{investmentTerm,jdbcType=INTEGER},
+      </if>
+      <if test="expectIncomeRate != null" >
+        #{expectIncomeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="loanType != null" >
+        #{loanType,jdbcType=INTEGER},
+      </if>
+      <if test="loanTypeText != null" >
+        #{loanTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="firstRepaymentSource != null" >
+        #{firstRepaymentSource,jdbcType=NVARCHAR},
+      </if>
+      <if test="useOfFunds != null" >
+        #{useOfFunds,jdbcType=NVARCHAR},
+      </if>
+      <if test="collateralType != null" >
+        #{collateralType,jdbcType=INTEGER},
+      </if>
+      <if test="collateralTypeText != null" >
+        #{collateralTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgageRate != null" >
+        #{mortgageRate,jdbcType=DECIMAL},
+      </if>
+      <if test="pledgeType != null" >
+        #{pledgeType,jdbcType=INTEGER},
+      </if>
+      <if test="pledgeTypeText != null" >
+        #{pledgeTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="pledgeRate != null" >
+        #{pledgeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="fundsSource != null" >
+        #{fundsSource,jdbcType=INTEGER},
+      </if>
+      <if test="fundsSourceText != null" >
+        #{fundsSourceText,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectStage != null" >
+        #{projectStage,jdbcType=INTEGER},
+      </if>
+      <if test="projectStageText != null" >
+        #{projectStageText,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessManger != null" >
+        #{businessManger,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessTeam != null" >
+        #{businessTeam,jdbcType=NVARCHAR},
+      </if>
+      <if test="inputUser != null" >
+        #{inputUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessTeamUser != null" >
+        #{businessTeamUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="institutionalDirector != null" >
+        #{institutionalDirector,jdbcType=NVARCHAR},
+      </if>
+      <if test="dueDiligenceUser != null" >
+        #{dueDiligenceUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCompany != null" >
+        #{financingCompany,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="modifedTime != null" >
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.ProjectBasic" >
+    update ProjectBasic
+    <set >
+      <if test="projectName != null" >
+        ProjectName = #{projectName,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectType != null" >
+        ProjectType = #{projectType,jdbcType=INTEGER},
+      </if>
+      <if test="projectTypeText != null" >
+        ProjectTypeText = #{projectTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectBackground != null" >
+        ProjectBackground = #{projectBackground,jdbcType=NVARCHAR},
+      </if>
+      <if test="exchangeStructrue != null" >
+        ExchangeStructrue = #{exchangeStructrue,jdbcType=NVARCHAR},
+      </if>
+      <if test="investmentAmount != null" >
+        InvestmentAmount = #{investmentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="investmentTerm != null" >
+        InvestmentTerm = #{investmentTerm,jdbcType=INTEGER},
+      </if>
+      <if test="expectIncomeRate != null" >
+        ExpectIncomeRate = #{expectIncomeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="loanType != null" >
+        LoanType = #{loanType,jdbcType=INTEGER},
+      </if>
+      <if test="loanTypeText != null" >
+        LoanTypeText = #{loanTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="firstRepaymentSource != null" >
+        FirstRepaymentSource = #{firstRepaymentSource,jdbcType=NVARCHAR},
+      </if>
+      <if test="useOfFunds != null" >
+        UseOfFunds = #{useOfFunds,jdbcType=NVARCHAR},
+      </if>
+      <if test="collateralType != null" >
+        CollateralType = #{collateralType,jdbcType=INTEGER},
+      </if>
+      <if test="collateralTypeText != null" >
+        CollateralTypeText = #{collateralTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="mortgageRate != null" >
+        MortgageRate = #{mortgageRate,jdbcType=DECIMAL},
+      </if>
+      <if test="pledgeType != null" >
+        PledgeType = #{pledgeType,jdbcType=INTEGER},
+      </if>
+      <if test="pledgeTypeText != null" >
+        PledgeTypeText = #{pledgeTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="pledgeRate != null" >
+        PledgeRate = #{pledgeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="fundsSource != null" >
+        FundsSource = #{fundsSource,jdbcType=INTEGER},
+      </if>
+      <if test="fundsSourceText != null" >
+        FundsSourceText = #{fundsSourceText,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectStage != null" >
+        ProjectStage = #{projectStage,jdbcType=INTEGER},
+      </if>
+      <if test="projectStageText != null" >
+        ProjectStageText = #{projectStageText,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessManger != null" >
+        BusinessManger = #{businessManger,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessTeam != null" >
+        BusinessTeam = #{businessTeam,jdbcType=NVARCHAR},
+      </if>
+      <if test="inputUser != null" >
+        InputUser = #{inputUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessTeamUser != null" >
+        BusinessTeamUser = #{businessTeamUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="institutionalDirector != null" >
+        InstitutionalDirector = #{institutionalDirector,jdbcType=NVARCHAR},
+      </if>
+      <if test="dueDiligenceUser != null" >
+        DueDiligenceUser = #{dueDiligenceUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="financingCompany != null" >
+        FinancingCompany = #{financingCompany,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ProjectId = #{projectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.ProjectBasic" >
+    update ProjectBasic
+    set ProjectName = #{projectName,jdbcType=NVARCHAR},
+      ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      ProjectType = #{projectType,jdbcType=INTEGER},
+      ProjectTypeText = #{projectTypeText,jdbcType=NVARCHAR},
+      ProjectBackground = #{projectBackground,jdbcType=NVARCHAR},
+      ExchangeStructrue = #{exchangeStructrue,jdbcType=NVARCHAR},
+      InvestmentAmount = #{investmentAmount,jdbcType=DECIMAL},
+      InvestmentTerm = #{investmentTerm,jdbcType=INTEGER},
+      ExpectIncomeRate = #{expectIncomeRate,jdbcType=DECIMAL},
+      LoanType = #{loanType,jdbcType=INTEGER},
+      LoanTypeText = #{loanTypeText,jdbcType=NVARCHAR},
+      FirstRepaymentSource = #{firstRepaymentSource,jdbcType=NVARCHAR},
+      UseOfFunds = #{useOfFunds,jdbcType=NVARCHAR},
+      CollateralType = #{collateralType,jdbcType=INTEGER},
+      CollateralTypeText = #{collateralTypeText,jdbcType=NVARCHAR},
+      MortgageRate = #{mortgageRate,jdbcType=DECIMAL},
+      PledgeType = #{pledgeType,jdbcType=INTEGER},
+      PledgeTypeText = #{pledgeTypeText,jdbcType=NVARCHAR},
+      PledgeRate = #{pledgeRate,jdbcType=DECIMAL},
+      FundsSource = #{fundsSource,jdbcType=INTEGER},
+      FundsSourceText = #{fundsSourceText,jdbcType=NVARCHAR},
+      ProjectStage = #{projectStage,jdbcType=INTEGER},
+      ProjectStageText = #{projectStageText,jdbcType=NVARCHAR},
+      BusinessManger = #{businessManger,jdbcType=NVARCHAR},
+      BusinessTeam = #{businessTeam,jdbcType=NVARCHAR},
+      InputUser = #{inputUser,jdbcType=NVARCHAR},
+      BusinessTeamUser = #{businessTeamUser,jdbcType=NVARCHAR},
+      InstitutionalDirector = #{institutionalDirector,jdbcType=NVARCHAR},
+      DueDiligenceUser = #{dueDiligenceUser,jdbcType=NVARCHAR},
+      FinancingCompany = #{financingCompany,jdbcType=NVARCHAR},
+      CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      ModifedTime = #{modifedTime,jdbcType=TIMESTAMP}
+    where ProjectId = #{projectId,jdbcType=INTEGER}
+  </update>
+</mapper>

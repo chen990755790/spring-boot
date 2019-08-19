@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.loanmanagement.LoanUserRelationshipMapper" >
+  <resultMap id="BaseResultMap" type="com.example.model.LoanUserRelationship" >
+    <id column="UserId" property="userId" jdbcType="INTEGER" />
+    <result column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
+    <result column="ProjectId" property="projectId" jdbcType="INTEGER" />
+    <result column="UserName" property="userName" jdbcType="NVARCHAR" />
+    <result column="PhoneNumber" property="phoneNumber" jdbcType="NVARCHAR" />
+    <result column="RelationTypeText" property="relationTypeText" jdbcType="NVARCHAR" />
+    <result column="CreatedTime" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="ModifedTime" property="modifedTime" jdbcType="TIMESTAMP" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
+    <result column="LoanName" property="loanName" jdbcType="NVARCHAR" />
+    <result column="Remarks" property="remarks" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    UserId, LoanNo, ProjectId, UserName, PhoneNumber, RelationTypeText, CreatedTime, 
+    ModifedTime, CreatedUser, ProjectNo, LoanName, Remarks
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from LoanUserRelationship
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from LoanUserRelationship
+    where UserId = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from LoanUserRelationship
+    where UserId = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.LoanUserRelationship" >
+    insert into LoanUserRelationship (UserId, LoanNo, ProjectId, 
+      UserName, PhoneNumber, RelationTypeText, 
+      CreatedTime, ModifedTime, CreatedUser, 
+      ProjectNo, LoanName, Remarks
+      )
+    values (#{userId,jdbcType=INTEGER}, #{loanNo,jdbcType=NVARCHAR}, #{projectId,jdbcType=INTEGER}, 
+      #{userName,jdbcType=NVARCHAR}, #{phoneNumber,jdbcType=NVARCHAR}, #{relationTypeText,jdbcType=NVARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{modifedTime,jdbcType=TIMESTAMP}, #{createdUser,jdbcType=NVARCHAR}, 
+      #{projectNo,jdbcType=NVARCHAR}, #{loanName,jdbcType=NVARCHAR}, #{remarks,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.LoanUserRelationship" >
+    insert into LoanUserRelationship
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        UserId,
+      </if>
+      <if test="loanNo != null" >
+        LoanNo,
+      </if>
+      <if test="projectId != null" >
+        ProjectId,
+      </if>
+      <if test="userName != null" >
+        UserName,
+      </if>
+      <if test="phoneNumber != null" >
+        PhoneNumber,
+      </if>
+      <if test="relationTypeText != null" >
+        RelationTypeText,
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime,
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo,
+      </if>
+      <if test="loanName != null" >
+        LoanName,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="loanNo != null" >
+        #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=NVARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationTypeText != null" >
+        #{relationTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null" >
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanName != null" >
+        #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.LoanUserRelationship" >
+    update LoanUserRelationship
+    <set >
+      <if test="loanNo != null" >
+        LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectId != null" >
+        ProjectId = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        UserName = #{userName,jdbcType=NVARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        PhoneNumber = #{phoneNumber,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationTypeText != null" >
+        RelationTypeText = #{relationTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="projectNo != null" >
+        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanName != null" >
+        LoanName = #{loanName,jdbcType=NVARCHAR},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where UserId = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.LoanUserRelationship" >
+    update LoanUserRelationship
+    set LoanNo = #{loanNo,jdbcType=NVARCHAR},
+      ProjectId = #{projectId,jdbcType=INTEGER},
+      UserName = #{userName,jdbcType=NVARCHAR},
+      PhoneNumber = #{phoneNumber,jdbcType=NVARCHAR},
+      RelationTypeText = #{relationTypeText,jdbcType=NVARCHAR},
+      CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+      LoanName = #{loanName,jdbcType=NVARCHAR},
+      Remarks = #{remarks,jdbcType=NVARCHAR}
+    where UserId = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

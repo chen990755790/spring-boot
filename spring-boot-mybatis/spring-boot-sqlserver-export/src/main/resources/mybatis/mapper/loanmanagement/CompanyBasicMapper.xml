@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.mapper.loanmanagement.CompanyBasicMapper" >
+
+  <resultMap id="BaseResultMap" type="com.example.model.CompanyBasic" >
+    <id column="CompanyId" property="companyId" jdbcType="INTEGER" />
+    <result column="CompanyName" property="companyName" jdbcType="NVARCHAR" />
+    <result column="RegisterAddress" property="registerAddress" jdbcType="NVARCHAR" />
+    <result column="BusinessAddress" property="businessAddress" jdbcType="NVARCHAR" />
+    <result column="LegalRepresentativeName" property="legalRepresentativeName" jdbcType="NVARCHAR" />
+    <result column="LegalRepresentativeProofType" property="legalRepresentativeProofType" jdbcType="INTEGER" />
+    <result column="LegalRepresentativeProofTypeText" property="legalRepresentativeProofTypeText" jdbcType="NVARCHAR" />
+    <result column="LegalRepresentativeProofNo" property="legalRepresentativeProofNo" jdbcType="NVARCHAR" />
+    <result column="CompanyType" property="companyType" jdbcType="INTEGER" />
+    <result column="CompanyTypeText" property="companyTypeText" jdbcType="NVARCHAR" />
+    <result column="CompanyCharacter" property="companyCharacter" jdbcType="INTEGER" />
+    <result column="CompanyCharacterText" property="companyCharacterText" jdbcType="NVARCHAR" />
+    <result column="RegisteredCapitalAmount" property="registeredCapitalAmount" jdbcType="DECIMAL" />
+    <result column="CompanyFoundedDate" property="companyFoundedDate" jdbcType="DATE" />
+    <result column="CompanyOperatingPeriod" property="companyOperatingPeriod" jdbcType="NVARCHAR" />
+    <result column="CompanyOperatingStartDate" property="companyOperatingStartDate" jdbcType="TIMESTAMP" />
+    <result column="CompanyOperatingEndDate" property="companyOperatingEndDate" jdbcType="NVARCHAR" />
+    <result column="Industry" property="industry" jdbcType="NVARCHAR" />
+    <result column="IndustryText" property="industryText" jdbcType="NVARCHAR" />
+    <result column="UnifiedSocialCreditCode" property="unifiedSocialCreditCode" jdbcType="NVARCHAR" />
+    <result column="BusinessScope" property="businessScope" jdbcType="NVARCHAR" />
+    <result column="BusinessLicenseNo" property="businessLicenseNo" jdbcType="NVARCHAR" />
+    <result column="LoanCardCode" property="loanCardCode" jdbcType="NVARCHAR" />
+    <result column="RelationCompany" property="relationCompany" jdbcType="NVARCHAR" />
+    <result column="CompanyHistory" property="companyHistory" jdbcType="NVARCHAR" />
+    <result column="PartnerHistory" property="partnerHistory" jdbcType="NVARCHAR" />
+    <result column="Province" property="province" jdbcType="NVARCHAR" />
+    <result column="ProvinceCode" property="provinceCode" jdbcType="NVARCHAR" />
+    <result column="City" property="city" jdbcType="NVARCHAR" />
+    <result column="CityCode" property="cityCode" jdbcType="NVARCHAR" />
+    <result column="District" property="district" jdbcType="NVARCHAR" />
+    <result column="DistrictCode" property="districtCode" jdbcType="NVARCHAR" />
+    <result column="IsListed" property="isListed" jdbcType="BIT" />
+    <result column="IsListedText" property="isListedText" jdbcType="NVARCHAR" />
+    <result column="CreatedTime" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
+    <result column="ModifedUser" property="modifedUser" jdbcType="NVARCHAR" />
+    <result column="ModifedTime" property="modifedTime" jdbcType="TIMESTAMP" />
+    <result column="TotalEquityAmount" property="totalEquityAmount" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CompanyId, CompanyName, RegisterAddress, BusinessAddress, LegalRepresentativeName, 
+    LegalRepresentativeProofType, LegalRepresentativeProofTypeText, LegalRepresentativeProofNo, 
+    CompanyType, CompanyTypeText, CompanyCharacter, CompanyCharacterText, RegisteredCapitalAmount, 
+    CompanyFoundedDate, CompanyOperatingPeriod, CompanyOperatingStartDate, CompanyOperatingEndDate, 
+    Industry, IndustryText, UnifiedSocialCreditCode, BusinessScope, BusinessLicenseNo, 
+    LoanCardCode, RelationCompany, CompanyHistory, PartnerHistory, Province, ProvinceCode, 
+    City, CityCode, District, DistrictCode, IsListed, IsListedText, CreatedTime, CreatedUser, 
+    ModifedUser, ModifedTime, TotalEquityAmount
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from CompanyBasic
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from CompanyBasic
+    where CompanyId = #{companyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from CompanyBasic
+    where CompanyId = #{companyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.model.CompanyBasic" >
+    insert into CompanyBasic (CompanyId, CompanyName, RegisterAddress, 
+      BusinessAddress, LegalRepresentativeName, 
+      LegalRepresentativeProofType, LegalRepresentativeProofTypeText, 
+      LegalRepresentativeProofNo, CompanyType, 
+      CompanyTypeText, CompanyCharacter, CompanyCharacterText, 
+      RegisteredCapitalAmount, CompanyFoundedDate, 
+      CompanyOperatingPeriod, CompanyOperatingStartDate, 
+      CompanyOperatingEndDate, Industry, IndustryText, 
+      UnifiedSocialCreditCode, BusinessScope, 
+      BusinessLicenseNo, LoanCardCode, RelationCompany, 
+      CompanyHistory, PartnerHistory, Province, 
+      ProvinceCode, City, CityCode, 
+      District, DistrictCode, IsListed, 
+      IsListedText, CreatedTime, CreatedUser, 
+      ModifedUser, ModifedTime, TotalEquityAmount
+      )
+    values (#{companyId,jdbcType=INTEGER}, #{companyName,jdbcType=NVARCHAR}, #{registerAddress,jdbcType=NVARCHAR}, 
+      #{businessAddress,jdbcType=NVARCHAR}, #{legalRepresentativeName,jdbcType=NVARCHAR}, 
+      #{legalRepresentativeProofType,jdbcType=INTEGER}, #{legalRepresentativeProofTypeText,jdbcType=NVARCHAR}, 
+      #{legalRepresentativeProofNo,jdbcType=NVARCHAR}, #{companyType,jdbcType=INTEGER}, 
+      #{companyTypeText,jdbcType=NVARCHAR}, #{companyCharacter,jdbcType=INTEGER}, #{companyCharacterText,jdbcType=NVARCHAR}, 
+      #{registeredCapitalAmount,jdbcType=DECIMAL}, #{companyFoundedDate,jdbcType=DATE}, 
+      #{companyOperatingPeriod,jdbcType=NVARCHAR}, #{companyOperatingStartDate,jdbcType=TIMESTAMP}, 
+      #{companyOperatingEndDate,jdbcType=NVARCHAR}, #{industry,jdbcType=NVARCHAR}, #{industryText,jdbcType=NVARCHAR}, 
+      #{unifiedSocialCreditCode,jdbcType=NVARCHAR}, #{businessScope,jdbcType=NVARCHAR}, 
+      #{businessLicenseNo,jdbcType=NVARCHAR}, #{loanCardCode,jdbcType=NVARCHAR}, #{relationCompany,jdbcType=NVARCHAR}, 
+      #{companyHistory,jdbcType=NVARCHAR}, #{partnerHistory,jdbcType=NVARCHAR}, #{province,jdbcType=NVARCHAR}, 
+      #{provinceCode,jdbcType=NVARCHAR}, #{city,jdbcType=NVARCHAR}, #{cityCode,jdbcType=NVARCHAR}, 
+      #{district,jdbcType=NVARCHAR}, #{districtCode,jdbcType=NVARCHAR}, #{isListed,jdbcType=BIT}, 
+      #{isListedText,jdbcType=NVARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{createdUser,jdbcType=NVARCHAR}, 
+      #{modifedUser,jdbcType=NVARCHAR}, #{modifedTime,jdbcType=TIMESTAMP}, #{totalEquityAmount,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.model.CompanyBasic" >
+    insert into CompanyBasic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        CompanyId,
+      </if>
+      <if test="companyName != null" >
+        CompanyName,
+      </if>
+      <if test="registerAddress != null" >
+        RegisterAddress,
+      </if>
+      <if test="businessAddress != null" >
+        BusinessAddress,
+      </if>
+      <if test="legalRepresentativeName != null" >
+        LegalRepresentativeName,
+      </if>
+      <if test="legalRepresentativeProofType != null" >
+        LegalRepresentativeProofType,
+      </if>
+      <if test="legalRepresentativeProofTypeText != null" >
+        LegalRepresentativeProofTypeText,
+      </if>
+      <if test="legalRepresentativeProofNo != null" >
+        LegalRepresentativeProofNo,
+      </if>
+      <if test="companyType != null" >
+        CompanyType,
+      </if>
+      <if test="companyTypeText != null" >
+        CompanyTypeText,
+      </if>
+      <if test="companyCharacter != null" >
+        CompanyCharacter,
+      </if>
+      <if test="companyCharacterText != null" >
+        CompanyCharacterText,
+      </if>
+      <if test="registeredCapitalAmount != null" >
+        RegisteredCapitalAmount,
+      </if>
+      <if test="companyFoundedDate != null" >
+        CompanyFoundedDate,
+      </if>
+      <if test="companyOperatingPeriod != null" >
+        CompanyOperatingPeriod,
+      </if>
+      <if test="companyOperatingStartDate != null" >
+        CompanyOperatingStartDate,
+      </if>
+      <if test="companyOperatingEndDate != null" >
+        CompanyOperatingEndDate,
+      </if>
+      <if test="industry != null" >
+        Industry,
+      </if>
+      <if test="industryText != null" >
+        IndustryText,
+      </if>
+      <if test="unifiedSocialCreditCode != null" >
+        UnifiedSocialCreditCode,
+      </if>
+      <if test="businessScope != null" >
+        BusinessScope,
+      </if>
+      <if test="businessLicenseNo != null" >
+        BusinessLicenseNo,
+      </if>
+      <if test="loanCardCode != null" >
+        LoanCardCode,
+      </if>
+      <if test="relationCompany != null" >
+        RelationCompany,
+      </if>
+      <if test="companyHistory != null" >
+        CompanyHistory,
+      </if>
+      <if test="partnerHistory != null" >
+        PartnerHistory,
+      </if>
+      <if test="province != null" >
+        Province,
+      </if>
+      <if test="provinceCode != null" >
+        ProvinceCode,
+      </if>
+      <if test="city != null" >
+        City,
+      </if>
+      <if test="cityCode != null" >
+        CityCode,
+      </if>
+      <if test="district != null" >
+        District,
+      </if>
+      <if test="districtCode != null" >
+        DistrictCode,
+      </if>
+      <if test="isListed != null" >
+        IsListed,
+      </if>
+      <if test="isListedText != null" >
+        IsListedText,
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime,
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser,
+      </if>
+      <if test="modifedUser != null" >
+        ModifedUser,
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime,
+      </if>
+      <if test="totalEquityAmount != null" >
+        TotalEquityAmount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="registerAddress != null" >
+        #{registerAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessAddress != null" >
+        #{businessAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="legalRepresentativeName != null" >
+        #{legalRepresentativeName,jdbcType=NVARCHAR},
+      </if>
+      <if test="legalRepresentativeProofType != null" >
+        #{legalRepresentativeProofType,jdbcType=INTEGER},
+      </if>
+      <if test="legalRepresentativeProofTypeText != null" >
+        #{legalRepresentativeProofTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="legalRepresentativeProofNo != null" >
+        #{legalRepresentativeProofNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyType != null" >
+        #{companyType,jdbcType=INTEGER},
+      </if>
+      <if test="companyTypeText != null" >
+        #{companyTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyCharacter != null" >
+        #{companyCharacter,jdbcType=INTEGER},
+      </if>
+      <if test="companyCharacterText != null" >
+        #{companyCharacterText,jdbcType=NVARCHAR},
+      </if>
+      <if test="registeredCapitalAmount != null" >
+        #{registeredCapitalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="companyFoundedDate != null" >
+        #{companyFoundedDate,jdbcType=DATE},
+      </if>
+      <if test="companyOperatingPeriod != null" >
+        #{companyOperatingPeriod,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyOperatingStartDate != null" >
+        #{companyOperatingStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyOperatingEndDate != null" >
+        #{companyOperatingEndDate,jdbcType=NVARCHAR},
+      </if>
+      <if test="industry != null" >
+        #{industry,jdbcType=NVARCHAR},
+      </if>
+      <if test="industryText != null" >
+        #{industryText,jdbcType=NVARCHAR},
+      </if>
+      <if test="unifiedSocialCreditCode != null" >
+        #{unifiedSocialCreditCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        #{businessScope,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessLicenseNo != null" >
+        #{businessLicenseNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanCardCode != null" >
+        #{loanCardCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationCompany != null" >
+        #{relationCompany,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyHistory != null" >
+        #{companyHistory,jdbcType=NVARCHAR},
+      </if>
+      <if test="partnerHistory != null" >
+        #{partnerHistory,jdbcType=NVARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=NVARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=NVARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=NVARCHAR},
+      </if>
+      <if test="districtCode != null" >
+        #{districtCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="isListed != null" >
+        #{isListed,jdbcType=BIT},
+      </if>
+      <if test="isListedText != null" >
+        #{isListedText,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="modifedUser != null" >
+        #{modifedUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="modifedTime != null" >
+        #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalEquityAmount != null" >
+        #{totalEquityAmount,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.CompanyBasic" >
+    update CompanyBasic
+    <set >
+      <if test="companyName != null" >
+        CompanyName = #{companyName,jdbcType=NVARCHAR},
+      </if>
+      <if test="registerAddress != null" >
+        RegisterAddress = #{registerAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessAddress != null" >
+        BusinessAddress = #{businessAddress,jdbcType=NVARCHAR},
+      </if>
+      <if test="legalRepresentativeName != null" >
+        LegalRepresentativeName = #{legalRepresentativeName,jdbcType=NVARCHAR},
+      </if>
+      <if test="legalRepresentativeProofType != null" >
+        LegalRepresentativeProofType = #{legalRepresentativeProofType,jdbcType=INTEGER},
+      </if>
+      <if test="legalRepresentativeProofTypeText != null" >
+        LegalRepresentativeProofTypeText = #{legalRepresentativeProofTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="legalRepresentativeProofNo != null" >
+        LegalRepresentativeProofNo = #{legalRepresentativeProofNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyType != null" >
+        CompanyType = #{companyType,jdbcType=INTEGER},
+      </if>
+      <if test="companyTypeText != null" >
+        CompanyTypeText = #{companyTypeText,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyCharacter != null" >
+        CompanyCharacter = #{companyCharacter,jdbcType=INTEGER},
+      </if>
+      <if test="companyCharacterText != null" >
+        CompanyCharacterText = #{companyCharacterText,jdbcType=NVARCHAR},
+      </if>
+      <if test="registeredCapitalAmount != null" >
+        RegisteredCapitalAmount = #{registeredCapitalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="companyFoundedDate != null" >
+        CompanyFoundedDate = #{companyFoundedDate,jdbcType=DATE},
+      </if>
+      <if test="companyOperatingPeriod != null" >
+        CompanyOperatingPeriod = #{companyOperatingPeriod,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyOperatingStartDate != null" >
+        CompanyOperatingStartDate = #{companyOperatingStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyOperatingEndDate != null" >
+        CompanyOperatingEndDate = #{companyOperatingEndDate,jdbcType=NVARCHAR},
+      </if>
+      <if test="industry != null" >
+        Industry = #{industry,jdbcType=NVARCHAR},
+      </if>
+      <if test="industryText != null" >
+        IndustryText = #{industryText,jdbcType=NVARCHAR},
+      </if>
+      <if test="unifiedSocialCreditCode != null" >
+        UnifiedSocialCreditCode = #{unifiedSocialCreditCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        BusinessScope = #{businessScope,jdbcType=NVARCHAR},
+      </if>
+      <if test="businessLicenseNo != null" >
+        BusinessLicenseNo = #{businessLicenseNo,jdbcType=NVARCHAR},
+      </if>
+      <if test="loanCardCode != null" >
+        LoanCardCode = #{loanCardCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="relationCompany != null" >
+        RelationCompany = #{relationCompany,jdbcType=NVARCHAR},
+      </if>
+      <if test="companyHistory != null" >
+        CompanyHistory = #{companyHistory,jdbcType=NVARCHAR},
+      </if>
+      <if test="partnerHistory != null" >
+        PartnerHistory = #{partnerHistory,jdbcType=NVARCHAR},
+      </if>
+      <if test="province != null" >
+        Province = #{province,jdbcType=NVARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        ProvinceCode = #{provinceCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="city != null" >
+        City = #{city,jdbcType=NVARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        CityCode = #{cityCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="district != null" >
+        District = #{district,jdbcType=NVARCHAR},
+      </if>
+      <if test="districtCode != null" >
+        DistrictCode = #{districtCode,jdbcType=NVARCHAR},
+      </if>
+      <if test="isListed != null" >
+        IsListed = #{isListed,jdbcType=BIT},
+      </if>
+      <if test="isListedText != null" >
+        IsListedText = #{isListedText,jdbcType=NVARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null" >
+        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="modifedUser != null" >
+        ModifedUser = #{modifedUser,jdbcType=NVARCHAR},
+      </if>
+      <if test="modifedTime != null" >
+        ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalEquityAmount != null" >
+        TotalEquityAmount = #{totalEquityAmount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CompanyId = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.model.CompanyBasic" >
+    update CompanyBasic
+    set CompanyName = #{companyName,jdbcType=NVARCHAR},
+      RegisterAddress = #{registerAddress,jdbcType=NVARCHAR},
+      BusinessAddress = #{businessAddress,jdbcType=NVARCHAR},
+      LegalRepresentativeName = #{legalRepresentativeName,jdbcType=NVARCHAR},
+      LegalRepresentativeProofType = #{legalRepresentativeProofType,jdbcType=INTEGER},
+      LegalRepresentativeProofTypeText = #{legalRepresentativeProofTypeText,jdbcType=NVARCHAR},
+      LegalRepresentativeProofNo = #{legalRepresentativeProofNo,jdbcType=NVARCHAR},
+      CompanyType = #{companyType,jdbcType=INTEGER},
+      CompanyTypeText = #{companyTypeText,jdbcType=NVARCHAR},
+      CompanyCharacter = #{companyCharacter,jdbcType=INTEGER},
+      CompanyCharacterText = #{companyCharacterText,jdbcType=NVARCHAR},
+      RegisteredCapitalAmount = #{registeredCapitalAmount,jdbcType=DECIMAL},
+      CompanyFoundedDate = #{companyFoundedDate,jdbcType=DATE},
+      CompanyOperatingPeriod = #{companyOperatingPeriod,jdbcType=NVARCHAR},
+      CompanyOperatingStartDate = #{companyOperatingStartDate,jdbcType=TIMESTAMP},
+      CompanyOperatingEndDate = #{companyOperatingEndDate,jdbcType=NVARCHAR},
+      Industry = #{industry,jdbcType=NVARCHAR},
+      IndustryText = #{industryText,jdbcType=NVARCHAR},
+      UnifiedSocialCreditCode = #{unifiedSocialCreditCode,jdbcType=NVARCHAR},
+      BusinessScope = #{businessScope,jdbcType=NVARCHAR},
+      BusinessLicenseNo = #{businessLicenseNo,jdbcType=NVARCHAR},
+      LoanCardCode = #{loanCardCode,jdbcType=NVARCHAR},
+      RelationCompany = #{relationCompany,jdbcType=NVARCHAR},
+      CompanyHistory = #{companyHistory,jdbcType=NVARCHAR},
+      PartnerHistory = #{partnerHistory,jdbcType=NVARCHAR},
+      Province = #{province,jdbcType=NVARCHAR},
+      ProvinceCode = #{provinceCode,jdbcType=NVARCHAR},
+      City = #{city,jdbcType=NVARCHAR},
+      CityCode = #{cityCode,jdbcType=NVARCHAR},
+      District = #{district,jdbcType=NVARCHAR},
+      DistrictCode = #{districtCode,jdbcType=NVARCHAR},
+      IsListed = #{isListed,jdbcType=BIT},
+      IsListedText = #{isListedText,jdbcType=NVARCHAR},
+      CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+      CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+      ModifedUser = #{modifedUser,jdbcType=NVARCHAR},
+      ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+      TotalEquityAmount = #{totalEquityAmount,jdbcType=DECIMAL}
+    where CompanyId = #{companyId,jdbcType=INTEGER}
+  </update>
+</mapper>
