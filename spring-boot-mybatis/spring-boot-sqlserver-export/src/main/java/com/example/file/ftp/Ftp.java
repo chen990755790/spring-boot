@@ -5,15 +5,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Ftp {
-    @Value("${ipAddr}")
+    @Value("${ftp.ipAddr}")
     private String ipAddr;//ip地址
-    @Value("${port}")
+    @Value("${ftp.port}")
     private Integer port;//端口号
-    @Value("${userName}")
+    @Value("${ftp.userName}")
     private String userName;//用户名
-    @Value("${pwd}")
+    @Value("${ftp.pwd}")
     private String pwd;//密码
-    @Value("${path}")
+    @Value("${ftp.path}")
     private String path;//aaa路径
 
     public String getIpAddr() {

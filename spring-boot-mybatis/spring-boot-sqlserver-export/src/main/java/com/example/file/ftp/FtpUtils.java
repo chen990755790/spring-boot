@@ -3,6 +3,7 @@ package com.example.file.ftp;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -40,6 +41,8 @@ public class FtpUtils {
             return flag;
         }
         ftp.changeWorkingDirectory(f.getPath());
+        ftp.setBufferSize(1024*1024);
+        ftp.enterLocalPassiveMode();
         flag = true;
         return flag;
     }
@@ -82,8 +85,8 @@ public class FtpUtils {
             }
         } else {
             File file2 = new File(f.getPath());
-            FileInputStream input = new FileInputStream(file2);
-            ftp.storeFile(file2.getName(), input);
+            BufferedInputStream input = new BufferedInputStream(new FileInputStream(file2));
+            boolean b = ftp.storeFile(file2.getName(), input);
             input.close();
         }
     }

@@ -1,6 +1,8 @@
 package com.example.file;
 
+import com.example.file.ftp.FtpUtils;
 import com.example.model.Example;
+import com.example.util.DateUtil;
 import com.example.util.FileUtil;
 import com.example.util.SpringContextUtil;
 import org.apache.commons.io.FileUtils;
@@ -13,6 +15,7 @@ import org.springframework.util.ReflectionUtils;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Date;
 import java.util.List;
 import java.util.zip.GZIPOutputStream;
 
@@ -21,7 +24,7 @@ public class DataExportService {
 
     final Logger logger = LoggerFactory.getLogger(DataExportService.class);
     final String MAPPER = "Mapper";
-    static String GZ_FILE = "gz";
+
     @Value("${fileDir}")
     private String fileDir;
 
@@ -33,13 +36,17 @@ public class DataExportService {
             FileUtils.writeLines(file, FileUtil.CHARACTER_SET, list, "");
             writeControlFileByTable(upperTableName, file, Integer.toUnsignedLong(list.size()));
             generateGZFile(file);
-//            if (!file.delete())
-//                throw new FileExportException("数据文件删除异常");
+            if (!file.delete()) {
+                logger.warn(upperTableName+"文件删除失败");
+            }
         } catch (IOException e) {
             logger.error("数据导出失败", e);
-            throw new FileExportException("数据导出失败");
+            throw new FileExportException(upperTableName + "数据导出失败");
         } catch (FileExportException e) {
             throw e;
+        } catch (Exception e) {
+            logger.error("文件上传异常", e);
+            throw new FileExportException(upperTableName + "文件上传异常");
         }
     }
 
@@ -73,7 +80,7 @@ public class DataExportService {
         return list;
     }
 
-    private void writeControlFileByTable(String tableName, File dataFile, Long total) {
+    private File writeControlFileByTable(String tableName, File dataFile, Long total) {
         File controlFile = new File(fileDir + File.separator + FileUtil.getControlFileName(tableName));
         String line = tableName + FileUtil.SEPARATOR_TAB + dataFile.length() + FileUtil.SEPARATOR_TAB + total;
         try {
@@ -82,10 +89,11 @@ public class DataExportService {
             logger.error("控制文件写入失败", e);
             throw new FileExportException("控制文件写入失败");
         }
+        return controlFile;
     }
 
-    private void generateGZFile(File file) {
-        File gzFile = new File(file + FileUtil.FILE_SEPERATOR + GZ_FILE);
+    private File generateGZFile(File file) {
+        File gzFile = new File(file + FileUtil.FILE_SEPERATOR + FileUtil.GZ_FILE);
         GZIPOutputStream outputStream = null;
         BufferedInputStream inBuff = null;
         try {
@@ -97,6 +105,7 @@ public class DataExportService {
             while ((len = inBuff.read(b)) != -1) {
                 outputStream.write(b, 0, len);
             }
+            return gzFile;
         } catch (IOException e) {
             logger.error("gz文件生成异常", e);
             throw new FileExportException("gz文件生成异常");
@@ -110,8 +119,39 @@ public class DataExportService {
                     inBuff.close();
                 }
             } catch (IOException e) {
-
+                logger.error("流关闭异常", e);
             }
+        }
+    }
+
+    public void uploadFile() {
+        String today = DateUtil.formateDate(new Date());
+        try {
+            File[] gzfiles = new File(fileDir).listFiles(new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    if (name.contains(today) && name.endsWith(FileUtil.GZ_FILE))
+                        return true;
+                    return false;
+                }
+            });
+            for (int i=0;i<gzfiles.length;i++){
+                FtpUtils.upload(gzfiles[i]);
+            }
+            File[] ctrfiles = new File(fileDir).listFiles(new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    if (name.contains(today) && name.endsWith(FileUtil.SUFFIX_CONTROL_FILE_NAME))
+                        return true;
+                    return false;
+                }
+            });
+            for (int i=0;i<ctrfiles.length;i++){
+                FtpUtils.upload(ctrfiles[i]);
+            }
+        } catch (Exception e) {
+            logger.error("文件上传失败",e);
+            throw new FileExportException("文件上传失败");
         }
     }
 }

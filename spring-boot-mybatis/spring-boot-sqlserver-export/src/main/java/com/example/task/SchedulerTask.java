@@ -4,6 +4,7 @@ import com.example.constant.TableConstant;
 import com.example.file.DataExportService;
 import com.example.file.FileExportException;
 import com.example.file.ftp.Ftp;
+import com.example.file.ftp.FtpUtils;
 import com.example.util.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,15 +23,18 @@ public class SchedulerTask {
     @Autowired
     private DataExportService dataExportService;
 
-    @Scheduled(cron = "30 41 11 * * 1-5")
-    private void process() throws FileExportException ,Exception{
-        //FtpUtils.connectFtp(ftp);
-        System.out.println(ftp);
+    @Scheduled(cron = "00 46 11 * * 1-5")
+    public void process() throws FileExportException, Exception {
         for (int i = 0; i < TableConstant.LOANMANAGEMENT_TABLES.length; i++) {
             String tableName = TableConstant.LOANMANAGEMENT_TABLES[i];
             dataExportService.WriteDataFileByTableName(tableName);
             logger.info(DateUtil.formateDate(new Date(), DateUtil.DATE_TIME_PATTERN) + " " + tableName + " 文件已生成");
         }
-        //FtpUtils.closeFtp();
+        Long start = System.currentTimeMillis();
+        FtpUtils.connectFtp(ftp);
+        dataExportService.uploadFile();
+        FtpUtils.closeFtp();
+        logger.info("花了："+(System.currentTimeMillis() - start) + "秒文件已上传");
     }
+
 }

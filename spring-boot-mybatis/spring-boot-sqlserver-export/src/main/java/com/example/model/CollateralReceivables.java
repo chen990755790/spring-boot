@@ -297,15 +297,15 @@ public class CollateralReceivables extends Example{
                         "\001" + this.getReceivablesDueDateString() +
                         "\001" + shadowRating +
                         "\001" + shadowRatingText +
-                        "\001" + this.getInterestStartDate() +
-                        "\001" + this.getInterestEndDate() +
+                        "\001" + this.getInterestStartDateString() +
+                        "\001" + this.getInterestEndDateString() +
                         "\001" + primaryRate +
                         "\001" + paymentType +
                         "\001" + paymentTypeText +
                         "\001" + remark +
                         "\001" + createdUser +
-                        "\001" + this.getCreationTime() +
-                        "\001" + this.getModifyTime() +
+                        "\001" + this.getCreationTimeString() +
+                        "\001" + this.getModifyTimeString() +
                         "\001" + receivablesTerm +
                         "\001" + expectIncomeAmount +
                         '\r';

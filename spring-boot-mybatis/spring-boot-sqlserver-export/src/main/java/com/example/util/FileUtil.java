@@ -16,6 +16,8 @@ public class FileUtil {
 
     public static final String SEPARATOR_TAB = "\t";
 
+    public static String GZ_FILE = "gz";
+
     public static String getDataFileName(String tableName) {
         return PREFIX_FILE_NAME + FILE_SEPERATOR + tableName + FILE_SEPERATOR + getDate() + FILE_SEPERATOR
                 + getBatchNum() + FILE_SEPERATOR + getRepeatNum() + FILE_SEPERATOR + getSuffixDataFileName();
