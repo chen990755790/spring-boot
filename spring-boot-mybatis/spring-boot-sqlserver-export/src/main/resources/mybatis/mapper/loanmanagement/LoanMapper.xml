@@ -1,107 +1,108 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.mapper.loanmanagement.LoanMapper" >
-  <resultMap id="BaseResultMap" type="com.example.model.Loan" >
-    <id column="LoanNo" property="loanNo" jdbcType="NVARCHAR" />
-    <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR" />
-    <result column="ProjectNoText" property="projectNoText" jdbcType="NVARCHAR" />
-    <result column="ParentLoanNo" property="parentLoanNo" jdbcType="NVARCHAR" />
-    <result column="ParentLoanNoText" property="parentLoanNoText" jdbcType="NVARCHAR" />
-    <result column="LoanLevel" property="loanLevel" jdbcType="INTEGER" />
-    <result column="LoanLevelText" property="loanLevelText" jdbcType="NVARCHAR" />
-    <result column="ContractNo" property="contractNo" jdbcType="NVARCHAR" />
-    <result column="LoanName" property="loanName" jdbcType="NVARCHAR" />
-    <result column="ApplyPlace" property="applyPlace" jdbcType="NVARCHAR" />
-    <result column="ApplyPlaceCode" property="applyPlaceCode" jdbcType="NVARCHAR" />
-    <result column="LoanType" property="loanType" jdbcType="NVARCHAR" />
-    <result column="LoanTypeText" property="loanTypeText" jdbcType="NVARCHAR" />
-    <result column="ContractAmount" property="contractAmount" jdbcType="DECIMAL" />
-    <result column="PrimaryRateType" property="primaryRateType" jdbcType="NVARCHAR" />
-    <result column="PrimaryRateTypeText" property="primaryRateTypeText" jdbcType="NVARCHAR" />
-    <result column="InterestStartDate" property="interestStartDate" jdbcType="DATE" />
-    <result column="InterestEndDate" property="interestEndDate" jdbcType="DATE" />
-    <result column="LoanTermType" property="loanTermType" jdbcType="NVARCHAR" />
-    <result column="LoanTermTypeText" property="loanTermTypeText" jdbcType="NVARCHAR" />
-    <result column="LoanTerm" property="loanTerm" jdbcType="INTEGER" />
-    <result column="ActualPayDate" property="actualPayDate" jdbcType="DATE" />
-    <result column="PaymentType" property="paymentType" jdbcType="NVARCHAR" />
-    <result column="PaymentTypeText" property="paymentTypeText" jdbcType="NVARCHAR" />
-    <result column="IsProductUsed" property="isProductUsed" jdbcType="BIT" />
-    <result column="IsProductUsedText" property="isProductUsedText" jdbcType="NVARCHAR" />
-    <result column="IsThirdpartyWarranty" property="isThirdpartyWarranty" jdbcType="BIT" />
-    <result column="WarrantyType" property="warrantyType" jdbcType="NVARCHAR" />
-    <result column="WarrantyTypeText" property="warrantyTypeText" jdbcType="NVARCHAR" />
-    <result column="WarrantorCreditLevel" property="warrantorCreditLevel" jdbcType="NVARCHAR" />
-    <result column="WarrantorAmount" property="warrantorAmount" jdbcType="DECIMAL" />
-    <result column="WarrantorName" property="warrantorName" jdbcType="NVARCHAR" />
-    <result column="WarrantorType" property="warrantorType" jdbcType="NVARCHAR" />
-    <result column="IsGuaranteed" property="isGuaranteed" jdbcType="BIT" />
-    <result column="IsUsedOwnFunds" property="isUsedOwnFunds" jdbcType="BIT" />
-    <result column="LoanProcurementDepartment" property="loanProcurementDepartment" jdbcType="NVARCHAR" />
-    <result column="LoanCount" property="loanCount" jdbcType="INTEGER" />
-    <result column="TransferStatus" property="transferStatus" jdbcType="INTEGER" />
-    <result column="TransferStatusText" property="transferStatusText" jdbcType="NVARCHAR" />
-    <result column="PrimaryRate" property="primaryRate" jdbcType="DECIMAL" />
-    <result column="ExpectIncomeAmount" property="expectIncomeAmount" jdbcType="DECIMAL" />
-    <result column="InterestTypeText" property="interestTypeText" jdbcType="NVARCHAR" />
-    <result column="InterestType" property="interestType" jdbcType="NVARCHAR" />
-    <result column="PurposeHolding" property="purposeHolding" jdbcType="INTEGER" />
-    <result column="PurposeHoldingText" property="purposeHoldingText" jdbcType="NVARCHAR" />
-    <result column="WarrantorCreditLevelText" property="warrantorCreditLevelText" jdbcType="NVARCHAR" />
-    <result column="WarrantorTypeText" property="warrantorTypeText" jdbcType="NVARCHAR" />
-    <result column="LoanTemplate" property="loanTemplate" jdbcType="INTEGER" />
-    <result column="LoanTemplateText" property="loanTemplateText" jdbcType="NVARCHAR" />
-    <result column="LoanProcurementDepartmentText" property="loanProcurementDepartmentText" jdbcType="NVARCHAR" />
-    <result column="LoanMarginAmount" property="loanMarginAmount" jdbcType="DECIMAL" />
-    <result column="Remarks" property="remarks" jdbcType="NVARCHAR" />
-    <result column="IsThirdpartyWarrantyText" property="isThirdpartyWarrantyText" jdbcType="NVARCHAR" />
-    <result column="IsGuaranteedText" property="isGuaranteedText" jdbcType="NVARCHAR" />
-    <result column="IsUsedOwnFundsText" property="isUsedOwnFundsText" jdbcType="NVARCHAR" />
-    <result column="ModifedTime" property="modifedTime" jdbcType="TIMESTAMP" />
-    <result column="CreatedTime" property="createdTime" jdbcType="TIMESTAMP" />
-    <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR" />
-    <result column="HolderType" property="holderType" jdbcType="INTEGER" />
-    <result column="HolderTypeText" property="holderTypeText" jdbcType="NVARCHAR" />
-    <result column="HolderName" property="holderName" jdbcType="NVARCHAR" />
-    <result column="OriginalAssetAmount" property="originalAssetAmount" jdbcType="DECIMAL" />
-    <result column="OriginalAssetPrimaryRate" property="originalAssetPrimaryRate" jdbcType="DECIMAL" />
-    <result column="RepaymentSource" property="repaymentSource" jdbcType="INTEGER" />
-    <result column="RepaymentSourceText" property="repaymentSourceText" jdbcType="NVARCHAR" />
-    <result column="OnceCashFlowAmount" property="onceCashFlowAmount" jdbcType="DECIMAL" />
-    <result column="SellRate" property="sellRate" jdbcType="DECIMAL" />
-    <result column="PayInterestFrequency" property="payInterestFrequency" jdbcType="INTEGER" />
-    <result column="PayInterestFrequencyText" property="payInterestFrequencyText" jdbcType="NVARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+<mapper namespace="com.example.mapper.loanmanagement.LoanMapper">
+    <resultMap id="BaseResultMap" type="com.example.model.Loan">
+        <id column="LoanNo" property="loanNo" jdbcType="NVARCHAR"/>
+        <result column="ProjectNo" property="projectNo" jdbcType="NVARCHAR"/>
+        <result column="ProjectNoText" property="projectNoText" jdbcType="NVARCHAR"/>
+        <result column="ParentLoanNo" property="parentLoanNo" jdbcType="NVARCHAR"/>
+        <result column="ParentLoanNoText" property="parentLoanNoText" jdbcType="NVARCHAR"/>
+        <result column="LoanLevel" property="loanLevel" jdbcType="INTEGER"/>
+        <result column="LoanLevelText" property="loanLevelText" jdbcType="NVARCHAR"/>
+        <result column="ContractNo" property="contractNo" jdbcType="NVARCHAR"/>
+        <result column="LoanName" property="loanName" jdbcType="NVARCHAR"/>
+        <result column="ApplyPlace" property="applyPlace" jdbcType="NVARCHAR"/>
+        <result column="ApplyPlaceCode" property="applyPlaceCode" jdbcType="NVARCHAR"/>
+        <result column="LoanType" property="loanType" jdbcType="NVARCHAR"/>
+        <result column="LoanTypeText" property="loanTypeText" jdbcType="NVARCHAR"/>
+        <result column="ContractAmount" property="contractAmount" jdbcType="DECIMAL"/>
+        <result column="PrimaryRateType" property="primaryRateType" jdbcType="NVARCHAR"/>
+        <result column="PrimaryRateTypeText" property="primaryRateTypeText" jdbcType="NVARCHAR"/>
+        <result column="InterestStartDate" property="interestStartDate" jdbcType="DATE"/>
+        <result column="InterestEndDate" property="interestEndDate" jdbcType="DATE"/>
+        <result column="LoanTermType" property="loanTermType" jdbcType="NVARCHAR"/>
+        <result column="LoanTermTypeText" property="loanTermTypeText" jdbcType="NVARCHAR"/>
+        <result column="LoanTerm" property="loanTerm" jdbcType="INTEGER"/>
+        <result column="ActualPayDate" property="actualPayDate" jdbcType="DATE"/>
+        <result column="PaymentType" property="paymentType" jdbcType="NVARCHAR"/>
+        <result column="PaymentTypeText" property="paymentTypeText" jdbcType="NVARCHAR"/>
+        <result column="IsProductUsed" property="isProductUsed" jdbcType="BIT"/>
+        <result column="IsProductUsedText" property="isProductUsedText" jdbcType="NVARCHAR"/>
+        <result column="IsThirdpartyWarranty" property="isThirdpartyWarranty" jdbcType="BIT"/>
+        <result column="WarrantyType" property="warrantyType" jdbcType="NVARCHAR"/>
+        <result column="WarrantyTypeText" property="warrantyTypeText" jdbcType="NVARCHAR"/>
+        <result column="WarrantorCreditLevel" property="warrantorCreditLevel" jdbcType="NVARCHAR"/>
+        <result column="WarrantorAmount" property="warrantorAmount" jdbcType="DECIMAL"/>
+        <result column="WarrantorName" property="warrantorName" jdbcType="NVARCHAR"/>
+        <result column="WarrantorType" property="warrantorType" jdbcType="NVARCHAR"/>
+        <result column="IsGuaranteed" property="isGuaranteed" jdbcType="BIT"/>
+        <result column="IsUsedOwnFunds" property="isUsedOwnFunds" jdbcType="BIT"/>
+        <result column="LoanProcurementDepartment" property="loanProcurementDepartment" jdbcType="NVARCHAR"/>
+        <result column="LoanCount" property="loanCount" jdbcType="INTEGER"/>
+        <result column="TransferStatus" property="transferStatus" jdbcType="INTEGER"/>
+        <result column="TransferStatusText" property="transferStatusText" jdbcType="NVARCHAR"/>
+        <result column="PrimaryRate" property="primaryRate" jdbcType="DECIMAL"/>
+        <result column="ExpectIncomeAmount" property="expectIncomeAmount" jdbcType="DECIMAL"/>
+        <result column="InterestTypeText" property="interestTypeText" jdbcType="NVARCHAR"/>
+        <result column="InterestType" property="interestType" jdbcType="NVARCHAR"/>
+        <result column="PurposeHolding" property="purposeHolding" jdbcType="INTEGER"/>
+        <result column="PurposeHoldingText" property="purposeHoldingText" jdbcType="NVARCHAR"/>
+        <result column="WarrantorCreditLevelText" property="warrantorCreditLevelText" jdbcType="NVARCHAR"/>
+        <result column="WarrantorTypeText" property="warrantorTypeText" jdbcType="NVARCHAR"/>
+        <result column="LoanTemplate" property="loanTemplate" jdbcType="INTEGER"/>
+        <result column="LoanTemplateText" property="loanTemplateText" jdbcType="NVARCHAR"/>
+        <result column="LoanProcurementDepartmentText" property="loanProcurementDepartmentText" jdbcType="NVARCHAR"/>
+        <result column="LoanMarginAmount" property="loanMarginAmount" jdbcType="DECIMAL"/>
+        <result column="Remarks" property="remarks" jdbcType="NVARCHAR"/>
+        <result column="IsThirdpartyWarrantyText" property="isThirdpartyWarrantyText" jdbcType="NVARCHAR"/>
+        <result column="IsGuaranteedText" property="isGuaranteedText" jdbcType="NVARCHAR"/>
+        <result column="IsUsedOwnFundsText" property="isUsedOwnFundsText" jdbcType="NVARCHAR"/>
+        <result column="ModifedTime" property="modifedTime" jdbcType="TIMESTAMP"/>
+        <result column="CreatedTime" property="createdTime" jdbcType="TIMESTAMP"/>
+        <result column="CreatedUser" property="createdUser" jdbcType="NVARCHAR"/>
+        <result column="HolderType" property="holderType" jdbcType="INTEGER"/>
+        <result column="HolderTypeText" property="holderTypeText" jdbcType="NVARCHAR"/>
+        <result column="HolderName" property="holderName" jdbcType="NVARCHAR"/>
+        <result column="OriginalAssetAmount" property="originalAssetAmount" jdbcType="DECIMAL"/>
+        <result column="OriginalAssetPrimaryRate" property="originalAssetPrimaryRate" jdbcType="DECIMAL"/>
+        <result column="RepaymentSource" property="repaymentSource" jdbcType="INTEGER"/>
+        <result column="RepaymentSourceText" property="repaymentSourceText" jdbcType="NVARCHAR"/>
+        <result column="OnceCashFlowAmount" property="onceCashFlowAmount" jdbcType="DECIMAL"/>
+        <result column="SellRate" property="sellRate" jdbcType="DECIMAL"/>
+        <result column="PayInterestFrequency" property="payInterestFrequency" jdbcType="INTEGER"/>
+        <result column="PayInterestFrequencyText" property="payInterestFrequencyText" jdbcType="NVARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
     LoanNo, ProjectNo, ProjectNoText, ParentLoanNo, ParentLoanNoText, LoanLevel, LoanLevelText, 
     ContractNo, LoanName, ApplyPlace, ApplyPlaceCode, LoanType, LoanTypeText, ContractAmount, 
     PrimaryRateType, PrimaryRateTypeText, InterestStartDate, InterestEndDate, LoanTermType, 
@@ -116,29 +117,32 @@
     OriginalAssetPrimaryRate, RepaymentSource, RepaymentSourceText, OnceCashFlowAmount, 
     SellRate, PayInterestFrequency, PayInterestFrequencyText
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    'false' as QUERYID,
-    <include refid="Base_Column_List" />
-    from Loan
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from Loan
-    where LoanNo = #{loanNo,jdbcType=NVARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.model.Example">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'false' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from Loan
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="pageCondition != null">
+             ${pageCondition}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from Loan
+        where LoanNo = #{loanNo,jdbcType=NVARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from Loan
     where LoanNo = #{loanNo,jdbcType=NVARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.example.model.Loan" >
+    <insert id="insert" parameterType="com.example.model.Loan">
     insert into Loan (LoanNo, ProjectNo, ProjectNoText, 
       ParentLoanNo, ParentLoanNoText, LoanLevel, 
       LoanLevelText, ContractNo, LoanName, 
@@ -190,638 +194,638 @@
       #{onceCashFlowAmount,jdbcType=DECIMAL}, #{sellRate,jdbcType=DECIMAL}, #{payInterestFrequency,jdbcType=INTEGER}, 
       #{payInterestFrequencyText,jdbcType=NVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.model.Loan" >
-    insert into Loan
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="loanNo != null" >
-        LoanNo,
-      </if>
-      <if test="projectNo != null" >
-        ProjectNo,
-      </if>
-      <if test="projectNoText != null" >
-        ProjectNoText,
-      </if>
-      <if test="parentLoanNo != null" >
-        ParentLoanNo,
-      </if>
-      <if test="parentLoanNoText != null" >
-        ParentLoanNoText,
-      </if>
-      <if test="loanLevel != null" >
-        LoanLevel,
-      </if>
-      <if test="loanLevelText != null" >
-        LoanLevelText,
-      </if>
-      <if test="contractNo != null" >
-        ContractNo,
-      </if>
-      <if test="loanName != null" >
-        LoanName,
-      </if>
-      <if test="applyPlace != null" >
-        ApplyPlace,
-      </if>
-      <if test="applyPlaceCode != null" >
-        ApplyPlaceCode,
-      </if>
-      <if test="loanType != null" >
-        LoanType,
-      </if>
-      <if test="loanTypeText != null" >
-        LoanTypeText,
-      </if>
-      <if test="contractAmount != null" >
-        ContractAmount,
-      </if>
-      <if test="primaryRateType != null" >
-        PrimaryRateType,
-      </if>
-      <if test="primaryRateTypeText != null" >
-        PrimaryRateTypeText,
-      </if>
-      <if test="interestStartDate != null" >
-        InterestStartDate,
-      </if>
-      <if test="interestEndDate != null" >
-        InterestEndDate,
-      </if>
-      <if test="loanTermType != null" >
-        LoanTermType,
-      </if>
-      <if test="loanTermTypeText != null" >
-        LoanTermTypeText,
-      </if>
-      <if test="loanTerm != null" >
-        LoanTerm,
-      </if>
-      <if test="actualPayDate != null" >
-        ActualPayDate,
-      </if>
-      <if test="paymentType != null" >
-        PaymentType,
-      </if>
-      <if test="paymentTypeText != null" >
-        PaymentTypeText,
-      </if>
-      <if test="isProductUsed != null" >
-        IsProductUsed,
-      </if>
-      <if test="isProductUsedText != null" >
-        IsProductUsedText,
-      </if>
-      <if test="isThirdpartyWarranty != null" >
-        IsThirdpartyWarranty,
-      </if>
-      <if test="warrantyType != null" >
-        WarrantyType,
-      </if>
-      <if test="warrantyTypeText != null" >
-        WarrantyTypeText,
-      </if>
-      <if test="warrantorCreditLevel != null" >
-        WarrantorCreditLevel,
-      </if>
-      <if test="warrantorAmount != null" >
-        WarrantorAmount,
-      </if>
-      <if test="warrantorName != null" >
-        WarrantorName,
-      </if>
-      <if test="warrantorType != null" >
-        WarrantorType,
-      </if>
-      <if test="isGuaranteed != null" >
-        IsGuaranteed,
-      </if>
-      <if test="isUsedOwnFunds != null" >
-        IsUsedOwnFunds,
-      </if>
-      <if test="loanProcurementDepartment != null" >
-        LoanProcurementDepartment,
-      </if>
-      <if test="loanCount != null" >
-        LoanCount,
-      </if>
-      <if test="transferStatus != null" >
-        TransferStatus,
-      </if>
-      <if test="transferStatusText != null" >
-        TransferStatusText,
-      </if>
-      <if test="primaryRate != null" >
-        PrimaryRate,
-      </if>
-      <if test="expectIncomeAmount != null" >
-        ExpectIncomeAmount,
-      </if>
-      <if test="interestTypeText != null" >
-        InterestTypeText,
-      </if>
-      <if test="interestType != null" >
-        InterestType,
-      </if>
-      <if test="purposeHolding != null" >
-        PurposeHolding,
-      </if>
-      <if test="purposeHoldingText != null" >
-        PurposeHoldingText,
-      </if>
-      <if test="warrantorCreditLevelText != null" >
-        WarrantorCreditLevelText,
-      </if>
-      <if test="warrantorTypeText != null" >
-        WarrantorTypeText,
-      </if>
-      <if test="loanTemplate != null" >
-        LoanTemplate,
-      </if>
-      <if test="loanTemplateText != null" >
-        LoanTemplateText,
-      </if>
-      <if test="loanProcurementDepartmentText != null" >
-        LoanProcurementDepartmentText,
-      </if>
-      <if test="loanMarginAmount != null" >
-        LoanMarginAmount,
-      </if>
-      <if test="remarks != null" >
-        Remarks,
-      </if>
-      <if test="isThirdpartyWarrantyText != null" >
-        IsThirdpartyWarrantyText,
-      </if>
-      <if test="isGuaranteedText != null" >
-        IsGuaranteedText,
-      </if>
-      <if test="isUsedOwnFundsText != null" >
-        IsUsedOwnFundsText,
-      </if>
-      <if test="modifedTime != null" >
-        ModifedTime,
-      </if>
-      <if test="createdTime != null" >
-        CreatedTime,
-      </if>
-      <if test="createdUser != null" >
-        CreatedUser,
-      </if>
-      <if test="holderType != null" >
-        HolderType,
-      </if>
-      <if test="holderTypeText != null" >
-        HolderTypeText,
-      </if>
-      <if test="holderName != null" >
-        HolderName,
-      </if>
-      <if test="originalAssetAmount != null" >
-        OriginalAssetAmount,
-      </if>
-      <if test="originalAssetPrimaryRate != null" >
-        OriginalAssetPrimaryRate,
-      </if>
-      <if test="repaymentSource != null" >
-        RepaymentSource,
-      </if>
-      <if test="repaymentSourceText != null" >
-        RepaymentSourceText,
-      </if>
-      <if test="onceCashFlowAmount != null" >
-        OnceCashFlowAmount,
-      </if>
-      <if test="sellRate != null" >
-        SellRate,
-      </if>
-      <if test="payInterestFrequency != null" >
-        PayInterestFrequency,
-      </if>
-      <if test="payInterestFrequencyText != null" >
-        PayInterestFrequencyText,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="loanNo != null" >
-        #{loanNo,jdbcType=NVARCHAR},
-      </if>
-      <if test="projectNo != null" >
-        #{projectNo,jdbcType=NVARCHAR},
-      </if>
-      <if test="projectNoText != null" >
-        #{projectNoText,jdbcType=NVARCHAR},
-      </if>
-      <if test="parentLoanNo != null" >
-        #{parentLoanNo,jdbcType=NVARCHAR},
-      </if>
-      <if test="parentLoanNoText != null" >
-        #{parentLoanNoText,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanLevel != null" >
-        #{loanLevel,jdbcType=INTEGER},
-      </if>
-      <if test="loanLevelText != null" >
-        #{loanLevelText,jdbcType=NVARCHAR},
-      </if>
-      <if test="contractNo != null" >
-        #{contractNo,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanName != null" >
-        #{loanName,jdbcType=NVARCHAR},
-      </if>
-      <if test="applyPlace != null" >
-        #{applyPlace,jdbcType=NVARCHAR},
-      </if>
-      <if test="applyPlaceCode != null" >
-        #{applyPlaceCode,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanType != null" >
-        #{loanType,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanTypeText != null" >
-        #{loanTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="contractAmount != null" >
-        #{contractAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="primaryRateType != null" >
-        #{primaryRateType,jdbcType=NVARCHAR},
-      </if>
-      <if test="primaryRateTypeText != null" >
-        #{primaryRateTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="interestStartDate != null" >
-        #{interestStartDate,jdbcType=DATE},
-      </if>
-      <if test="interestEndDate != null" >
-        #{interestEndDate,jdbcType=DATE},
-      </if>
-      <if test="loanTermType != null" >
-        #{loanTermType,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanTermTypeText != null" >
-        #{loanTermTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanTerm != null" >
-        #{loanTerm,jdbcType=INTEGER},
-      </if>
-      <if test="actualPayDate != null" >
-        #{actualPayDate,jdbcType=DATE},
-      </if>
-      <if test="paymentType != null" >
-        #{paymentType,jdbcType=NVARCHAR},
-      </if>
-      <if test="paymentTypeText != null" >
-        #{paymentTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="isProductUsed != null" >
-        #{isProductUsed,jdbcType=BIT},
-      </if>
-      <if test="isProductUsedText != null" >
-        #{isProductUsedText,jdbcType=NVARCHAR},
-      </if>
-      <if test="isThirdpartyWarranty != null" >
-        #{isThirdpartyWarranty,jdbcType=BIT},
-      </if>
-      <if test="warrantyType != null" >
-        #{warrantyType,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantyTypeText != null" >
-        #{warrantyTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantorCreditLevel != null" >
-        #{warrantorCreditLevel,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantorAmount != null" >
-        #{warrantorAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="warrantorName != null" >
-        #{warrantorName,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantorType != null" >
-        #{warrantorType,jdbcType=NVARCHAR},
-      </if>
-      <if test="isGuaranteed != null" >
-        #{isGuaranteed,jdbcType=BIT},
-      </if>
-      <if test="isUsedOwnFunds != null" >
-        #{isUsedOwnFunds,jdbcType=BIT},
-      </if>
-      <if test="loanProcurementDepartment != null" >
-        #{loanProcurementDepartment,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanCount != null" >
-        #{loanCount,jdbcType=INTEGER},
-      </if>
-      <if test="transferStatus != null" >
-        #{transferStatus,jdbcType=INTEGER},
-      </if>
-      <if test="transferStatusText != null" >
-        #{transferStatusText,jdbcType=NVARCHAR},
-      </if>
-      <if test="primaryRate != null" >
-        #{primaryRate,jdbcType=DECIMAL},
-      </if>
-      <if test="expectIncomeAmount != null" >
-        #{expectIncomeAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="interestTypeText != null" >
-        #{interestTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="interestType != null" >
-        #{interestType,jdbcType=NVARCHAR},
-      </if>
-      <if test="purposeHolding != null" >
-        #{purposeHolding,jdbcType=INTEGER},
-      </if>
-      <if test="purposeHoldingText != null" >
-        #{purposeHoldingText,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantorCreditLevelText != null" >
-        #{warrantorCreditLevelText,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantorTypeText != null" >
-        #{warrantorTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanTemplate != null" >
-        #{loanTemplate,jdbcType=INTEGER},
-      </if>
-      <if test="loanTemplateText != null" >
-        #{loanTemplateText,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanProcurementDepartmentText != null" >
-        #{loanProcurementDepartmentText,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanMarginAmount != null" >
-        #{loanMarginAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="remarks != null" >
-        #{remarks,jdbcType=NVARCHAR},
-      </if>
-      <if test="isThirdpartyWarrantyText != null" >
-        #{isThirdpartyWarrantyText,jdbcType=NVARCHAR},
-      </if>
-      <if test="isGuaranteedText != null" >
-        #{isGuaranteedText,jdbcType=NVARCHAR},
-      </if>
-      <if test="isUsedOwnFundsText != null" >
-        #{isUsedOwnFundsText,jdbcType=NVARCHAR},
-      </if>
-      <if test="modifedTime != null" >
-        #{modifedTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createdTime != null" >
-        #{createdTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createdUser != null" >
-        #{createdUser,jdbcType=NVARCHAR},
-      </if>
-      <if test="holderType != null" >
-        #{holderType,jdbcType=INTEGER},
-      </if>
-      <if test="holderTypeText != null" >
-        #{holderTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="holderName != null" >
-        #{holderName,jdbcType=NVARCHAR},
-      </if>
-      <if test="originalAssetAmount != null" >
-        #{originalAssetAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="originalAssetPrimaryRate != null" >
-        #{originalAssetPrimaryRate,jdbcType=DECIMAL},
-      </if>
-      <if test="repaymentSource != null" >
-        #{repaymentSource,jdbcType=INTEGER},
-      </if>
-      <if test="repaymentSourceText != null" >
-        #{repaymentSourceText,jdbcType=NVARCHAR},
-      </if>
-      <if test="onceCashFlowAmount != null" >
-        #{onceCashFlowAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="sellRate != null" >
-        #{sellRate,jdbcType=DECIMAL},
-      </if>
-      <if test="payInterestFrequency != null" >
-        #{payInterestFrequency,jdbcType=INTEGER},
-      </if>
-      <if test="payInterestFrequencyText != null" >
-        #{payInterestFrequencyText,jdbcType=NVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.model.Loan" >
-    update Loan
-    <set >
-      <if test="projectNo != null" >
-        ProjectNo = #{projectNo,jdbcType=NVARCHAR},
-      </if>
-      <if test="projectNoText != null" >
-        ProjectNoText = #{projectNoText,jdbcType=NVARCHAR},
-      </if>
-      <if test="parentLoanNo != null" >
-        ParentLoanNo = #{parentLoanNo,jdbcType=NVARCHAR},
-      </if>
-      <if test="parentLoanNoText != null" >
-        ParentLoanNoText = #{parentLoanNoText,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanLevel != null" >
-        LoanLevel = #{loanLevel,jdbcType=INTEGER},
-      </if>
-      <if test="loanLevelText != null" >
-        LoanLevelText = #{loanLevelText,jdbcType=NVARCHAR},
-      </if>
-      <if test="contractNo != null" >
-        ContractNo = #{contractNo,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanName != null" >
-        LoanName = #{loanName,jdbcType=NVARCHAR},
-      </if>
-      <if test="applyPlace != null" >
-        ApplyPlace = #{applyPlace,jdbcType=NVARCHAR},
-      </if>
-      <if test="applyPlaceCode != null" >
-        ApplyPlaceCode = #{applyPlaceCode,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanType != null" >
-        LoanType = #{loanType,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanTypeText != null" >
-        LoanTypeText = #{loanTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="contractAmount != null" >
-        ContractAmount = #{contractAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="primaryRateType != null" >
-        PrimaryRateType = #{primaryRateType,jdbcType=NVARCHAR},
-      </if>
-      <if test="primaryRateTypeText != null" >
-        PrimaryRateTypeText = #{primaryRateTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="interestStartDate != null" >
-        InterestStartDate = #{interestStartDate,jdbcType=DATE},
-      </if>
-      <if test="interestEndDate != null" >
-        InterestEndDate = #{interestEndDate,jdbcType=DATE},
-      </if>
-      <if test="loanTermType != null" >
-        LoanTermType = #{loanTermType,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanTermTypeText != null" >
-        LoanTermTypeText = #{loanTermTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanTerm != null" >
-        LoanTerm = #{loanTerm,jdbcType=INTEGER},
-      </if>
-      <if test="actualPayDate != null" >
-        ActualPayDate = #{actualPayDate,jdbcType=DATE},
-      </if>
-      <if test="paymentType != null" >
-        PaymentType = #{paymentType,jdbcType=NVARCHAR},
-      </if>
-      <if test="paymentTypeText != null" >
-        PaymentTypeText = #{paymentTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="isProductUsed != null" >
-        IsProductUsed = #{isProductUsed,jdbcType=BIT},
-      </if>
-      <if test="isProductUsedText != null" >
-        IsProductUsedText = #{isProductUsedText,jdbcType=NVARCHAR},
-      </if>
-      <if test="isThirdpartyWarranty != null" >
-        IsThirdpartyWarranty = #{isThirdpartyWarranty,jdbcType=BIT},
-      </if>
-      <if test="warrantyType != null" >
-        WarrantyType = #{warrantyType,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantyTypeText != null" >
-        WarrantyTypeText = #{warrantyTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantorCreditLevel != null" >
-        WarrantorCreditLevel = #{warrantorCreditLevel,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantorAmount != null" >
-        WarrantorAmount = #{warrantorAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="warrantorName != null" >
-        WarrantorName = #{warrantorName,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantorType != null" >
-        WarrantorType = #{warrantorType,jdbcType=NVARCHAR},
-      </if>
-      <if test="isGuaranteed != null" >
-        IsGuaranteed = #{isGuaranteed,jdbcType=BIT},
-      </if>
-      <if test="isUsedOwnFunds != null" >
-        IsUsedOwnFunds = #{isUsedOwnFunds,jdbcType=BIT},
-      </if>
-      <if test="loanProcurementDepartment != null" >
-        LoanProcurementDepartment = #{loanProcurementDepartment,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanCount != null" >
-        LoanCount = #{loanCount,jdbcType=INTEGER},
-      </if>
-      <if test="transferStatus != null" >
-        TransferStatus = #{transferStatus,jdbcType=INTEGER},
-      </if>
-      <if test="transferStatusText != null" >
-        TransferStatusText = #{transferStatusText,jdbcType=NVARCHAR},
-      </if>
-      <if test="primaryRate != null" >
-        PrimaryRate = #{primaryRate,jdbcType=DECIMAL},
-      </if>
-      <if test="expectIncomeAmount != null" >
-        ExpectIncomeAmount = #{expectIncomeAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="interestTypeText != null" >
-        InterestTypeText = #{interestTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="interestType != null" >
-        InterestType = #{interestType,jdbcType=NVARCHAR},
-      </if>
-      <if test="purposeHolding != null" >
-        PurposeHolding = #{purposeHolding,jdbcType=INTEGER},
-      </if>
-      <if test="purposeHoldingText != null" >
-        PurposeHoldingText = #{purposeHoldingText,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantorCreditLevelText != null" >
-        WarrantorCreditLevelText = #{warrantorCreditLevelText,jdbcType=NVARCHAR},
-      </if>
-      <if test="warrantorTypeText != null" >
-        WarrantorTypeText = #{warrantorTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanTemplate != null" >
-        LoanTemplate = #{loanTemplate,jdbcType=INTEGER},
-      </if>
-      <if test="loanTemplateText != null" >
-        LoanTemplateText = #{loanTemplateText,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanProcurementDepartmentText != null" >
-        LoanProcurementDepartmentText = #{loanProcurementDepartmentText,jdbcType=NVARCHAR},
-      </if>
-      <if test="loanMarginAmount != null" >
-        LoanMarginAmount = #{loanMarginAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="remarks != null" >
-        Remarks = #{remarks,jdbcType=NVARCHAR},
-      </if>
-      <if test="isThirdpartyWarrantyText != null" >
-        IsThirdpartyWarrantyText = #{isThirdpartyWarrantyText,jdbcType=NVARCHAR},
-      </if>
-      <if test="isGuaranteedText != null" >
-        IsGuaranteedText = #{isGuaranteedText,jdbcType=NVARCHAR},
-      </if>
-      <if test="isUsedOwnFundsText != null" >
-        IsUsedOwnFundsText = #{isUsedOwnFundsText,jdbcType=NVARCHAR},
-      </if>
-      <if test="modifedTime != null" >
-        ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createdTime != null" >
-        CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createdUser != null" >
-        CreatedUser = #{createdUser,jdbcType=NVARCHAR},
-      </if>
-      <if test="holderType != null" >
-        HolderType = #{holderType,jdbcType=INTEGER},
-      </if>
-      <if test="holderTypeText != null" >
-        HolderTypeText = #{holderTypeText,jdbcType=NVARCHAR},
-      </if>
-      <if test="holderName != null" >
-        HolderName = #{holderName,jdbcType=NVARCHAR},
-      </if>
-      <if test="originalAssetAmount != null" >
-        OriginalAssetAmount = #{originalAssetAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="originalAssetPrimaryRate != null" >
-        OriginalAssetPrimaryRate = #{originalAssetPrimaryRate,jdbcType=DECIMAL},
-      </if>
-      <if test="repaymentSource != null" >
-        RepaymentSource = #{repaymentSource,jdbcType=INTEGER},
-      </if>
-      <if test="repaymentSourceText != null" >
-        RepaymentSourceText = #{repaymentSourceText,jdbcType=NVARCHAR},
-      </if>
-      <if test="onceCashFlowAmount != null" >
-        OnceCashFlowAmount = #{onceCashFlowAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="sellRate != null" >
-        SellRate = #{sellRate,jdbcType=DECIMAL},
-      </if>
-      <if test="payInterestFrequency != null" >
-        PayInterestFrequency = #{payInterestFrequency,jdbcType=INTEGER},
-      </if>
-      <if test="payInterestFrequencyText != null" >
-        PayInterestFrequencyText = #{payInterestFrequencyText,jdbcType=NVARCHAR},
-      </if>
-    </set>
-    where LoanNo = #{loanNo,jdbcType=NVARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.model.Loan" >
+    <insert id="insertSelective" parameterType="com.example.model.Loan">
+        insert into Loan
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="loanNo != null">
+                LoanNo,
+            </if>
+            <if test="projectNo != null">
+                ProjectNo,
+            </if>
+            <if test="projectNoText != null">
+                ProjectNoText,
+            </if>
+            <if test="parentLoanNo != null">
+                ParentLoanNo,
+            </if>
+            <if test="parentLoanNoText != null">
+                ParentLoanNoText,
+            </if>
+            <if test="loanLevel != null">
+                LoanLevel,
+            </if>
+            <if test="loanLevelText != null">
+                LoanLevelText,
+            </if>
+            <if test="contractNo != null">
+                ContractNo,
+            </if>
+            <if test="loanName != null">
+                LoanName,
+            </if>
+            <if test="applyPlace != null">
+                ApplyPlace,
+            </if>
+            <if test="applyPlaceCode != null">
+                ApplyPlaceCode,
+            </if>
+            <if test="loanType != null">
+                LoanType,
+            </if>
+            <if test="loanTypeText != null">
+                LoanTypeText,
+            </if>
+            <if test="contractAmount != null">
+                ContractAmount,
+            </if>
+            <if test="primaryRateType != null">
+                PrimaryRateType,
+            </if>
+            <if test="primaryRateTypeText != null">
+                PrimaryRateTypeText,
+            </if>
+            <if test="interestStartDate != null">
+                InterestStartDate,
+            </if>
+            <if test="interestEndDate != null">
+                InterestEndDate,
+            </if>
+            <if test="loanTermType != null">
+                LoanTermType,
+            </if>
+            <if test="loanTermTypeText != null">
+                LoanTermTypeText,
+            </if>
+            <if test="loanTerm != null">
+                LoanTerm,
+            </if>
+            <if test="actualPayDate != null">
+                ActualPayDate,
+            </if>
+            <if test="paymentType != null">
+                PaymentType,
+            </if>
+            <if test="paymentTypeText != null">
+                PaymentTypeText,
+            </if>
+            <if test="isProductUsed != null">
+                IsProductUsed,
+            </if>
+            <if test="isProductUsedText != null">
+                IsProductUsedText,
+            </if>
+            <if test="isThirdpartyWarranty != null">
+                IsThirdpartyWarranty,
+            </if>
+            <if test="warrantyType != null">
+                WarrantyType,
+            </if>
+            <if test="warrantyTypeText != null">
+                WarrantyTypeText,
+            </if>
+            <if test="warrantorCreditLevel != null">
+                WarrantorCreditLevel,
+            </if>
+            <if test="warrantorAmount != null">
+                WarrantorAmount,
+            </if>
+            <if test="warrantorName != null">
+                WarrantorName,
+            </if>
+            <if test="warrantorType != null">
+                WarrantorType,
+            </if>
+            <if test="isGuaranteed != null">
+                IsGuaranteed,
+            </if>
+            <if test="isUsedOwnFunds != null">
+                IsUsedOwnFunds,
+            </if>
+            <if test="loanProcurementDepartment != null">
+                LoanProcurementDepartment,
+            </if>
+            <if test="loanCount != null">
+                LoanCount,
+            </if>
+            <if test="transferStatus != null">
+                TransferStatus,
+            </if>
+            <if test="transferStatusText != null">
+                TransferStatusText,
+            </if>
+            <if test="primaryRate != null">
+                PrimaryRate,
+            </if>
+            <if test="expectIncomeAmount != null">
+                ExpectIncomeAmount,
+            </if>
+            <if test="interestTypeText != null">
+                InterestTypeText,
+            </if>
+            <if test="interestType != null">
+                InterestType,
+            </if>
+            <if test="purposeHolding != null">
+                PurposeHolding,
+            </if>
+            <if test="purposeHoldingText != null">
+                PurposeHoldingText,
+            </if>
+            <if test="warrantorCreditLevelText != null">
+                WarrantorCreditLevelText,
+            </if>
+            <if test="warrantorTypeText != null">
+                WarrantorTypeText,
+            </if>
+            <if test="loanTemplate != null">
+                LoanTemplate,
+            </if>
+            <if test="loanTemplateText != null">
+                LoanTemplateText,
+            </if>
+            <if test="loanProcurementDepartmentText != null">
+                LoanProcurementDepartmentText,
+            </if>
+            <if test="loanMarginAmount != null">
+                LoanMarginAmount,
+            </if>
+            <if test="remarks != null">
+                Remarks,
+            </if>
+            <if test="isThirdpartyWarrantyText != null">
+                IsThirdpartyWarrantyText,
+            </if>
+            <if test="isGuaranteedText != null">
+                IsGuaranteedText,
+            </if>
+            <if test="isUsedOwnFundsText != null">
+                IsUsedOwnFundsText,
+            </if>
+            <if test="modifedTime != null">
+                ModifedTime,
+            </if>
+            <if test="createdTime != null">
+                CreatedTime,
+            </if>
+            <if test="createdUser != null">
+                CreatedUser,
+            </if>
+            <if test="holderType != null">
+                HolderType,
+            </if>
+            <if test="holderTypeText != null">
+                HolderTypeText,
+            </if>
+            <if test="holderName != null">
+                HolderName,
+            </if>
+            <if test="originalAssetAmount != null">
+                OriginalAssetAmount,
+            </if>
+            <if test="originalAssetPrimaryRate != null">
+                OriginalAssetPrimaryRate,
+            </if>
+            <if test="repaymentSource != null">
+                RepaymentSource,
+            </if>
+            <if test="repaymentSourceText != null">
+                RepaymentSourceText,
+            </if>
+            <if test="onceCashFlowAmount != null">
+                OnceCashFlowAmount,
+            </if>
+            <if test="sellRate != null">
+                SellRate,
+            </if>
+            <if test="payInterestFrequency != null">
+                PayInterestFrequency,
+            </if>
+            <if test="payInterestFrequencyText != null">
+                PayInterestFrequencyText,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="loanNo != null">
+                #{loanNo,jdbcType=NVARCHAR},
+            </if>
+            <if test="projectNo != null">
+                #{projectNo,jdbcType=NVARCHAR},
+            </if>
+            <if test="projectNoText != null">
+                #{projectNoText,jdbcType=NVARCHAR},
+            </if>
+            <if test="parentLoanNo != null">
+                #{parentLoanNo,jdbcType=NVARCHAR},
+            </if>
+            <if test="parentLoanNoText != null">
+                #{parentLoanNoText,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanLevel != null">
+                #{loanLevel,jdbcType=INTEGER},
+            </if>
+            <if test="loanLevelText != null">
+                #{loanLevelText,jdbcType=NVARCHAR},
+            </if>
+            <if test="contractNo != null">
+                #{contractNo,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanName != null">
+                #{loanName,jdbcType=NVARCHAR},
+            </if>
+            <if test="applyPlace != null">
+                #{applyPlace,jdbcType=NVARCHAR},
+            </if>
+            <if test="applyPlaceCode != null">
+                #{applyPlaceCode,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanType != null">
+                #{loanType,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanTypeText != null">
+                #{loanTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="contractAmount != null">
+                #{contractAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="primaryRateType != null">
+                #{primaryRateType,jdbcType=NVARCHAR},
+            </if>
+            <if test="primaryRateTypeText != null">
+                #{primaryRateTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="interestStartDate != null">
+                #{interestStartDate,jdbcType=DATE},
+            </if>
+            <if test="interestEndDate != null">
+                #{interestEndDate,jdbcType=DATE},
+            </if>
+            <if test="loanTermType != null">
+                #{loanTermType,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanTermTypeText != null">
+                #{loanTermTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanTerm != null">
+                #{loanTerm,jdbcType=INTEGER},
+            </if>
+            <if test="actualPayDate != null">
+                #{actualPayDate,jdbcType=DATE},
+            </if>
+            <if test="paymentType != null">
+                #{paymentType,jdbcType=NVARCHAR},
+            </if>
+            <if test="paymentTypeText != null">
+                #{paymentTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="isProductUsed != null">
+                #{isProductUsed,jdbcType=BIT},
+            </if>
+            <if test="isProductUsedText != null">
+                #{isProductUsedText,jdbcType=NVARCHAR},
+            </if>
+            <if test="isThirdpartyWarranty != null">
+                #{isThirdpartyWarranty,jdbcType=BIT},
+            </if>
+            <if test="warrantyType != null">
+                #{warrantyType,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantyTypeText != null">
+                #{warrantyTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantorCreditLevel != null">
+                #{warrantorCreditLevel,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantorAmount != null">
+                #{warrantorAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="warrantorName != null">
+                #{warrantorName,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantorType != null">
+                #{warrantorType,jdbcType=NVARCHAR},
+            </if>
+            <if test="isGuaranteed != null">
+                #{isGuaranteed,jdbcType=BIT},
+            </if>
+            <if test="isUsedOwnFunds != null">
+                #{isUsedOwnFunds,jdbcType=BIT},
+            </if>
+            <if test="loanProcurementDepartment != null">
+                #{loanProcurementDepartment,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanCount != null">
+                #{loanCount,jdbcType=INTEGER},
+            </if>
+            <if test="transferStatus != null">
+                #{transferStatus,jdbcType=INTEGER},
+            </if>
+            <if test="transferStatusText != null">
+                #{transferStatusText,jdbcType=NVARCHAR},
+            </if>
+            <if test="primaryRate != null">
+                #{primaryRate,jdbcType=DECIMAL},
+            </if>
+            <if test="expectIncomeAmount != null">
+                #{expectIncomeAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="interestTypeText != null">
+                #{interestTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="interestType != null">
+                #{interestType,jdbcType=NVARCHAR},
+            </if>
+            <if test="purposeHolding != null">
+                #{purposeHolding,jdbcType=INTEGER},
+            </if>
+            <if test="purposeHoldingText != null">
+                #{purposeHoldingText,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantorCreditLevelText != null">
+                #{warrantorCreditLevelText,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantorTypeText != null">
+                #{warrantorTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanTemplate != null">
+                #{loanTemplate,jdbcType=INTEGER},
+            </if>
+            <if test="loanTemplateText != null">
+                #{loanTemplateText,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanProcurementDepartmentText != null">
+                #{loanProcurementDepartmentText,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanMarginAmount != null">
+                #{loanMarginAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=NVARCHAR},
+            </if>
+            <if test="isThirdpartyWarrantyText != null">
+                #{isThirdpartyWarrantyText,jdbcType=NVARCHAR},
+            </if>
+            <if test="isGuaranteedText != null">
+                #{isGuaranteedText,jdbcType=NVARCHAR},
+            </if>
+            <if test="isUsedOwnFundsText != null">
+                #{isUsedOwnFundsText,jdbcType=NVARCHAR},
+            </if>
+            <if test="modifedTime != null">
+                #{modifedTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdTime != null">
+                #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdUser != null">
+                #{createdUser,jdbcType=NVARCHAR},
+            </if>
+            <if test="holderType != null">
+                #{holderType,jdbcType=INTEGER},
+            </if>
+            <if test="holderTypeText != null">
+                #{holderTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="holderName != null">
+                #{holderName,jdbcType=NVARCHAR},
+            </if>
+            <if test="originalAssetAmount != null">
+                #{originalAssetAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="originalAssetPrimaryRate != null">
+                #{originalAssetPrimaryRate,jdbcType=DECIMAL},
+            </if>
+            <if test="repaymentSource != null">
+                #{repaymentSource,jdbcType=INTEGER},
+            </if>
+            <if test="repaymentSourceText != null">
+                #{repaymentSourceText,jdbcType=NVARCHAR},
+            </if>
+            <if test="onceCashFlowAmount != null">
+                #{onceCashFlowAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="sellRate != null">
+                #{sellRate,jdbcType=DECIMAL},
+            </if>
+            <if test="payInterestFrequency != null">
+                #{payInterestFrequency,jdbcType=INTEGER},
+            </if>
+            <if test="payInterestFrequencyText != null">
+                #{payInterestFrequencyText,jdbcType=NVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.model.Loan">
+        update Loan
+        <set>
+            <if test="projectNo != null">
+                ProjectNo = #{projectNo,jdbcType=NVARCHAR},
+            </if>
+            <if test="projectNoText != null">
+                ProjectNoText = #{projectNoText,jdbcType=NVARCHAR},
+            </if>
+            <if test="parentLoanNo != null">
+                ParentLoanNo = #{parentLoanNo,jdbcType=NVARCHAR},
+            </if>
+            <if test="parentLoanNoText != null">
+                ParentLoanNoText = #{parentLoanNoText,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanLevel != null">
+                LoanLevel = #{loanLevel,jdbcType=INTEGER},
+            </if>
+            <if test="loanLevelText != null">
+                LoanLevelText = #{loanLevelText,jdbcType=NVARCHAR},
+            </if>
+            <if test="contractNo != null">
+                ContractNo = #{contractNo,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanName != null">
+                LoanName = #{loanName,jdbcType=NVARCHAR},
+            </if>
+            <if test="applyPlace != null">
+                ApplyPlace = #{applyPlace,jdbcType=NVARCHAR},
+            </if>
+            <if test="applyPlaceCode != null">
+                ApplyPlaceCode = #{applyPlaceCode,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanType != null">
+                LoanType = #{loanType,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanTypeText != null">
+                LoanTypeText = #{loanTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="contractAmount != null">
+                ContractAmount = #{contractAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="primaryRateType != null">
+                PrimaryRateType = #{primaryRateType,jdbcType=NVARCHAR},
+            </if>
+            <if test="primaryRateTypeText != null">
+                PrimaryRateTypeText = #{primaryRateTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="interestStartDate != null">
+                InterestStartDate = #{interestStartDate,jdbcType=DATE},
+            </if>
+            <if test="interestEndDate != null">
+                InterestEndDate = #{interestEndDate,jdbcType=DATE},
+            </if>
+            <if test="loanTermType != null">
+                LoanTermType = #{loanTermType,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanTermTypeText != null">
+                LoanTermTypeText = #{loanTermTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanTerm != null">
+                LoanTerm = #{loanTerm,jdbcType=INTEGER},
+            </if>
+            <if test="actualPayDate != null">
+                ActualPayDate = #{actualPayDate,jdbcType=DATE},
+            </if>
+            <if test="paymentType != null">
+                PaymentType = #{paymentType,jdbcType=NVARCHAR},
+            </if>
+            <if test="paymentTypeText != null">
+                PaymentTypeText = #{paymentTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="isProductUsed != null">
+                IsProductUsed = #{isProductUsed,jdbcType=BIT},
+            </if>
+            <if test="isProductUsedText != null">
+                IsProductUsedText = #{isProductUsedText,jdbcType=NVARCHAR},
+            </if>
+            <if test="isThirdpartyWarranty != null">
+                IsThirdpartyWarranty = #{isThirdpartyWarranty,jdbcType=BIT},
+            </if>
+            <if test="warrantyType != null">
+                WarrantyType = #{warrantyType,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantyTypeText != null">
+                WarrantyTypeText = #{warrantyTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantorCreditLevel != null">
+                WarrantorCreditLevel = #{warrantorCreditLevel,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantorAmount != null">
+                WarrantorAmount = #{warrantorAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="warrantorName != null">
+                WarrantorName = #{warrantorName,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantorType != null">
+                WarrantorType = #{warrantorType,jdbcType=NVARCHAR},
+            </if>
+            <if test="isGuaranteed != null">
+                IsGuaranteed = #{isGuaranteed,jdbcType=BIT},
+            </if>
+            <if test="isUsedOwnFunds != null">
+                IsUsedOwnFunds = #{isUsedOwnFunds,jdbcType=BIT},
+            </if>
+            <if test="loanProcurementDepartment != null">
+                LoanProcurementDepartment = #{loanProcurementDepartment,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanCount != null">
+                LoanCount = #{loanCount,jdbcType=INTEGER},
+            </if>
+            <if test="transferStatus != null">
+                TransferStatus = #{transferStatus,jdbcType=INTEGER},
+            </if>
+            <if test="transferStatusText != null">
+                TransferStatusText = #{transferStatusText,jdbcType=NVARCHAR},
+            </if>
+            <if test="primaryRate != null">
+                PrimaryRate = #{primaryRate,jdbcType=DECIMAL},
+            </if>
+            <if test="expectIncomeAmount != null">
+                ExpectIncomeAmount = #{expectIncomeAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="interestTypeText != null">
+                InterestTypeText = #{interestTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="interestType != null">
+                InterestType = #{interestType,jdbcType=NVARCHAR},
+            </if>
+            <if test="purposeHolding != null">
+                PurposeHolding = #{purposeHolding,jdbcType=INTEGER},
+            </if>
+            <if test="purposeHoldingText != null">
+                PurposeHoldingText = #{purposeHoldingText,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantorCreditLevelText != null">
+                WarrantorCreditLevelText = #{warrantorCreditLevelText,jdbcType=NVARCHAR},
+            </if>
+            <if test="warrantorTypeText != null">
+                WarrantorTypeText = #{warrantorTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanTemplate != null">
+                LoanTemplate = #{loanTemplate,jdbcType=INTEGER},
+            </if>
+            <if test="loanTemplateText != null">
+                LoanTemplateText = #{loanTemplateText,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanProcurementDepartmentText != null">
+                LoanProcurementDepartmentText = #{loanProcurementDepartmentText,jdbcType=NVARCHAR},
+            </if>
+            <if test="loanMarginAmount != null">
+                LoanMarginAmount = #{loanMarginAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="remarks != null">
+                Remarks = #{remarks,jdbcType=NVARCHAR},
+            </if>
+            <if test="isThirdpartyWarrantyText != null">
+                IsThirdpartyWarrantyText = #{isThirdpartyWarrantyText,jdbcType=NVARCHAR},
+            </if>
+            <if test="isGuaranteedText != null">
+                IsGuaranteedText = #{isGuaranteedText,jdbcType=NVARCHAR},
+            </if>
+            <if test="isUsedOwnFundsText != null">
+                IsUsedOwnFundsText = #{isUsedOwnFundsText,jdbcType=NVARCHAR},
+            </if>
+            <if test="modifedTime != null">
+                ModifedTime = #{modifedTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdTime != null">
+                CreatedTime = #{createdTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdUser != null">
+                CreatedUser = #{createdUser,jdbcType=NVARCHAR},
+            </if>
+            <if test="holderType != null">
+                HolderType = #{holderType,jdbcType=INTEGER},
+            </if>
+            <if test="holderTypeText != null">
+                HolderTypeText = #{holderTypeText,jdbcType=NVARCHAR},
+            </if>
+            <if test="holderName != null">
+                HolderName = #{holderName,jdbcType=NVARCHAR},
+            </if>
+            <if test="originalAssetAmount != null">
+                OriginalAssetAmount = #{originalAssetAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="originalAssetPrimaryRate != null">
+                OriginalAssetPrimaryRate = #{originalAssetPrimaryRate,jdbcType=DECIMAL},
+            </if>
+            <if test="repaymentSource != null">
+                RepaymentSource = #{repaymentSource,jdbcType=INTEGER},
+            </if>
+            <if test="repaymentSourceText != null">
+                RepaymentSourceText = #{repaymentSourceText,jdbcType=NVARCHAR},
+            </if>
+            <if test="onceCashFlowAmount != null">
+                OnceCashFlowAmount = #{onceCashFlowAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="sellRate != null">
+                SellRate = #{sellRate,jdbcType=DECIMAL},
+            </if>
+            <if test="payInterestFrequency != null">
+                PayInterestFrequency = #{payInterestFrequency,jdbcType=INTEGER},
+            </if>
+            <if test="payInterestFrequencyText != null">
+                PayInterestFrequencyText = #{payInterestFrequencyText,jdbcType=NVARCHAR},
+            </if>
+        </set>
+        where LoanNo = #{loanNo,jdbcType=NVARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.model.Loan">
     update Loan
     set ProjectNo = #{projectNo,jdbcType=NVARCHAR},
       ProjectNoText = #{projectNoText,jdbcType=NVARCHAR},

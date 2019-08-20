@@ -23,7 +23,7 @@ public class SchedulerTask {
     @Autowired
     private DataExportService dataExportService;
 
-    @Scheduled(cron = "00 46 11 * * 1-5")
+    @Scheduled(cron = "00 55 18 * * 1-5")
     public void process() throws FileExportException, Exception {
         for (int i = 0; i < TableConstant.LOANMANAGEMENT_TABLES.length; i++) {
             String tableName = TableConstant.LOANMANAGEMENT_TABLES[i];
@@ -34,7 +34,7 @@ public class SchedulerTask {
         FtpUtils.connectFtp(ftp);
         dataExportService.uploadFile();
         FtpUtils.closeFtp();
-        logger.info("花了："+(System.currentTimeMillis() - start) + "秒文件已上传");
+        logger.info(DateUtil.formateDate(new Date(), DateUtil.DATE_TIME_PATTERN) + " 文件已上传");
     }
 
 }
