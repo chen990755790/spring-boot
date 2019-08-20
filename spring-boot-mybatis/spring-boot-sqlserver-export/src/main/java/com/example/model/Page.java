@@ -9,7 +9,7 @@ package com.example.model;
 public class Page {
 
     private int pageNo = 1;//当前页
-    private int pageSize = 1000;//每页大小
+    private int pageSize = 10000;//每页大小
     private int total;//总数量大小
     private int totalPage = 1;//总页数
     private int pageIndex = 0;
