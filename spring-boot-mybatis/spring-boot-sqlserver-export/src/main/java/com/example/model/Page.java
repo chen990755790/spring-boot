@@ -8,12 +8,12 @@ package com.example.model;
  */
 public class Page {
 
-    private int pageNo = 1;//当前页
+    private int pageNo = 0;//当前页
     private int pageSize = 10000;//每页大小
     private int total;//总数量大小
-    private int totalPage = 1;//总页数
-    private int pageIndex = 0;
-    private boolean isLastPage;
+    private int totalPage = 0;//总页数
+    private int pageIndex = 0;//分页起点
+    private boolean isLastPage;//是否最后一页
 
     public Page() {
     }

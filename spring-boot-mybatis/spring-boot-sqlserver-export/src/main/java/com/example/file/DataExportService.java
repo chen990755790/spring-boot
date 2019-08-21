@@ -40,15 +40,15 @@ public class DataExportService {
             Example example = new Example(total);
             List list;
             int i = 1;
-            do {
+            while (!example.getPage().isLastPage()) {
                 example.getPage().setPageNo(i++);
                 list = getDataList(lowerTableName, example);
                 FileUtils.writeLines(file, FileUtil.CHARACTER_SET, list, "");
-            } while (!example.getPage().isLastPage());
+            }
             writeControlFileByTable(tableName, file, total);
             generateGZFile(file);
             if (!file.delete()) {
-                logger.warn(tableName + "文件删除失败");
+                logger.warn(String.format("%s文件删除失败", tableName));
             }
         } catch (IOException e) {
             logger.error("数据导出失败", e);
@@ -138,25 +138,21 @@ public class DataExportService {
     public void uploadFile() {
         String today = DateUtil.formateDate(new Date());
         try {
-            File[] gzfiles = new File(fileDir).listFiles(new FilenameFilter() {
-                @Override
-                public boolean accept(File dir, String name) {
-                    if (name.contains(today) && name.endsWith(FileUtil.GZ_FILE))
-                        return true;
-                    return false;
-                }
-            });
+            FilenameFilter filenameFilter1 = (dir, name) -> {
+                if (name.contains(today) && name.endsWith(FileUtil.GZ_FILE))
+                    return true;
+                return false;
+            };
+            File[] gzfiles = new File(fileDir).listFiles(filenameFilter1);
             for (int i = 0; i < gzfiles.length; i++) {
                 FtpUtils.upload(gzfiles[i]);
             }
-            File[] ctrfiles = new File(fileDir).listFiles(new FilenameFilter() {
-                @Override
-                public boolean accept(File dir, String name) {
-                    if (name.contains(today) && name.endsWith(FileUtil.SUFFIX_CONTROL_FILE_NAME))
-                        return true;
-                    return false;
-                }
-            });
+            FilenameFilter filenameFilter2 = (dir, name) -> {
+                if (name.contains(today) && name.endsWith(FileUtil.SUFFIX_CONTROL_FILE_NAME))
+                    return true;
+                return false;
+            };
+            File[] ctrfiles = new File(fileDir).listFiles(filenameFilter2);
             for (int i = 0; i < ctrfiles.length; i++) {
                 FtpUtils.upload(ctrfiles[i]);
             }
