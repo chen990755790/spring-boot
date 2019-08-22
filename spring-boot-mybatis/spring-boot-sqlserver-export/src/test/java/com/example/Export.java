@@ -4,6 +4,8 @@ import com.example.constant.TableConstant;
 import com.example.file.DataExportService;
 import com.example.file.ftp.Ftp;
 import com.example.file.ftp.FtpUtils;
+import com.example.mapper.loanmanagement.LoanMapper;
+import com.example.mapper.loanmanagement.TableMapper;
 import com.example.task.SchedulerTask;
 import com.example.util.DateUtil;
 import org.junit.Test;
@@ -13,17 +15,24 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Semaphore;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class Export {
-
+    final Semaphore semaphore = new Semaphore(1);
     @Autowired
     private DataExportService dataExportService;
     @Autowired
     private SchedulerTask schedulerTask;
     @Autowired
     private Ftp ftp;
+    @Autowired
+    private LoanMapper loanMapper;
+    @Autowired
+    private TableMapper tableMapper;
 
     @Test
     public void test() throws Exception {
@@ -59,4 +68,18 @@ public class Export {
         }
     }
 
+    @Test
+    public void testMap(){
+        List<Map> loan = tableMapper.selectByTable("Loan");
+        for (int i=0;i<loan.size();i++) {
+            Map<String,Object> map = loan.get(i);
+            for(Map.Entry<String,Object> entry:map.entrySet()) {
+                System.out.print(entry.getValue()+"\000");
+            }
+            System.out.println();
+        }
+    }
+
 }
+
+
