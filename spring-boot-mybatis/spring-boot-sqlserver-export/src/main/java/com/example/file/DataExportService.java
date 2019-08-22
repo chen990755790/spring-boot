@@ -93,7 +93,7 @@ public class DataExportService {
 
     private File writeControlFileByTable(String tableName, File dataFile, int total) {
         File controlFile = new File(fileDir + File.separator + FileUtil.getControlFileName(tableName));
-        String line = tableName + FileUtil.SEPARATOR_TAB + dataFile.length() + FileUtil.SEPARATOR_TAB + total;
+        String line = dataFile.getName() + FileUtil.SEPARATOR_TAB + dataFile.length() + FileUtil.SEPARATOR_TAB + total;
         try {
             FileUtils.writeStringToFile(controlFile, line, FileUtil.CHARACTER_SET);
         } catch (IOException e) {

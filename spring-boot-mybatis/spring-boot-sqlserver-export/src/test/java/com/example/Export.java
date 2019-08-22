@@ -61,7 +61,7 @@ public class Export {
     @Test
     public void testLoan() {
         Long start = System.currentTimeMillis();
-        dataExportService.WriteDataFileByTableName("loan");
+        dataExportService.WriteDataFileByTableName("Loan");
         System.out.println(System.currentTimeMillis() - start);
     }
 
