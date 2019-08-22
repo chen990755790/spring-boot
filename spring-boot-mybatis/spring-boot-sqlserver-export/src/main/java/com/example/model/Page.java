@@ -45,6 +45,11 @@ public class Page {
 
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
+        if (total % pageSize == 0) {
+            totalPage = total / pageSize;
+        } else {
+            totalPage = total / pageSize + 1;
+        }
     }
 
     public int getTotalPage() {
