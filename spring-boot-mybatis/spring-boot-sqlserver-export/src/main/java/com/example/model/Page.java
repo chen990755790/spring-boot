@@ -5,6 +5,7 @@ package com.example.model;
  *
  * @author 陈超
  * @date 2019/08/20
+ * @condition 必须获取数据总条数
  */
 public class Page {
 
@@ -13,10 +14,6 @@ public class Page {
     private int total;//总数量大小
     private int totalPage = 0;//总页数
     private int pageIndex = 0;//分页起点
-    private boolean isLastPage;//是否最后一页
-
-    public Page() {
-    }
 
     public Page(int total) {
         this.total = total;
