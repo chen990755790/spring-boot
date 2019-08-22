@@ -8,10 +8,8 @@ public class Example {
 
     private Page page;
 
-    private String pageCondition;
+    protected Example(){
 
-    public Example() {
-        page = new Page();
     }
 
     public Example(int total) {
