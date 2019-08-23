@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 
 
 /**
- * Created by summer on 2016/11/25.
+ *
  */
 @Configuration
 @MapperScan(basePackages = "com.example.mapper.loanmanagement", sqlSessionTemplateRef = "SqlSessionTemplate1")

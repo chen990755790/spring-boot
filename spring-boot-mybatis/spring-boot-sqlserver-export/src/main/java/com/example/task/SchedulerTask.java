@@ -23,7 +23,7 @@ public class SchedulerTask {
     @Autowired
     private DataExportService dataExportService;
 
-    @Scheduled(cron = "00 55 18 * * 1-5")
+    @Scheduled(cron = "00 00 16 * * ？")
     public void process() throws FileExportException, Exception {
         for (int i = 0; i < TableConstant.LOANMANAGEMENT_TABLES.length; i++) {
             String tableName = TableConstant.LOANMANAGEMENT_TABLES[i];
