@@ -23,7 +23,8 @@ public class MailServiceTest {
 
     @Test
     public void testSimpleMail() throws Exception {
-        mailService.sendSimpleMail("ityouknow@126.com","test simple mail"," hello this is simple mail");
+        //mailService.sendSimpleMail("ityouknow@126.com","test simple mail"," hello this is simple mail");
+        mailService.sendSimpleMail("chenchao0506@rayootech.com","test simple mail"," hello this is simple mail");
     }
 
     @Test
@@ -33,7 +34,7 @@ public class MailServiceTest {
                 "    <h3>hello world ! 这是一封html邮件!</h3>\n" +
                 "</body>\n" +
                 "</html>";
-        mailService.sendHtmlMail("ityouknow@126.com","test simple mail",content);
+        mailService.sendHtmlMail("chenchao0506@rayootech.com","test simple mail",content);
     }
 
     @Test
@@ -60,6 +61,6 @@ public class MailServiceTest {
         context.setVariable("id", "006");
         String emailContent = templateEngine.process("emailTemplate", context);
 
-        mailService.sendHtmlMail("ityouknow@126.com","主题：这是模板邮件",emailContent);
+        mailService.sendHtmlMail("chenchao0506@rayootech.com","主题：这是模板邮件",emailContent);
     }
 }
